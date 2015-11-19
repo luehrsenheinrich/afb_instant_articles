@@ -1,5 +1,7 @@
 {
   "version": "1.0.0",
+  "title": "allfacebook.de Instant Articles",
+  "description": "This plugin lets your WordPress display instant articles directly on your facebook page.",
   "author": "Luehrsen // Heinrich",
   "private": true,
   "devDependencies": {

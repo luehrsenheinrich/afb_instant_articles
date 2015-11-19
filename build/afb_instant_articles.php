@@ -3,15 +3,15 @@
  * @package afb_ia
  */
 /*
-Plugin Name: allfacebook.de Instant Articles
+Plugin Name: <##= pkg.title ##>
 Plugin URI:
-Description:
+Description: <##= pkg.description ##>
 Author: Luehrsen // Heinrich
 Author URI: http://www.luehrsen-heinrich.de
 Version: <##= pkg.version ##>
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: facebook, allfacebook, instant articles, articles,
+Tags: facebook, allfacebook, instant articles, articles
 Domain Path: /lang
 Text Domain: afb
 */
