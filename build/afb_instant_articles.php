@@ -28,7 +28,9 @@ define( 'LHAFB__PLUGIN_FILE', ( __FILE__ ) );
 
 
 // Require needed files
-require LHAFB__PLUGIN_DIR . "inc/lhafb_ia.core.php"; // The actual core of the plugin
+require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.core.php"; // The actual core of the plugin
+require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.metaboxes.php"; // The actual core of the plugin
+require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.settings.php"; // The actual core of the plugin
 
 // Initialize the main plugin class
 function run_instant_articles(){

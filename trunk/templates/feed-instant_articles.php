@@ -44,7 +44,7 @@ do_action( 'rss_tag_pre', 'rss2' );
 	 *
 	 * @since 2.0.0
 	 */
-	do_action( 'afbia_head');
+	do_action( 'afbia_head' );
 
 	while( have_posts()) : the_post();
 	?>
@@ -56,7 +56,10 @@ do_action( 'rss_tag_pre', 'rss2' );
 		<guid isPermaLink="false"><?php the_guid(); ?></guid>
 		<description><![CDATA[<?php the_excerpt_rss(); ?>]]></description>
 		<content:encoded><![CDATA[
-        	(The full content of your article, in HTML form.)
+        	<?php
+       			$the_template = LHAFB__PLUGIN_DIR . 'templates/instant_article.php';
+				load_template($the_template, false);
+	        ?>
       	]]></content:encoded>
 	<?php
 	/**

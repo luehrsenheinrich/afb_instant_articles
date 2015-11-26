@@ -1,5 +1,5 @@
 === allfacebook.de Instant Articles ===
-Contributors: luehrsen, jwiese
+Contributors: luehrsen, wiesejens
 Tags: articles, instant articles, facebook, allfacebook, rss, feed
 Requires at least: 4.0
 Tested up to: 4.4
