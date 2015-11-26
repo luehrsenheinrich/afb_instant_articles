@@ -40,7 +40,7 @@ A: Copy and Paste your Google Analytics code in the „Analytics“ Area of the 
 
 
 Q: My Author Information is not linked to my Facebook Profile.
-A: Please use the Yoast SEO Plugin to add this additional profile information to your Wordpress user settings. Allfacebook Instant Articles will use this information.
+A: Please use the Yoast SEO Plugin to add this additional profile information to your Wordpress user settings. allfacebook Instant Articles will use this information.
 
 Q: Feature XYZ from the official Facebook is not available! Why?
 A: Keep calm. Development of this plugin will continue and we will add more features in the future!
