@@ -88,20 +88,26 @@ module.exports = function(grunt) {
 	    }
 	},
 
+	// Lint
+	// The PHP Linter for code quality
+	phplint: {
+		dev: ['build/**/*.php'],
+	},
+
 	// WATCHER / SERVER
 
     // Watch
     watch: {
 	    js: {
 		    files: ['build/js/**/*.js', '!build/js/**/*.min.js'],
-		    tasks: ['deploy'],
+		    tasks: ['dev-deploy'],
 			options: {
 				livereload: true
 			},
 	    },
 		less: {
 			files: ['build/css/**/*.less'], // which files to watch
-			tasks: ['deploy'],
+			tasks: ['dev-deploy'],
 			options: {
 				// livereload: true
 			},
@@ -115,7 +121,7 @@ module.exports = function(grunt) {
 		},
 		livereload: {
 			files: ['build/js/*.min.js', 'build/**/*.php', 'build/**/*.html', 'build/**/*.txt'], // Watch all files
-			tasks: ['deploy'],
+			tasks: ['dev-deploy'],
 			options: {
 				livereload: true
 			}
@@ -149,8 +155,8 @@ module.exports = function(grunt) {
 
   grunt.registerTask( 'handle_css', ['less', 'autoprefixer', 'uglify'] );
   grunt.registerTask( 'handle_js', ['concat_in_order', 'uglify'] );
-  grunt.registerTask( 'dev_js', ['concat_in_order'] );
-  grunt.registerTask( 'deploy', ['clean', 'copy'] );
+  grunt.registerTask( 'deploy', ['phplint', 'clean', 'copy'] );
+  grunt.registerTask( 'dev-deploy', ['phplint', 'newer:copy'] );
 
 };
 

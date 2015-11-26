@@ -1,4 +1,4 @@
-=== allfacebook.de Instant Articles ===
+=== allfacebook Instant Articles ===
 Contributors: luehrsen, wiesejens
 Tags: articles, instant articles, facebook, allfacebook, rss, feed
 Requires at least: 4.0
@@ -27,7 +27,7 @@ This plugin is brought to you by the awesome folks at [Luehrsen // Heinrich](htt
 == Installation ==
 
 1. Upload the lhafb_instant_articles folder to the /wp-content/plugins/ directory
-2. Activate the 'allfacebook.de Instant Articles' plugin through the 'Plugins' menu in WordPress
+2. Activate the 'allfacebook Instant Articles' plugin through the 'Plugins' menu in WordPress
 3. Import your first image in the admin media screen
 
 == Frequently Asked Questions ==

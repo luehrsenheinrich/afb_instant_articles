@@ -3,7 +3,7 @@
  * @package afb_ia
  */
 /*
-Plugin Name: allfacebook.de Instant Articles
+Plugin Name: allfacebook Instant Articles
 Plugin URI:
 Description: This plugin lets your WordPress display instant articles directly on your facebook page.
 Author: Luehrsen // Heinrich
