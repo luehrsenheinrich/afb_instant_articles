@@ -108,7 +108,7 @@ class lhafb_theme_settings {
 		?>
 		<div class="wrap">
 			<div class="icon32" id="icon-options-general"></div>
-			<h2><?php _e("Instant Articles", 'afb'); ?></h2>
+			<h2><?php _e("Instant Articles", 'afb'); ?> <a href="<?php echo add_query_arg(array("feed" => "instant_articles"), trailingslashit(get_home_url())); ?>" class="button-primary" target="_blank"> <?php _e("Show feed", "afb"); ?> </a></h2>
 
 			<form action="options.php" method="post">
 				<?php

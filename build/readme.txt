@@ -33,7 +33,7 @@ This plugin is brought to you by the awesome folks at [Luehrsen // Heinrich](htt
 == Frequently Asked Questions ==
 
 Q: Where can I find the new RSS Feed created by this plugin?
-A: The feed can be found at XXXXX TODO XXXX
+A: The feed can be found at http://www.yourblogurl.com/?feed=instant_articles
 
 Q: I like to track article impressions for my Instant Articles. How can I do that?
 A: Copy and Paste your Google Analytics code in the „Analytics“ Area of the Plugin Settings.
@@ -45,18 +45,10 @@ A: Please use the Yoast SEO Plugin to add this additional profile information to
 Q: Feature XYZ from the official Facebook is not available! Why?
 A: Keep calm. Development of this plugin will continue and we will add more features in the future!
 
-
-=======
-
-TODO
-
-
 == Screenshots ==
 
-1. The "free images" tab shows up directly in your media browser.
 
 == Changelog ==
-=======
 
 = 1.0 =
 Initial Release
