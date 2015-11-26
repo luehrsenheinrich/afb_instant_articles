@@ -150,7 +150,7 @@ module.exports = function(grunt) {
   grunt.registerTask( 'handle_css', ['less', 'autoprefixer', 'uglify'] );
   grunt.registerTask( 'handle_js', ['concat_in_order', 'uglify'] );
   grunt.registerTask( 'dev_js', ['concat_in_order'] );
-  grunt.registerTask( 'deploy', ['handle_css', 'handle_js', 'clean', 'copy'] );
+  grunt.registerTask( 'deploy', ['clean', 'copy'] );
 
 };
 

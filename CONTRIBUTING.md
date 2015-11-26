@@ -1,0 +1,21 @@
+# Contributing to allfacebook Instant Articles WordPress Plugin
+
+Hi! Thank you for your interest in contributing to the plugin, we really appreciate it.
+
+There are many ways to contribute – reporting bugs, feature suggestions, fixing bugs, submitting pull requests for enhancements.
+
+## Reporting Bugs, Asking Questions, Sending Suggestions
+
+Just [file a GitHub issue](https://github.com/luehrsenheinrich/afb_instant_articles/issues/new), that’s all. If you want to prefix the title with a “Question:”, “Bug:”, or the general area of the application, that would be helpful, but by no means mandatory. If you have write access, add the appropriate labels.
+
+If you’re filing a bug, specific steps to reproduce are helpful. Please include the URL of the page that has the bug, along with what you expected to see and what happened instead.
+
+Here is a [handy link for submitting a new bug](https://github.com/luehrsenheinrich/afb_instant_articles/issues/new?body=URL%3A%0A%0AWhat+I+expected%3A%0A%0ASteps+to+reproduce%3A%0A%0AWhat+happened+instead%3A&title=Description%20of%20the%20problem).
+
+## Setting up the dev enviroment
+
+If you want to contribute code to the plugin you have to set up the environment locally. Make sure that you have `npm` and `grunt` installed.
+
+To test the plugin make a symbolic link between the `trunk` folder and the `wp-content/plugins/afb-instant-articles` folder on your local WordPress instance.
+
+Before you start to code start the grunt watcher with the terminal command `grunt watch`. Grunt will make sure that the code will be compiled and copied to the trunk folder.
