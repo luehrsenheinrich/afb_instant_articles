@@ -18,7 +18,7 @@ class AFBInstantArticles {
 	 * @return void
 	 */
 	private function filter_dispatcher(){
-
+		add_filter( 'afbia_content', array($this, 'format_content') );
 	}
 
 
@@ -43,6 +43,19 @@ class AFBInstantArticles {
 	public function do_feed(){
 		$rss_template = LHAFB__PLUGIN_DIR . 'templates/feed-instant_articles.php';
 		load_template($rss_template);
+	}
+
+	public function format_content($content){
+
+		// Replace the wrapping 'p' tags with figure tags for images
+		$content = preg_replace(
+			'/<p>\\s*?(<a rel=\"attachment.*?><img.*?><\\/a>|<img.*?>)?\\s*<\\/p>/s',
+			'<figure>$1</figure>',
+			$content
+		);
+		return $content;
+
+		return $content;
 	}
 
 
