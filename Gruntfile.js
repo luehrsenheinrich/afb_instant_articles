@@ -185,7 +185,7 @@ module.exports = function(grunt) {
 
   // Deployment strategies. The dev-deploy runs with the watcher and performs quicker. The deploy performs a clean of the trunk folder and a clean copy of the needed files.
   grunt.registerTask( 'deploy', ['phplint', 'clean:build', 'copy:build'] );
-  grunt.registerTask( 'dev-deploy', ['phplint', 'newer:copy'] );
+  grunt.registerTask( 'dev-deploy', ['phplint', 'newer:copy:build'] );
 
   // The release task adds a new tag in the release folder.
   grunt.registerTask( 'zip', ['copy:zip', 'compress', 'clean:zip'] );

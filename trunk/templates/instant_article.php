@@ -50,7 +50,6 @@
 					</address>
 				<?php endif; ?>
 
-				<!-- The cover image shown inside your article -->
 
 				<?php if(has_post_thumbnail($post->ID)):
 
@@ -58,6 +57,7 @@
 					$attachment = get_post(get_post_thumbnail_id($post->ID));
 					$thumbnail_url = $thumb[0];
 				?>
+				<!-- The cover image shown inside your article -->
 				<figure>
 					<img src="<?php echo $thumbnail_url; ?>" />
 					<figcaption><?php echo apply_filters("the_content", $attachment->post_excerpt); ?></figcaption>
@@ -69,6 +69,14 @@
 
 			<!-- Article body goes here -->
 			<?php echo apply_filters('afbia_content', apply_filters('the_content', get_the_content( '' ))); ?>
+
+			<?php if(get_option('afbia_tracking')): ?>
+			<figure class="op-tracker">
+			    <iframe>
+			        <?php echo get_option('afbia_tracking'); ?>
+			    </iframe>
+			</figure>
+			<?php endif; ?>
 
 			<footer>
 				<?php if(isset($options['credits'])): ?>
