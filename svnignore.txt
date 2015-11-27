@@ -1,0 +1,10 @@
+// Ignore everything from the start, we add things back in
+*
+
+!trunk/*
+!tags/*
+!assets/*
+!branches/*
+
+// No PSDs
+*.psd

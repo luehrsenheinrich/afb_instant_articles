@@ -21,6 +21,7 @@ You can learn more about Instant Articles on the official Facebook Developer Doc
 
 Attention: If you are not part of the limited beta test happening right now, this plugin will be useless for you. However it will help you to quick start and use the first mover effect the moment Facebooks opens Instant Articles for all publications.
 
+If you want to participate in the development [head over to GitHub](https://github.com/luehrsenheinrich/afb_instant_articles)!
 
 This plugin is brought to you by the awesome folks at [Luehrsen // Heinrich](http://www.luehrsen-heinrich.de).
 
@@ -50,5 +51,5 @@ A: Keep calm. Development of this plugin will continue and we will add more feat
 
 == Changelog ==
 
-= 1.0 =
+= 0.5.0 =
 Initial Release

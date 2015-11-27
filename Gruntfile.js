@@ -189,7 +189,7 @@ module.exports = function(grunt) {
 
   // The release task adds a new tag in the release folder.
   grunt.registerTask( 'zip', ['copy:zip', 'compress', 'clean:zip'] );
-  grunt.registerTask( 'release', ['phplint', 'clean:release', 'copy:release'] );
+  grunt.registerTask( 'release', ['deploy', 'clean:release', 'copy:release', 'zip'] );
 
 
 };
