@@ -8,7 +8,7 @@ Plugin URI:
 Description: This plugin lets your WordPress display instant articles directly on your facebook page.
 Author: Luehrsen // Heinrich
 Author URI: http://www.luehrsen-heinrich.de
-Version: 1.0.0
+Version: 0.5.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: facebook, allfacebook, instant articles, articles
