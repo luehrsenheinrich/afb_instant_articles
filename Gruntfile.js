@@ -139,7 +139,8 @@ module.exports = function(grunt) {
           }
 	    },
 	    build: {expand: true, cwd: 'build', src: ['**/*.php', '**/*.min.js', '**/*.css', '**/*.txt','**/*.svg', '!node_modules', '!node_modules/**/*'], dest: 'trunk/', filter: 'isFile'},
-	    release: {expand: true, cwd: 'build', src: ['**/*.php', '**/*.min.js', '**/*.css', '**/*.txt','**/*.svg', '!node_modules', '!node_modules/**/*'], dest: 'tags/<%= pkg.version %>/', filter: 'isFile'}
+	    release: {expand: true, cwd: 'build', src: ['**/*.php', '**/*.min.js', '**/*.css', '**/*.txt','**/*.svg', '!node_modules', '!node_modules/**/*'], dest: 'tags/<%= pkg.version %>/', filter: 'isFile'},
+	    zip: {expand: true, cwd: 'build', src: ['**/*.php', '**/*.min.js', '**/*.css', '**/*.txt','**/*.svg', '!node_modules', '!node_modules/**/*'], dest: '<%= pkg.slug %>/', filter: 'isFile'},
     },
 
     // Clean out folders
@@ -157,6 +158,24 @@ module.exports = function(grunt) {
 		  	cwd: 'tags/<%= pkg.version %>/',
 			src: ['**/*'],
 		},
+		zip: {
+			expand: true,
+			force: true,
+		  	cwd: '<%= pkg.slug %>/',
+			src: ['**/*'],
+		}
+	},
+
+	// Create a ZIP file of the current trunk
+	compress: {
+	  main: {
+	    options: {
+	      archive: 'archives/<%= pkg.slug %>.<%= pkg.version %>.zip'
+	    },
+	    files: [
+	      {src: ['trunk/**/*'], filter: 'isFile'}, // includes files in path
+	    ]
+	  }
 	}
   });
 
@@ -169,6 +188,7 @@ module.exports = function(grunt) {
   grunt.registerTask( 'dev-deploy', ['phplint', 'newer:copy'] );
 
   // The release task adds a new tag in the release folder.
+  grunt.registerTask( 'zip', ['copy:zip', 'compress', 'clean:zip'] );
   grunt.registerTask( 'release', ['phplint', 'clean:release', 'copy:release'] );
 
 

@@ -1,6 +1,7 @@
 {
   "version": "0.5.0",
   "title": "allfacebook Instant Articles",
+  "slug": "allfacebook-instant-articles",
   "description": "This plugin lets your WordPress display instant articles directly on your facebook page.",
   "author": "Luehrsen // Heinrich",
   "private": true,
@@ -9,6 +10,7 @@
     "grunt-autoprefixer": "^3.0.0",
     "grunt-concat-in-order": "~0.1.6",
     "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-compress": "^0.14.0",
     "grunt-contrib-copy": "^0.8.0",
     "grunt-contrib-jshint": "~0.11.0",
     "grunt-contrib-less": "~0.11.0",
