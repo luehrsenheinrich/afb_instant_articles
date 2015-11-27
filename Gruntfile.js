@@ -138,7 +138,8 @@ module.exports = function(grunt) {
             return grunt.template.process(content, {delimiters: 'custom-delimiters'});
           }
 	    },
-	    test_plugin: {expand: true, cwd: 'build', src: ['**/*.php', '**/*.min.js', '**/*.css', '**/*.txt','**/*.svg', '!node_modules', '!node_modules/**/*'], dest: 'trunk/', filter: 'isFile'}
+	    build: {expand: true, cwd: 'build', src: ['**/*.php', '**/*.min.js', '**/*.css', '**/*.txt','**/*.svg', '!node_modules', '!node_modules/**/*'], dest: 'trunk/', filter: 'isFile'},
+	    release: {expand: true, cwd: 'build', src: ['**/*.php', '**/*.min.js', '**/*.css', '**/*.txt','**/*.svg', '!node_modules', '!node_modules/**/*'], dest: 'tags/<%= pkg.version %>/', filter: 'isFile'}
     },
 
     // Clean out folders
@@ -150,13 +151,26 @@ module.exports = function(grunt) {
 		  	cwd: "trunk/",
 			src: ['**/*'],
 		},
+		release: {
+			expand: true,
+			force: true,
+		  	cwd: 'tags/<%= pkg.version %>/',
+			src: ['**/*'],
+		},
 	}
   });
 
+  // These tasks are not needed at the moment, as we do not have any css or js files (yet).
   grunt.registerTask( 'handle_css', ['less', 'autoprefixer', 'uglify'] );
   grunt.registerTask( 'handle_js', ['concat_in_order', 'uglify'] );
-  grunt.registerTask( 'deploy', ['phplint', 'clean', 'copy'] );
+
+  // Deployment strategies. The dev-deploy runs with the watcher and performs quicker. The deploy performs a clean of the trunk folder and a clean copy of the needed files.
+  grunt.registerTask( 'deploy', ['phplint', 'clean:build', 'copy:build'] );
   grunt.registerTask( 'dev-deploy', ['phplint', 'newer:copy'] );
+
+  // The release task adds a new tag in the release folder.
+  grunt.registerTask( 'release', ['phplint', 'clean:release', 'copy:release'] );
+
 
 };
 
