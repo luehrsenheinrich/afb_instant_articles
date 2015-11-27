@@ -51,5 +51,9 @@ Keep calm. Development of this plugin will continue and we will add more feature
 
 == Changelog ==
 
+= 0.5.1 =
+- Added the analytics feature
+- Some changes to the readme
+
 = 0.5.0 =
-Initial Release
+- Initial Release
