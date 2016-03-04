@@ -47,13 +47,28 @@ class AFBInstantArticles {
 
 	public function format_content($content){
 
+        $feedback = array();
+        $data_feedback = '';
+
+        if (get_option('afbia_like_media')) {
+            $feedback[] = 'fb:likes';
+        }
+
+        if (get_option('afbia_comment_media')) {
+            $feedback[] = 'fb:comments';
+        }
+
+        if (!empty($feedback)) {
+            $comma_separated = implode(',', $feedback);
+            $data_feedback = ' data-feedback="'.$comma_separated.'"';
+        }
+
 		// Replace the wrapping 'p' tags with figure tags for images
 		$content = preg_replace(
 			'/<p>\\s*?(<a rel=\"attachment.*?><img.*?><\\/a>|<img.*?>)?\\s*<\\/p>/s',
-			'<figure>$1</figure>',
+			'<figure'.$data_feedback.'>$1</figure>',
 			$content
 		);
-		return $content;
 
 		return $content;
 	}
