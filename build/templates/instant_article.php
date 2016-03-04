@@ -60,7 +60,9 @@
 				<!-- The cover image shown inside your article -->
 				<figure>
 					<img src="<?php echo $thumbnail_url; ?>" />
-					<figcaption><?php echo apply_filters("the_content", $attachment->post_excerpt); ?></figcaption>
+                    <?php if(!empty($attachment->post_excerpt)): ?>
+					    <figcaption><?php echo apply_filters("the_content", $attachment->post_excerpt); ?></figcaption>
+                    <?php endif; ?>
 				</figure>
 				<?php endif; ?>
 
@@ -79,7 +81,7 @@
 			<?php endif; ?>
 
 			<footer>
-				<?php if(isset($options['credits'])): ?>
+				<?php if(isset($options['credits']) && !empty($options['credits'])): ?>
 					<!-- Credits for your article -->
 					<aside><?php echo apply_filters('the_content', esc_attr($options['credits'])); ?></aside>
 				<?php endif; ?>
