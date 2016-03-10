@@ -33,6 +33,9 @@ This plugin is brought to you by the awesome folks at [Luehrsen // Heinrich](htt
 
 == Frequently Asked Questions ==
 
+###How can I help with the development of this plugin?
+Head over to the [GitHub Repository](https://github.com/luehrsenheinrich/afb_instant_articles) and start reading. Every bit of help is highly appreciated!
+
 ###Where can I find the new RSS Feed created by this plugin?
 The feed can be found at http://www.yourblogurl.com/?feed=instant_articles
 
@@ -43,13 +46,17 @@ Copy and Paste your Google Analytics code in the „Analytics“ Area of the Plu
 ###My Author Information is not linked to my Facebook Profile.
 Please use the Yoast SEO Plugin to add this additional profile information to your Wordpress user settings. <##= pkg.title ##> will use this information.
 
-###Feature XYZ from the official Facebook is not available! Why?
+###Feature XYZ is not available! Why?
 Keep calm. Development of this plugin will continue and we will add more features in the future!
 
 == Screenshots ==
 
 
 == Changelog ==
+
+= 0.5.2 =
+- Fixed some of the format errors (allthough not all)
+- Added a og:page_id function to make the page claimable
 
 = 0.5.1 =
 - Added the analytics feature
