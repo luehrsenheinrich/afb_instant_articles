@@ -19,6 +19,7 @@ class AFBInstantArticles {
 	 */
 	private function filter_dispatcher(){
 		add_filter( 'afbia_content', array($this, 'format_content') );
+		add_filter( 'wp_head', 			array($this, 'do_header') );
 	}
 
 
@@ -56,6 +57,13 @@ class AFBInstantArticles {
 		return $content;
 
 		return $content;
+	}
+
+	public function do_header(){
+		if(get_option("afbia_page_id")){
+			$afbia_page_id = get_option("afbia_page_id");
+			echo "<meta property=\"fb:pages\" content=\"$afbia_page_id\" />";
+		}
 	}
 
 

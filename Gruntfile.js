@@ -173,7 +173,7 @@ module.exports = function(grunt) {
 	      archive: 'archives/<%= pkg.slug %>.<%= pkg.version %>.zip'
 	    },
 	    files: [
-	      {src: ['trunk/**/*'], filter: 'isFile'}, // includes files in path
+	      {src: ['**/*'], filter: 'isFile', cwd: ['/trunk']}, // includes files in path
 	    ]
 	  }
 	}

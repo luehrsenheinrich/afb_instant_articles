@@ -38,6 +38,17 @@ class lhafb_theme_settings {
 
 
 		$args = array(
+			'id'				=> 'afbia_page_id',
+			'title'				=> __("Page ID", 'afb'),
+			'page'				=> 'afbia_settings_page',
+			'section'			=> 'general_settings',
+			'description'		=> __("The page ID of the facebook page you want to add Instant Articles to.", 'afb'),
+			'type'				=> 'text', // text, textarea, password, checkbox
+			'option_group'		=> "settings_page_afbia_settings_page",
+		);
+		$afbia_page_id = new afbia_settings_field($args);
+
+		$args = array(
 			'id'				=> 'afbia_copyright',
 			'title'				=> __("Copyright", 'afb'),
 			'page'				=> 'afbia_settings_page',
