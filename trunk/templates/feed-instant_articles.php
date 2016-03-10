@@ -54,8 +54,8 @@ do_action( 'rss_tag_pre', 'rss2' );
 		<link><?php the_permalink_rss() ?></link>
 		<pubDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_post_time('Y-m-d H:i:s', true), false); ?></pubDate>
 		<author><![CDATA[<?php the_author() ?>]]></author>
-		<guid isPermaLink="false"><?php the_guid(); ?></guid>
-		<description><![CDATA[<?php the_excerpt_rss(); ?>]]></description>
+		<guid isPermaLink="false"><?php the_guid(); echo time(); ?></guid>
+		<description><![CDATA[<?php the_excerpt(); ?>]]></description>
 		<content:encoded><![CDATA[
         	<?php
        			$the_template = LHAFB__PLUGIN_DIR . 'templates/instant_article.php';

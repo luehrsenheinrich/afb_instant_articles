@@ -8,6 +8,8 @@ class AFBInstantArticles {
 	public function __construct(){
 		$this->filter_dispatcher();
 		$this->action_dispatcher();
+
+		$this->content_filters = new AFBInstantArticles_Filters();
 	}
 
 
@@ -18,7 +20,6 @@ class AFBInstantArticles {
 	 * @return void
 	 */
 	private function filter_dispatcher(){
-		add_filter( 'afbia_content', array($this, 'format_content') );
 		add_filter( 'wp_head', 			array($this, 'do_header') );
 	}
 
@@ -46,19 +47,12 @@ class AFBInstantArticles {
 		load_template($rss_template);
 	}
 
-	public function format_content($content){
-
-		// Replace the wrapping 'p' tags with figure tags for images
-		$content = preg_replace(
-			'/<p>\\s*?(<a rel=\"attachment.*?><img.*?><\\/a>|<img.*?>)?\\s*<\\/p>/s',
-			'<figure>$1</figure>',
-			$content
-		);
-		return $content;
-
-		return $content;
-	}
-
+	/**
+	 * Output code for the page header.
+	 *
+	 * @access public
+	 * @return void
+	 */
 	public function do_header(){
 		if(get_option("afbia_page_id")){
 			$afbia_page_id = get_option("afbia_page_id");

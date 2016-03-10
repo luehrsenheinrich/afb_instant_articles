@@ -56,13 +56,17 @@
 					$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' );
 					$attachment = get_post(get_post_thumbnail_id($post->ID));
 					$thumbnail_url = $thumb[0];
+
+					if(!empty($thumb) && $attachment):
 				?>
 				<!-- The cover image shown inside your article -->
 				<figure>
 					<img src="<?php echo $thumbnail_url; ?>" />
-					<figcaption><?php echo apply_filters("the_content", $attachment->post_excerpt); ?></figcaption>
+                    <?php if(!empty($attachment->post_excerpt)): ?>
+					    <figcaption><?php echo apply_filters("the_content", $attachment->post_excerpt); ?></figcaption>
+                    <?php endif; ?>
 				</figure>
-				<?php endif; ?>
+				<?php endif; endif; ?>
 
 				<?php do_action( 'afbia_article_header' ); ?>
 			</header>
@@ -79,7 +83,7 @@
 			<?php endif; ?>
 
 			<footer>
-				<?php if(isset($options['credits'])): ?>
+				<?php if(isset($options['credits']) && !empty($options['credits'])): ?>
 					<!-- Credits for your article -->
 					<aside><?php echo apply_filters('the_content', esc_attr($options['credits'])); ?></aside>
 				<?php endif; ?>
