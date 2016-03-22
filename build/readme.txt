@@ -54,6 +54,9 @@ Keep calm. Development of this plugin will continue and we will add more feature
 
 == Changelog ==
 
+= 0.5.3 =
+- Added a filter for list items, that have HTML code inside
+
 = 0.5.2 =
 - Fixed some of the format errors (allthough not all)
 - Added a og:page_id function to make the page claimable

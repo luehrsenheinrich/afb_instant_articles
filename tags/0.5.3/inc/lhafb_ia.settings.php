@@ -92,17 +92,6 @@ class lhafb_theme_settings {
 		);
 		$afbia_comment_media = new afbia_settings_field($args);
 
-
-		$args = array(
-			'id'				=> 'afbia_articles_num',
-			'title'				=> __("Number of Articles", 'afb'),
-			'page'				=> 'afbia_settings_page',
-			'section'			=> 'general_settings',
-			'description'		=> __("The number of articles, that will be rendered on the feed.", 'afb'),
-			'type'				=> 'text', // text, textarea, password, checkbox
-			'option_group'		=> "settings_page_afbia_settings_page",
-		);
-		$afbia_comment_media = new afbia_settings_field($args);
 	}
 
 	//
