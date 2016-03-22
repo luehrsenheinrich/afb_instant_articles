@@ -25,7 +25,7 @@ class AFBInstantArticles_Filters {
 		add_filter( 'afbia_content', 	array($this, 'images') );
 		add_filter( 'afbia_content', 	array($this, 'headlines') );
 		add_filter( 'afbia_content', 	array($this, 'empty_tags') );
-
+		add_filter( 'afbia_content', 	array($this, 'list_items_with_content') );
 	}
 
 
@@ -108,6 +108,86 @@ class AFBInstantArticles_Filters {
 		);
 
 		return $content;
+	}
+
+	public function list_items_with_content($content){
+		// Replace empty characters
+		$DOMDocument = $this->get_content_DOM($content);
+
+		// Find all the list items
+		$elements = $DOMDocument->getElementsByTagName( 'li' );
+
+		// Iterate over all the list items
+		for ( $i = 0; $i < $elements->length; ++$i ) {
+			$element = $elements->item( $i );
+
+			// If the list item has more than one child node, we might get a conflict, so wrap
+			if($element->childNodes->length > 1){
+
+				// Create a new div
+				$div = $DOMDocument->createElement('div');
+
+				/**/ // Move the list children into the wrapping div
+				while($element->hasChildNodes()){
+					$div->appendChild($element->firstChild);
+				}
+				/**/
+
+				// Add the div to the list item
+				$element->appendChild($div);
+			}
+		}
+
+		$content = $this->get_content_from_DOM($DOMDocument);
+
+		return $content;
+	}
+
+	/**
+	 * get_content_DOM function.
+	 *
+	 * @access public
+	 * @param mixed $content
+	 * @return void
+	 */
+	public function get_content_DOM($content){
+		$libxml_previous_state = libxml_use_internal_errors( true );
+		$DOMDocument = new DOMDocument( '1.0', get_option( 'blog_charset' ) );
+
+		// DOMDocument isn’t handling encodings too well, so let’s help it a little
+		if ( function_exists( 'mb_convert_encoding' ) ) {
+			$content = mb_convert_encoding( $content, 'HTML-ENTITIES', get_option( 'blog_charset' ) );
+		}
+
+		$result = $DOMDocument->loadHTML( '<!doctype html><html><body>' . $content . '</body></html>' );
+		libxml_clear_errors();
+		libxml_use_internal_errors( $libxml_previous_state );
+
+		return $DOMDocument;
+	}
+
+	/**
+	 * get_content_from_DOM function.
+	 *
+	 * @access public
+	 * @param mixed $DOMDocument
+	 * @return void
+	 */
+	public function get_content_from_DOM($DOMDocument){
+		$body = $DOMDocument->getElementsByTagName( 'body' )->item( 0 );
+		$filtered_content = '';
+		foreach ( $body->childNodes as $node ) {
+			if ( method_exists( $DOMDocument, 'saveHTML' ) ) { // Requires PHP 5.3.6
+				$filtered_content .= $DOMDocument->saveHTML( $node );
+			} else {
+				$temp_content = $DOMDocument->saveXML( $node );
+				$iframe_pattern = "#<iframe([^>]+)/>#is"; // self-closing iframe element
+				$temp_content = preg_replace( $iframe_pattern, "<iframe$1></iframe>", $temp_content );
+				$filtered_content .= $temp_content;
+			}
+		}
+
+		return $filtered_content;
 	}
 
 }
