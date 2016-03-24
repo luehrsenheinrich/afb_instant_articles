@@ -21,6 +21,7 @@ class AFBInstantArticles {
 	 */
 	private function filter_dispatcher(){
 		add_filter( 'wp_head', 			array($this, 'do_header') );
+
 	}
 
 
@@ -32,6 +33,8 @@ class AFBInstantArticles {
 	 */
 	private function action_dispatcher(){
 		add_action( 'do_feed_instant_articles', array( $this, 'do_feed' ) );
+		add_action( 'pre_get_posts', 			array( $this, 'modify_query') );
+
 	}
 
 	/**
@@ -57,6 +60,24 @@ class AFBInstantArticles {
 		if(get_option("afbia_page_id")){
 			$afbia_page_id = get_option("afbia_page_id");
 			echo "<meta property=\"fb:pages\" content=\"$afbia_page_id\" />";
+		}
+	}
+
+	/**
+	 * Modify the query that gets the posts to be shown in the instant articles feed.
+	 * Called by action 'pre_get_posts'
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function modify_query($query){
+		if ( !is_admin() && $query->is_main_query() && $query->is_feed('instant_articles')) {
+			// Set the number of posts to be shown on the feed
+			// If the number is not set or returns 0, fall back to the default posts_per_rss option.
+			$num = intval(get_option('afbia_articles_num'));
+			if($num != 0){
+				$query->set("posts_per_rss", $num);
+			}
 		}
 	}
 
