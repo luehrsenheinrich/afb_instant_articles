@@ -54,6 +54,12 @@ Keep calm. Development of this plugin will continue and we will add more feature
 
 == Changelog ==
 
+= 0.5.5 =
+- Fixed a bug that ignored h3-h6 with classes or html attributes
+
+= 0.5.4 =
+- Added a setting to set the number of articles, that are shown in the feed
+
 = 0.5.3 =
 - Added a filter for list items, that have HTML code inside
 

@@ -84,7 +84,7 @@ class AFBInstantArticles_Filters {
 	public function headlines($content){
 		// Replace h3, h4, h5, h6 with h2
 		$content = preg_replace(
-			'/<h[3,4,5,6][^>]*>(.*)<\/h[3,4,5,6]>/sU',
+			'/<h[3,4,5,6]>(.*)<\/h[3,4,5,6]>/Us',
 			'<h2>$1</h2>',
 			$content
 		);

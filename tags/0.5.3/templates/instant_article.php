@@ -1,12 +1,23 @@
 <?php
 	$options = (array) get_post_meta($post->ID, "_instant_article_options", true);
+
+	// If the constant "DEV_IA" is set, the date is always set to current time, to trick the facebook IA system for debugging
+
+	if(defined("DEV_IA")){
+		$published_date = date("c");
+		$modified_date = date("c");
+		$permalink = add_query_arg(array("feedbreaker" => time()), get_the_permalink());
+	} else {
+		$published_date = get_the_date("c");
+		$modified_date = get_the_modified_date("c");
+		$permalink = get_the_permalink();
+	}
 ?>
 <html lang="en" prefix="op: http://media.facebook.com/op#">
 	<head>
 		<meta charset="utf-8">
 		<!-- URL of the web version of this article -->
-		<!-- TODO: Change the domain to match the domain of your website -->
-		<link rel="canonical" href="<?php the_permalink(); ?>">
+		<link rel="canonical" href="<?php echo $permalink; ?>">
 		<meta property="op:markup_version" content="v1.0">
 	</head>
 	<body>
@@ -30,12 +41,14 @@
 					endif;
 				?>
 
+				<?
 
+				?>
 				<!-- The date and time when your article was originally published -->
-				<time class="op-published" datetime="<?php echo get_the_date("c"); ?>"><?php echo get_the_date(get_option('date_format') . ", " . get_option('time_format')); ?></time>
+				<time class="op-published" datetime="<?php echo $published_date; ?>"><?php echo get_the_date(get_option('date_format') . ", " . get_option('time_format')); ?></time>
 
 				<!-- The date and time when your article was last updated -->
-				<time class="op-modified" datetime="<?php echo get_the_modified_date("c"); ?>"><?php echo get_the_modified_date(get_option('date_format') . ", " . get_option('time_format')); ?></time>
+				<time class="op-modified" datetime="<?php echo $modified_date; ?>"><?php echo get_the_modified_date(get_option('date_format') . ", " . get_option('time_format')); ?></time>
 
 				<!-- The authors of your article -->
 				<?php if(get_the_author_meta('facebook')): ?>
