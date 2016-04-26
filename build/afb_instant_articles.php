@@ -32,6 +32,7 @@ require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.core.php"; // The actual core of 
 require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.metaboxes.php"; // The metaboxes, that are loaded in the admin views
 require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.settings.php"; // The settings options needed for the plugin
 require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.filters.php"; // The filters needed to morph the code for instant articles
+require_once LHAFB__PLUGIN_DIR . "inc/embeds.php"; // The embeds filter
 
 // Initialize the main plugin class
 function run_instant_articles(){
