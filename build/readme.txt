@@ -54,6 +54,9 @@ Keep calm. Development of this plugin will continue and we will add more feature
 
 == Changelog ==
 
+= 0.5.6 =
+- Current working target
+
 = 0.5.5 =
 - Fixed a bug that ignored h3-h6 with classes or html attributes
 

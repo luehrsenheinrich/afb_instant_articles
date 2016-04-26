@@ -3,7 +3,7 @@ Contributors: luehrsen, wiesejens
 Tags: articles, instant articles, facebook, allfacebook, rss, feed
 Requires at least: 4.0
 Tested up to: 4.4
-Stable tag: 0.5.5
+Stable tag: 0.5.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Keep calm. Development of this plugin will continue and we will add more feature
 
 
 == Changelog ==
+
+= 0.5.6 =
+- Current working target
 
 = 0.5.5 =
 - Fixed a bug that ignored h3-h6 with classes or html attributes
