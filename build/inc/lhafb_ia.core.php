@@ -46,8 +46,17 @@ class AFBInstantArticles {
 	 * @return void
 	 */
 	public function do_feed(){
-		$rss_template = LHAFB__PLUGIN_DIR . 'templates/feed-instant_articles.php';
-		load_template($rss_template);
+		$template = 'feed-instant_articles.php';
+		$rss_template = LHAFB__PLUGIN_DIR . 'templates/' . $template;
+		if ( $overridden_template = locate_template( $template ) ) {
+			// locate_template() returns path to file
+			// if either the child theme or the parent theme have overridden the template
+			load_template( $overridden_template );
+		} else {
+			// If neither the child nor parent theme have overridden the template,
+			// we load the template from the 'templates' sub-directory of the directory this file is in
+			load_template( $rss_template );
+		}
 	}
 
 	/**
@@ -72,6 +81,24 @@ class AFBInstantArticles {
 	 */
 	public function modify_query($query){
 		if ( !is_admin() && $query->is_main_query() && $query->is_feed('instant_articles')) {
+
+			// Exclude posts from query
+			// kinda dirty approach since the meta values are serialized
+			$meta_query = array(
+				'relation' => 'OR',
+				array(
+					'key' => '_instant_article_options',
+					'value' => 's:12:"exclude_post";s:7:"exclude";',
+					'compare' => 'NOT LIKE'
+				),
+				array(
+					'key' => '_instant_article_options',
+					'compare' => 'NOT EXISTS'
+				)
+			);
+			$query->set( 'meta_query', $meta_query );
+
+
 			// Set the number of posts to be shown on the feed
 			// If the number is not set or returns 0, fall back to the default posts_per_rss option.
 			$num = intval(get_option('afbia_articles_num'));
