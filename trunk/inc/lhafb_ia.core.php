@@ -46,8 +46,17 @@ class AFBInstantArticles {
 	 * @return void
 	 */
 	public function do_feed(){
-		$rss_template = LHAFB__PLUGIN_DIR . 'templates/feed-instant_articles.php';
-		load_template($rss_template);
+		$template = 'feed-instant_articles.php';
+		$rss_template = LHAFB__PLUGIN_DIR . 'templates/' . $template;
+		if ( $overridden_template = locate_template( $template ) ) {
+			// locate_template() returns path to file
+			// if either the child theme or the parent theme have overridden the template
+			load_template( $overridden_template );
+		} else {
+			// If neither the child nor parent theme have overridden the template,
+			// we load the template from the 'templates' sub-directory of the directory this file is in
+			load_template( $rss_template );
+		}
 	}
 
 	/**
