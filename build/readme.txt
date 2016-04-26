@@ -52,6 +52,9 @@ Keep calm. Development of this plugin will continue and we will add more feature
 
 == Changelog ==
 
+= 0.5.6.1 =
+- Small hotfix for PHP shorthandles (thanks to Michael Eugster)
+
 = 0.5.6 =
 - List items are now correctly filtered, child elements that are not paragraphs or text are removed
 - Paragraphs should not wrap non-text elements

@@ -1,0 +1,107 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: allfacebook Instant Articles\n"
+"POT-Creation-Date: 2015-11-27 10:59+0100\n"
+"PO-Revision-Date: 2015-11-27 10:59+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: afb_instant_articles.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: inc/lhafb_ia.metaboxes.php:38 inc/lhafb_ia.settings.php:97
+#: inc/lhafb_ia.settings.php:111
+msgid "Instant Articles"
+msgstr ""
+
+#: inc/lhafb_ia.metaboxes.php:67
+msgid "Credits"
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:33
+msgid "Settings"
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:35
+msgid ""
+"These settings control some general aspects of the instant article plugin "
+"and how your instant articles are shown on facebook."
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:42
+msgid "Copyright"
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:45
+msgid "The standard copyright details for your instant articles."
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:53
+msgid "Tracking"
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:56
+msgid ""
+"The tracking code, that will be embedded in your instant articles. See <a "
+"href=\"https://developers.facebook.com/docs/instant-articles/reference/"
+"analytics\" target=\"_blank\">this link</a> for more information."
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:64
+msgid "Like Media"
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:67
+msgid "Allow users to like the media you embedded."
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:75
+msgid "Comment Media"
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:78
+msgid "Allow users to comment on the media you embedded."
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:111
+msgid "Show feed"
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:119
+msgid "Save Changes"
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:139
+msgid "Successfully updated."
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:309
+msgid "Not selected"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "allfacebook Instant Articles"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "This plugin lets your WordPress display instant articles directly on your facebook page."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Luehrsen // Heinrich"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.luehrsen-heinrich.de"
+msgstr ""
