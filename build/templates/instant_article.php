@@ -40,10 +40,6 @@
 				<?php
 					endif;
 				?>
-
-				<?
-
-				?>
 				<!-- The date and time when your article was originally published -->
 				<time class="op-published" datetime="<?php echo $published_date; ?>"><?php echo get_the_date(get_option('date_format') . ", " . get_option('time_format')); ?></time>
 
