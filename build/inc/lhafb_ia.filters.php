@@ -26,12 +26,12 @@ class AFBInstantArticles_Filters {
 		// Regex and regular "content" filter
 		add_filter( 'afbia_content', 	array($this, 'images') );
 		add_filter( 'afbia_content', 	array($this, 'headlines') );
-		add_filter( 'afbia_content', 	array($this, 'empty_tags') );
+		//add_filter( 'afbia_content', 	array($this, 'empty_tags') );
 		add_filter( 'afbia_content', 	array($this, 'filter_dom') );
 
 		// DOM Document Filter
 		add_filter( 'afbia_content_dom', 	array($this, 'list_items_with_content') );
-
+		add_filter( 'afbia_content_dom',	array($this, 'no_empty_p_tags') );
 
 	}
 
@@ -100,6 +100,8 @@ class AFBInstantArticles_Filters {
 	/**
 	 * Format h3, h4 and h5 to h2's for Instant Articles.
 	 *
+	 * @author Hendrik Luhersen <hl@luehrsen-heinrich.de>
+	 * @since 0.5.0
 	 * @access public
 	 * @param mixed $content
 	 * @return void
@@ -109,24 +111,6 @@ class AFBInstantArticles_Filters {
 		$content = preg_replace(
 			'/<h[3,4,5,6][^>]*>(.*)<\/h[3,4,5,6]>/sU',
 			'<h2>$1</h2>',
-			$content
-		);
-
-		return $content;
-	}
-
-	/**
-	 * empty_tags function.
-	 *
-	 * @access public
-	 * @param mixed $content
-	 * @return void
-	 */
-	public function empty_tags($content){
-		// Replace empty characters
-		$content = preg_replace(
-			'/<p>(\s*|\&nbsp;)<\/p>/',
-			'',
 			$content
 		);
 
@@ -168,6 +152,33 @@ class AFBInstantArticles_Filters {
 						$element->removeChild($childNode);
 					}
 				}
+			}
+		}
+
+		return $DOMDocument;
+	}
+
+	/**
+	 * Paragraph tags without a #text content are not allowed.
+	 *
+	 * @author Hendrik Luhersen <hl@luehrsen-heinrich.de>
+	 * @since 0.5.6
+	 * @access public
+	 * @param DOMDocument $DOMDocument The DOM representation of the content
+	 * @return DOMDocument $DOMDocument The modified DOM representation of the content
+	 */
+	public function no_empty_p_tags($DOMDocument){
+
+		// Find all the paragraph items
+		$elements = $DOMDocument->getElementsByTagName( 'p' );
+
+		// Iterate over all the paragraph items
+		for ( $i = 0; $i < $elements->length; ++$i ) {
+			$element = $elements->item( $i );
+
+			if($element->childNodes->length == 0){
+				// This element is empty like <p></p>
+				$element->parentNode->removeChild($element);
 			}
 		}
 
