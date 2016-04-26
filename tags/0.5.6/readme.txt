@@ -2,7 +2,7 @@
 Contributors: luehrsen, wiesejens
 Tags: articles, instant articles, facebook, allfacebook, rss, feed
 Requires at least: 4.0
-Tested up to: 4.5
+Tested up to: 4.4
 Stable tag: 0.5.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -15,9 +15,11 @@ This plugin creates a special RSS Feed for your Wordpress blog to harvest the po
 
 Instant Articles is a new technology by Facebook that will load your webpage content „instant“. That means Facebook will cache your articles on Facebooks servers and will load them within the native FB iOS or Android App without opening a browser window and connecting to your webserver.
 
+Instant Articles will likely be available in the Q1/2016 for most media sites. As of today it is in a limited beta test by big media companies like Buzzfeed, NYT or Spiegel Online.
+
 You can learn more about Instant Articles on the official [Facebook Developer Documentation](https://developers.facebook.com/docs/instant-articles).
 
-Instant Articles are available for all Publishers since [Facebook f8 Developer Conference](http://fbf8.com) in April. [Please signup for the Instant Article Feature on Facebook](https://www.facebook.com/instant_articles/signup) before you install the plugin.
+Attention: If you are not part of the limited beta test happening right now, this plugin will be useless for you. However it will help you to quick start and use the first mover effect the moment Facebooks opens Instant Articles for all publications.
 
 If you want to participate in the development [head over to GitHub](https://github.com/luehrsenheinrich/afb_instant_articles)!
 
@@ -53,12 +55,7 @@ Keep calm. Development of this plugin will continue and we will add more feature
 == Changelog ==
 
 = 0.5.6 =
-- List items are now correctly filtered, child elements that are not paragraphs or text are removed
-- Paragraphs should not wrap non-text elements
-- Theme authors can now override the "feed-instant_articles.php" file to deliver their own feed (thanks to Torsten Baldes)
-- Updated Readme (thanks to Jens Wiese)
-- Plugin icon (thanks to Volker Heinrich)
-- Correct oEmbed wrappers
+- Current working target
 
 = 0.5.5 =
 - Fixed a bug that ignored h3-h6 with classes or html attributes
