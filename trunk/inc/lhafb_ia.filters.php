@@ -26,7 +26,7 @@ class AFBInstantArticles_Filters {
 		// Regex and regular "content" filter
 		add_filter( 'afbia_content', 	array($this, 'images') );
 		add_filter( 'afbia_content', 	array($this, 'headlines') );
-		// add_filter( 'afbia_content', 	array($this, 'empty_tags') );
+		add_filter( 'afbia_content', 	array($this, 'empty_tags') );
 		add_filter( 'afbia_content', 	array($this, 'filter_dom') );
 
 		// DOM Document Filter
