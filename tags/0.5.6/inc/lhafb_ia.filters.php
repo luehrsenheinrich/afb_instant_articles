@@ -31,8 +31,8 @@ class AFBInstantArticles_Filters {
 		// Regex and regular "content" filter
 		add_filter( 'afbia_content', 	array($this, 'images') );
 		add_filter( 'afbia_content', 	array($this, 'headlines') );
-		//add_filter( 'afbia_content', 	array($this, 'empty_tags') );
 		add_filter( 'afbia_content', 	array($this, 'filter_dom') );
+		add_filter( 'afbia_content', 	array($this, 'address_tag') );
 
 		// DOM Document Filter
 		add_filter( 'afbia_content_dom', 	array($this, 'list_items_with_content') );
@@ -116,6 +116,26 @@ class AFBInstantArticles_Filters {
 		$content = preg_replace(
 			'/<h[3,4,5,6][^>]*>(.*)<\/h[3,4,5,6]>/sU',
 			'<h2>$1</h2>',
+			$content
+		);
+
+		return $content;
+	}
+
+	/**
+	 * Format address tags for Instant Articles.
+	 *
+	 * @author Hendrik Luhersen <hl@luehrsen-heinrich.de>
+	 * @since 0.5.6
+	 * @access public
+	 * @param mixed $content
+	 * @return void
+	 */
+	public function address_tag($content){
+		// Replace h3, h4, h5, h6 with h2
+		$content = preg_replace(
+			'/<address[^>]*>(.*)<\/address>/sU',
+			'<p>$1</p>',
 			$content
 		);
 

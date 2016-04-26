@@ -75,7 +75,7 @@ function instant_articles_embed_get_html( $provider_name, $html, $url, $attr, $p
 	 */
 	$html = apply_filters( "instant_articles_social_embed_{$provider_name}", $html, $url, $attr, $post_id );
 
-	$html = sprintf( '<figure class="op-social"><iframe>%s</iframe></figure>', $html );
+	$html = sprintf( '<figure class="op-social">%s</figure>', $html );
 
 	/**
 	 * Filter the Instant Article Social Embed markup.
