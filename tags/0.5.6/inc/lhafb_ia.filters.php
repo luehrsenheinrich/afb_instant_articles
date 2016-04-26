@@ -12,7 +12,7 @@ class AFBInstantArticles_Filters {
 	 * @return void
 	 */
 	public function __construct(){
-		$this->filter_dispatcher();
+		add_action( 'call_ia_filters', array($this, "filter_dispatcher") );
 	}
 
 	/**
@@ -21,7 +21,12 @@ class AFBInstantArticles_Filters {
 	 * @access private
 	 * @return void
 	 */
-	private function filter_dispatcher(){
+	public function filter_dispatcher(){
+
+		// Oembed Filters
+		remove_all_filters( 'embed_oembed_html' );
+		add_filter( 'embed_oembed_html', 'instant_articles_embed_oembed_html', 10, 4 );
+
 
 		// Regex and regular "content" filter
 		add_filter( 'afbia_content', 	array($this, 'images') );
