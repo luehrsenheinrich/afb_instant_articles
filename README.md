@@ -4,7 +4,7 @@ This WordPress plugin creates a special RSS Feed for your Wordpress blog to harv
 
 Instant Articles is a new technology by Facebook that will load your webpage content „instant“. That means Facebook will cache your articles on Facebooks servers and will load them within the native FB iOS or Android App without opening a browser window and connecting to your webserver.
 
-Instant Articles will likely be available in the Q1/2016 for most media sites. As of today it is in a limited beta test by big media companies like Buzzfeed, NYT or Spiegel Online.
+Instant Articles are available for all Publishers since [Facebook f8 Developer Conference](http://fbf8.com) in April. [Please signup for the Instant Article Feature on Facebook](https://www.facebook.com/instant_articles/signup) before you install the plugin.
 
 This plugin is made with love and brought to you by the folks of [allfacebook.de](http://www.allfacebook.de) and [Luehrsen // Heinrich](http://www.luehrsen-heinrich.de)
 
