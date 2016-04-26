@@ -179,6 +179,36 @@ class AFBInstantArticles_Filters {
 			if($element->childNodes->length == 0){
 				// This element is empty like <p></p>
 				$element->parentNode->removeChild($element);
+			} elseif( $element->childNodes->length >= 1 ) {
+				// This element actually has children, let's see if it has text
+
+				$elementHasText = false;
+				// Iterate over all child nodes
+				for ( $n = 0; $n < $element->childNodes->length; ++$n ) {
+					$childNode = $element->childNodes->item($n);
+					if($childNode->nodeName == "#text"){
+						if(trim($childNode->wholeText)){
+							$elementHasText = true;
+						} else {
+							// this node is empty
+							$element->removeChild($childNode);
+						}
+
+					}
+				}
+
+				if(!$elementHasText){
+					// The element has child nodes, but no text
+					$fragment = $DOMDocument->createDocumentFragment();
+
+					// move all child nodes into a fragment
+					while($element->hasChildNodes()){
+						$fragment->appendChild( $element->childNodes->item( 0 ) );
+					}
+
+					// replace the (now empty) p tag with the fragment
+					$element->parentNode->replaceChild($fragment, $element);
+				}
 			}
 		}
 
