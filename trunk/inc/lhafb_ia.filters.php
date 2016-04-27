@@ -12,7 +12,7 @@ class AFBInstantArticles_Filters {
 	 * @return void
 	 */
 	public function __construct(){
-		$this->filter_dispatcher();
+		add_action( 'call_ia_filters', array($this, "filter_dispatcher") );
 	}
 
 	/**
@@ -21,11 +21,39 @@ class AFBInstantArticles_Filters {
 	 * @access private
 	 * @return void
 	 */
-	private function filter_dispatcher(){
+	public function filter_dispatcher(){
+
+		// Oembed Filters
+		remove_all_filters( 'embed_oembed_html' );
+		add_filter( 'embed_oembed_html', 'instant_articles_embed_oembed_html', 10, 4 );
+
+
+		// Regex and regular "content" filter
 		add_filter( 'afbia_content', 	array($this, 'images') );
 		add_filter( 'afbia_content', 	array($this, 'headlines') );
-		add_filter( 'afbia_content', 	array($this, 'empty_tags') );
-		add_filter( 'afbia_content', 	array($this, 'list_items_with_content') );
+		add_filter( 'afbia_content', 	array($this, 'filter_dom') );
+		add_filter( 'afbia_content', 	array($this, 'address_tag') );
+
+		// DOM Document Filter
+		add_filter( 'afbia_content_dom', 	array($this, 'list_items_with_content') );
+		add_filter( 'afbia_content_dom',	array($this, 'no_empty_p_tags') );
+
+	}
+
+	/**
+	 * Instead of regexing everything move to a DOM analysis of the content.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function filter_dom($content){
+		$DOMDocument = $this->get_content_DOM($content);
+
+		$DOMDocument = apply_filters("afbia_content_dom", $DOMDocument);
+
+		$content = $this->get_content_from_DOM($DOMDocument);
+
+		return $content;
 	}
 
 
@@ -77,6 +105,8 @@ class AFBInstantArticles_Filters {
 	/**
 	 * Format h3, h4 and h5 to h2's for Instant Articles.
 	 *
+	 * @author Hendrik Luhersen <hl@luehrsen-heinrich.de>
+	 * @since 0.5.0
 	 * @access public
 	 * @param mixed $content
 	 * @return void
@@ -93,26 +123,41 @@ class AFBInstantArticles_Filters {
 	}
 
 	/**
-	 * empty_tags function.
+	 * Format address tags for Instant Articles.
 	 *
+	 * @author Hendrik Luhersen <hl@luehrsen-heinrich.de>
+	 * @since 0.5.6
 	 * @access public
 	 * @param mixed $content
 	 * @return void
 	 */
-	public function empty_tags($content){
-		// Replace empty characters
+	public function address_tag($content){
+		// Replace h3, h4, h5, h6 with h2
 		$content = preg_replace(
-			'/<p>(\s*|\&nbsp;)<\/p>/',
-			'',
+			'/<address[^>]*>(.*)<\/address>/sU',
+			'<p>$1</p>',
 			$content
 		);
 
 		return $content;
 	}
 
-	public function list_items_with_content($content){
-		// Replace empty characters
-		$DOMDocument = $this->get_content_DOM($content);
+	/**
+	 * List items may not have more than non blank text or a single container element.
+	 *
+	 * @see https://developers.facebook.com/docs/instant-articles/reference/list
+	 * @author Hendrik Luhersen <hl@luehrsen-heinrich.de>
+	 * @since 0.5.6
+	 * @access public
+	 * @param DOMDocument $DOMDocument The DOM representation of the content
+	 * @return DOMDocument $DOMDocument The modified DOM representation of the content
+	 */
+	public function list_items_with_content($DOMDocument){
+
+		// A set of inline tags, that are allowed within the li element
+		$allowed_tags = array(
+			"p", "b", "u", "i", "span", "strong", "#text"
+		);
 
 		// Find all the list items
 		$elements = $DOMDocument->getElementsByTagName( 'li' );
@@ -123,32 +168,84 @@ class AFBInstantArticles_Filters {
 
 			// If the list item has more than one child node, we might get a conflict, so wrap
 			if($element->childNodes->length > 1){
+				// Iterate over all child nodes
+				for ( $n = 0; $n < $element->childNodes->length; ++$n ) {
+					$childNode = $element->childNodes->item($n);
 
-				// Create a new div
-				$div = $DOMDocument->createElement('div');
-
-				/**/ // Move the list children into the wrapping div
-				while($element->hasChildNodes()){
-					$div->appendChild($element->firstChild);
+					// If this child node is not one of the allowed tags remove from the DOM tree
+					if(!in_array($childNode->nodeName, $allowed_tags)){
+						$element->removeChild($childNode);
+					}
 				}
-				/**/
-
-				// Add the div to the list item
-				$element->appendChild($div);
 			}
 		}
 
-		$content = $this->get_content_from_DOM($DOMDocument);
-
-		return $content;
+		return $DOMDocument;
 	}
 
 	/**
-	 * get_content_DOM function.
+	 * Paragraph tags without a #text content are not allowed.
+	 *
+	 * @author Hendrik Luhersen <hl@luehrsen-heinrich.de>
+	 * @since 0.5.6
+	 * @access public
+	 * @param DOMDocument $DOMDocument The DOM representation of the content
+	 * @return DOMDocument $DOMDocument The modified DOM representation of the content
+	 */
+	public function no_empty_p_tags($DOMDocument){
+
+		// Find all the paragraph items
+		$elements = $DOMDocument->getElementsByTagName( 'p' );
+
+		// Iterate over all the paragraph items
+		for ( $i = 0; $i < $elements->length; ++$i ) {
+			$element = $elements->item( $i );
+
+			if($element->childNodes->length == 0){
+				// This element is empty like <p></p>
+				$element->parentNode->removeChild($element);
+			} elseif( $element->childNodes->length >= 1 ) {
+				// This element actually has children, let's see if it has text
+
+				$elementHasText = false;
+				// Iterate over all child nodes
+				for ( $n = 0; $n < $element->childNodes->length; ++$n ) {
+					$childNode = $element->childNodes->item($n);
+					if($childNode->nodeName == "#text"){
+						if(trim($childNode->wholeText)){
+							$elementHasText = true;
+						} else {
+							// this node is empty
+							$element->removeChild($childNode);
+						}
+
+					}
+				}
+
+				if(!$elementHasText){
+					// The element has child nodes, but no text
+					$fragment = $DOMDocument->createDocumentFragment();
+
+					// move all child nodes into a fragment
+					while($element->hasChildNodes()){
+						$fragment->appendChild( $element->childNodes->item( 0 ) );
+					}
+
+					// replace the (now empty) p tag with the fragment
+					$element->parentNode->replaceChild($fragment, $element);
+				}
+			}
+		}
+
+		return $DOMDocument;
+	}
+
+	/**
+	 * Get the article content - generated by TinyMCE - and return a DOMDocument.
 	 *
 	 * @access public
-	 * @param mixed $content
-	 * @return void
+	 * @param string $content
+	 * @return DOMDocument $DOMDocument
 	 */
 	public function get_content_DOM($content){
 		$libxml_previous_state = libxml_use_internal_errors( true );
@@ -167,11 +264,11 @@ class AFBInstantArticles_Filters {
 	}
 
 	/**
-	 * get_content_from_DOM function.
+	 * Take the (hopefully modified) DOMDocument and return it as a string representation of the article content.
 	 *
 	 * @access public
-	 * @param mixed $DOMDocument
-	 * @return void
+	 * @param DOMDocument $DOMDocument
+	 * @return string $content
 	 */
 	public function get_content_from_DOM($DOMDocument){
 		$body = $DOMDocument->getElementsByTagName( 'body' )->item( 0 );
