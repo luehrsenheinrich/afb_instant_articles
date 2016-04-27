@@ -17,7 +17,7 @@
  * @param int    $post_id  The post ID.
  * @return string The potentially filtered HTML.
  */
-function instant_articles_embed_oembed_html( $html, $url, $attr, $post_id ) {
+function lhafb_instant_articles_embed_oembed_html( $html, $url, $attr, $post_id ) {
 
 	if ( ! class_exists( 'WP_oEmbed' ) ) {
 		include_once( ABSPATH . WPINC . '/class-oembed.php' );
@@ -41,7 +41,7 @@ function instant_articles_embed_oembed_html( $html, $url, $attr, $post_id ) {
 	$provider_name = apply_filters( 'instant_articles_social_embed_type', $provider_name, $url );
 
 	if ( $provider_name ) {
-		$html = instant_articles_embed_get_html( $provider_name, $html, $url, $attr, $post_id );
+		$html = lhafb_instant_articles_embed_get_html( $provider_name, $html, $url, $attr, $post_id );
 	} else {
 		$html = sprintf( '<iframe class="oembed">%s</iframe>', $html);
 	}
@@ -62,7 +62,7 @@ function instant_articles_embed_oembed_html( $html, $url, $attr, $post_id ) {
  * @param int    $post_id        The post ID.
  * @return string The filtered HTML.
  */
-function instant_articles_embed_get_html( $provider_name, $html, $url, $attr, $post_id ) {
+function lhafb_instant_articles_embed_get_html( $provider_name, $html, $url, $attr, $post_id ) {
 
 	/**
 	 * Filter the HTML that will go into the Instant Article Social Embed markup.

@@ -25,7 +25,7 @@ class AFBInstantArticles_Filters {
 
 		// Oembed Filters
 		remove_all_filters( 'embed_oembed_html' );
-		add_filter( 'embed_oembed_html', 'instant_articles_embed_oembed_html', 10, 4 );
+		add_filter( 'embed_oembed_html', 'lhafb_instant_articles_embed_oembed_html', 10, 4 );
 
 
 		// Regex and regular "content" filter

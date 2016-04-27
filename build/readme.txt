@@ -52,6 +52,9 @@ Keep calm. Development of this plugin will continue and we will add more feature
 
 == Changelog ==
 
+= 0.5.6.2 =
+- Hotfix for a potential crash due to a collision with another plugin.
+
 = 0.5.6.1 =
 - Small hotfix for PHP shorthandles (thanks to Michael Eugster)
 
