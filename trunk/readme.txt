@@ -1,13 +1,13 @@
-=== allfacebook Instant Articles ===
+=== <##= pkg.title ##> ===
 Contributors: luehrsen, wiesejens
 Tags: articles, instant articles, facebook, allfacebook, rss, feed
 Requires at least: 4.0
 Tested up to: 4.4
-Stable tag: 0.5.5
+Stable tag: <##= pkg.version ##>
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin lets your WordPress display instant articles directly on your facebook page.
+<##= pkg.description ##>
 
 == Description ==
 
@@ -28,7 +28,7 @@ This plugin is brought to you by the awesome folks at [Luehrsen // Heinrich](htt
 == Installation ==
 
 1. Upload the lhafb_instant_articles folder to the /wp-content/plugins/ directory
-2. Activate the 'allfacebook Instant Articles' plugin through the 'Plugins' menu in WordPress
+2. Activate the '<##= pkg.title ##>' plugin through the 'Plugins' menu in WordPress
 3. Import your first image in the admin media screen
 
 == Frequently Asked Questions ==
@@ -44,7 +44,7 @@ Copy and Paste your Google Analytics code in the „Analytics“ Area of the Plu
 
 
 ###My Author Information is not linked to my Facebook Profile.
-Please use the Yoast SEO Plugin to add this additional profile information to your Wordpress user settings. allfacebook Instant Articles will use this information.
+Please use the Yoast SEO Plugin to add this additional profile information to your Wordpress user settings. <##= pkg.title ##> will use this information.
 
 ###Feature XYZ is not available! Why?
 Keep calm. Development of this plugin will continue and we will add more features in the future!
@@ -72,4 +72,4 @@ Keep calm. Development of this plugin will continue and we will add more feature
 - Some changes to the readme
 
 = 0.5.0 =
-- Initial Release
+- Initial Release.

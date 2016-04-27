@@ -3,12 +3,12 @@
  * @package afb_ia
  */
 /*
-Plugin Name: allfacebook Instant Articles
+Plugin Name: <##= pkg.title ##>
 Plugin URI:
-Description: This plugin lets your WordPress display instant articles directly on your facebook page.
+Description: <##= pkg.description ##>
 Author: Luehrsen // Heinrich
 Author URI: http://www.luehrsen-heinrich.de
-Version: 0.5.5
+Version: <##= pkg.version ##>
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: facebook, allfacebook, instant articles, articles
@@ -37,4 +37,4 @@ require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.filters.php"; // The filters need
 function run_instant_articles(){
 	$_afb_ia = new AFBInstantArticles();
 }
-run_instant_articles();
+run_instant_articles();.
