@@ -1,4 +1,5 @@
 # allfacebook Instant Articles
+![allfacebook Instant Articles](https://raw.githubusercontent.com/luehrsenheinrich/afb_instant_articles/master/assets/banner-1544x500.png)
 
 This WordPress plugin creates a special RSS Feed for your Wordpress blog to harvest the power of [Facebook Instant Articles](http://instantarticles.fb.com).
 
