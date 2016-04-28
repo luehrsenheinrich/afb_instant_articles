@@ -16,6 +16,8 @@ Here is a [handy link for submitting a new bug](https://github.com/luehrsenheinr
 
 If you want to contribute code to the plugin you have to set up the environment locally. Make sure that you have `npm` and `grunt` installed.
 
+The working directory is the `build` directory. If you change shomething in another location of the git the pull request or commit will be ignored.
+
 To test the plugin make a [symbolic link](https://en.wikipedia.org/wiki/Symbolic_link) between the `trunk` folder and the `wp-content/plugins/afb-instant-articles` folder on your local WordPress instance.
 
 Start the grunt watcher with the terminal command `grunt watch`. Grunt will make sure that the code will be compiled and copied to the trunk folder.
