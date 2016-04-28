@@ -77,8 +77,17 @@ do_action( 'rss_tag_pre', 'rss2' );
 		<description><![CDATA[<?php the_excerpt(); ?>]]></description>
 		<content:encoded><![CDATA[
         	<?php
-       			$the_template = LHAFB__PLUGIN_DIR . 'templates/instant_article.php';
-				load_template($the_template, false);
+			$template = 'instant_article.php';
+			$the_template = LHAFB__PLUGIN_DIR . 'templates/' . $template;
+			if ( $overridden_template = locate_template( $template ) ) {
+				// locate_template() returns path to file
+				// if either the child theme or the parent theme have overridden the template
+				load_template( $overridden_template, false );
+			} else {
+				// If neither the child nor parent theme have overridden the template,
+				// we load the template from the 'templates' sub-directory of the directory this file is in
+				load_template( $the_template, false );
+			}
 	        ?>
       	]]></content:encoded>
 	<?php
