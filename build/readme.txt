@@ -25,9 +25,9 @@ This plugin is brought to you by the awesome folks at [Luehrsen // Heinrich](htt
 
 == Installation ==
 
-1. Upload the lhafb_instant_articles folder to the /wp-content/plugins/ directory
+1. Upload the lhafb_instant_articles folder to the /wp-content/plugins/ directory or install from the Wordpress Plugin Directory
 2. Activate the '<##= pkg.title ##>' plugin through the 'Plugins' menu in WordPress
-3. Import your first image in the admin media screen
+3. Open Settings -> Instant Articles to start your IA setup.
 
 == Frequently Asked Questions ==
 

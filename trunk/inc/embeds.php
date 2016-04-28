@@ -89,4 +89,4 @@ function lhafb_instant_articles_embed_get_html( $provider_name, $html, $url, $at
 	$html = apply_filters( 'instant_articles_social_embed', $html, $url, $attr, $post_id );
 
 	return $html;
-}
+}.
