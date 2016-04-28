@@ -101,6 +101,8 @@
 					<!-- Copyright details for your article -->
 					<small><?php echo esc_attr(get_option('afbia_copyright')); ?></small>
 				<?php endif; ?>
+
+				<?php do_action( 'afbia_article_footer' ); ?>
 			</footer>
 		</article>
 	</body>
