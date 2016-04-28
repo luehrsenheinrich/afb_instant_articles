@@ -102,3 +102,4 @@ do_action( 'rss_tag_pre', 'rss2' );
 	<?php endwhile; ?>
 </channel>
 </rss>
+.

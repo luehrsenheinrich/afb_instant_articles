@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"Project-Id-Version: allfacebook Instant Articles\n"
+"Project-Id-Version: <##= pkg.title ##>\n"
 "POT-Creation-Date: 2015-11-27 10:59+0100\n"
 "PO-Revision-Date: 2015-11-27 10:59+0100\n"
 "Last-Translator: \n"
@@ -91,11 +91,11 @@ msgid "Not selected"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-msgid "allfacebook Instant Articles"
+msgid "<##= pkg.title ##>"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "This plugin lets your WordPress display instant articles directly on your facebook page."
+msgid "<##= pkg.description ##>"
 msgstr ""
 
 #. Author of the plugin/theme
@@ -105,3 +105,4 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "http://www.luehrsen-heinrich.de"
 msgstr ""
+.
