@@ -32,9 +32,28 @@ class AFBInstantArticles {
 	 * @return void
 	 */
 	private function action_dispatcher(){
-		add_action( 'do_feed_instant_articles', array( $this, 'do_feed' ) );
+		add_action( 'init',						array( $this, 'on_init' ) );
 		add_action( 'pre_get_posts', 			array( $this, 'modify_query') );
 
+	}
+
+	/**
+	 * Execute stuff after initialization of WordPress.
+	 * Called by 'init' hook
+	 *
+	 *
+	 * @author Hendrik Luehrsen <hl@luehrsen-heinrich.de>
+	 * @since 0.5.7
+	 * @access public
+	 * @return void
+	 */
+	public function on_init(){
+		/*
+		 * Switch from add_action('do_feed_{feedname}') to add_feed('{feedname}')
+		 * for a more stable and reliable integration.
+		 * Thanks to the folks at ray sono for finding this!
+		 */
+		add_feed( 'instant_articles',			array( $this, 'do_feed' ) );
 	}
 
 	/**
