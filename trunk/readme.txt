@@ -35,7 +35,7 @@ This plugin is brought to you by the awesome folks at [Luehrsen // Heinrich](htt
 Head over to the [GitHub Repository](https://github.com/luehrsenheinrich/afb_instant_articles) and start reading. Every bit of help is highly appreciated!
 
 ###Where can I find the new RSS Feed created by this plugin?
-The feed can be found at http://www.yourblogurl.com/?feed=instant_articles
+The feed can be found at http://www.yourblogurl.com/feed/instant_articles/
 
 ###I like to track article impressions for my Instant Articles. How can I do that?
 Copy and Paste your Google Analytics code in the „Analytics“ Area of the Plugin Settings.
@@ -53,7 +53,7 @@ Keep calm. Development of this plugin will continue and we will add more feature
 == Changelog ==
 
 = 0.5.7 =
-- Current working version
+- Implemented a more reliable way to load the feed. The feed is now also avaliable at `{blog_url}/feed/instant_articles/`
 
 = 0.5.6.2 =
 - Hotfix for a potential crash due to a collision with another plugin.
