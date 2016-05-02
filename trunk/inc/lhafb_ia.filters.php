@@ -287,4 +287,4 @@ class AFBInstantArticles_Filters {
 		return $filtered_content;
 	}
 
-}.
+}

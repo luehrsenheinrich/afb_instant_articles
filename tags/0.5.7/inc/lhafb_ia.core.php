@@ -53,6 +53,7 @@ class AFBInstantArticles {
 		 * for a more stable and reliable integration.
 		 * Thanks to the folks at ray sono for finding this!
 		 */
+
 		add_feed( 'instant_articles',			array( $this, 'do_feed' ) );
 	}
 

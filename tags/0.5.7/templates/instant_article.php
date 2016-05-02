@@ -28,13 +28,20 @@
 
 				<?php
 					$categories = get_the_category();
-					if(is_array($categories) && count($categories) > 0):
+					$kicker = "";
+					if(is_array($categories) && count($categories) > 0){
+						$the_category = array_pop($categories);
+						$kicker = $the_category->name;
+					}
+
+					$kicker = apply_filters( 'afbia_kicker', $kicker, $post->ID);
+
+					if(!empty($kicker)):
 				?>
 				<!-- A kicker for your article -->
 				<h3 class="op-kicker">
 					<?php
-						$the_category = array_pop($categories);
-						echo $the_category->name;
+						echo esc_html($kicker);
 					?>
 				</h3>
 				<?php
@@ -101,6 +108,8 @@
 					<!-- Copyright details for your article -->
 					<small><?php echo esc_attr(get_option('afbia_copyright')); ?></small>
 				<?php endif; ?>
+
+				<?php do_action( 'afbia_article_footer' ); ?>
 			</footer>
 		</article>
 	</body>

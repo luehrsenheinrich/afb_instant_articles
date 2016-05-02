@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: <##= pkg.title ##>\n"
+"Project-Id-Version: allfacebook Instant Articles\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-28 14:27+0100\n"
 "PO-Revision-Date: 2016-04-28 14:30+0100\n"
@@ -120,4 +120,3 @@ msgstr "Erfolgreich aktualisiert."
 #: inc/lhafb_ia.settings.php:331
 msgid "Not selected"
 msgstr "Nicht ausgewählt"
-.

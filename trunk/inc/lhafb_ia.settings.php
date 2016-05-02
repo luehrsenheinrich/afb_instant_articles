@@ -343,4 +343,4 @@ class afbia_settings_field {
 		endif;
 	}
 
-}.
+}
