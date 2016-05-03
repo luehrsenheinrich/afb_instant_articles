@@ -52,6 +52,10 @@ Keep calm. Development of this plugin will continue and we will add more feature
 
 == Changelog ==
 
+= 0.5.8 =
+- Hotfix for the filters, that were broken with the last patch.
+- Now with less GoT Spoilers
+
 = 0.5.7 =
 - Implemented a more reliable way to load the feed. The feed is now also avaliable at `{blog_url}/feed/instant_articles/`
 

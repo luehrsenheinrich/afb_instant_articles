@@ -67,6 +67,8 @@ class AFBInstantArticles {
 	 */
 	public function do_feed(){
 
+		do_action("call_ia_filters");
+
 		$template = 'feed-instant_articles.php';
 		$rss_template = LHAFB__PLUGIN_DIR . 'templates/' . $template;
 		if ( $overridden_template = locate_template( $template ) ) {
