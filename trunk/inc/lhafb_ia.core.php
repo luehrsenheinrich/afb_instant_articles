@@ -67,6 +67,10 @@ class AFBInstantArticles {
 	 */
 	public function do_feed(){
 
+		// Enforce HTML5 support, if the theme not already supports it
+		add_theme_support( "html5", array( 'gallery', 'caption') );
+
+		// Call the Instant Article Filters
 		do_action("call_ia_filters");
 
 		$template = 'feed-instant_articles.php';

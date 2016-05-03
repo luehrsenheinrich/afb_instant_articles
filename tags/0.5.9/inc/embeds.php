@@ -27,13 +27,8 @@ function lhafb_instant_articles_embed_oembed_html( $html, $url, $attr, $post_id 
 	$wp_oembed = new WP_oEmbed();
 	$provider_url = $wp_oembed->get_provider( $url );
 
-	// Remove all filters before trying to fetch a clean embed
-	remove_all_filters('oembed_result');
-
 	// Refresh the html with a clean oEmbed fetch
-	if($fresh_html = $wp_oembed->get_html($url)){
-		$html = $fresh_html;
-	}
+	$html = wp_oembed_get($url);
 
 	$provider_name = false;
 	if ( false !== strpos( $provider_url, 'instagram.com' ) ) {
@@ -54,7 +49,7 @@ function lhafb_instant_articles_embed_oembed_html( $html, $url, $attr, $post_id 
 		$html = sprintf( '<iframe class="oembed">%s</iframe>', $html);
 	}
 
-	return apply_filters('instant_articles_oembed_result', $html, $url, $attr, $post_id);
+	return $html;
 
 }
 
