@@ -219,8 +219,8 @@ class AFBInstantArticles_Filters {
 				for ( $n = 0; $n < $element->childNodes->length; ++$n ) {
 					$childNode = $element->childNodes->item($n);
 					if(in_array($childNode->nodeName, $allowed_tags)){
+						if(isset($childNode->wholeText) && !trim($childNode->wholeText,chr(0xC2).chr(0xA0))){
 
-						if(isset($childNode->wholeText) && empty(trim($childNode->wholeText))){
 							// this node is empty
 							$element->removeChild($childNode);
 						} else {
@@ -330,13 +330,8 @@ class AFBInstantArticles_Filters {
 		$i = 0;
 		foreach ( $attachments as $id => $attachment ) {
 			$attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "gallery-$id" ) : '';
-			if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
-				$image_output = wp_get_attachment_link( $id, $atts['size'], false, false, false, $attr );
-			} elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
-				$image_output = wp_get_attachment_image( $id, $atts['size'], false, $attr );
-			} else {
-				$image_output = wp_get_attachment_link( $id, $atts['size'], true, false, false, $attr );
-			}
+			$image_output = wp_get_attachment_image( $id, "full", false, $attr );
+
 			$image_meta  = wp_get_attachment_metadata( $id );
 			$orientation = '';
 			if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
