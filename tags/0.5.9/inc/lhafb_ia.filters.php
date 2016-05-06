@@ -41,7 +41,7 @@ class AFBInstantArticles_Filters {
 
 		// Display the galleries in a way that facebook can handle them
 		remove_all_filters( 'post_gallery' );
-		add_filters( 'post_gallery', 		array($this, 'gallery_shortcode' ) );
+		add_filter( 'post_gallery', 		array($this, 'gallery_shortcode' ), 10, 3 );
 	}
 
 	/**
@@ -160,7 +160,7 @@ class AFBInstantArticles_Filters {
 
 		// A set of inline tags, that are allowed within the li element
 		$allowed_tags = array(
-			"p", "b", "u", "i", "span", "strong", "#text"
+			"p", "b", "u", "i", "em", "span", "strong", "#text"
 		);
 
 		// Find all the list items
@@ -197,6 +197,9 @@ class AFBInstantArticles_Filters {
 	 * @return DOMDocument $DOMDocument The modified DOM representation of the content
 	 */
 	public function no_empty_p_tags($DOMDocument){
+		$allowed_tags = array(
+			"p", "b", "u", "i", "em", "span", "strong", "#text"
+		);
 
 		// Find all the paragraph items
 		$elements = $DOMDocument->getElementsByTagName( 'p' );
@@ -215,14 +218,14 @@ class AFBInstantArticles_Filters {
 				// Iterate over all child nodes
 				for ( $n = 0; $n < $element->childNodes->length; ++$n ) {
 					$childNode = $element->childNodes->item($n);
-					if($childNode->nodeName == "#text"){
-						if(trim($childNode->wholeText)){
-							$elementHasText = true;
-						} else {
+					if(in_array($childNode->nodeName, $allowed_tags)){
+						if(isset($childNode->wholeText) && !trim($childNode->wholeText,chr(0xC2).chr(0xA0))){
+
 							// this node is empty
 							$element->removeChild($childNode);
+						} else {
+							$elementHasText = true;
 						}
-
 					}
 				}
 
@@ -326,14 +329,9 @@ class AFBInstantArticles_Filters {
 		// Iterate over the available images
 		$i = 0;
 		foreach ( $attachments as $id => $attachment ) {
-			$attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';
-			if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
-				$image_output = wp_get_attachment_link( $id, $atts['size'], false, false, false, $attr );
-			} elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
-				$image_output = wp_get_attachment_image( $id, $atts['size'], false, $attr );
-			} else {
-				$image_output = wp_get_attachment_link( $id, $atts['size'], true, false, false, $attr );
-			}
+			$attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "gallery-$id" ) : '';
+			$image_output = wp_get_attachment_image( $id, "full", false, $attr );
+
 			$image_meta  = wp_get_attachment_metadata( $id );
 			$orientation = '';
 			if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
@@ -342,7 +340,7 @@ class AFBInstantArticles_Filters {
 			$output .= "<figure>";
 			$output .= "
 				$image_output";
-			if ( $captiontag && trim($attachment->post_excerpt) ) {
+			if ( trim($attachment->post_excerpt) ) {
 				$output .= "
 					<figcaption>
 					" . wptexturize($attachment->post_excerpt) . "
