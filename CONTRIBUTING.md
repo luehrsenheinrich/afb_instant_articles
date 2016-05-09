@@ -12,6 +12,10 @@ If you’re filing a bug, specific steps to reproduce are helpful. Please includ
 
 Here is a [handy link for submitting a new bug](https://github.com/luehrsenheinrich/afb_instant_articles/issues/new?body=URL%3A%0A%0AWhat+I+expected%3A%0A%0ASteps+to+reproduce%3A%0A%0AWhat+happened+instead%3A&title=Description%20of%20the%20problem).
 
+## Helping with the documentation
+
+Every plugin is just as good as the documentation. In this repository we offer [collaboration with a wiki](https://github.com/luehrsenheinrich/afb_instant_articles/wiki) to create a documentation for this plugin. 
+
 ## Setting up the dev enviroment
 
 If you want to contribute code to the plugin you have to set up the environment locally. Make sure that you have `npm` and `grunt` installed.
