@@ -35,6 +35,7 @@ class AFBInstantArticles {
 		add_action( 'init',						array( $this, 'on_init' ) );
 		add_action( 'pre_get_posts', 			array( $this, 'modify_query') );
 
+		add_action( 'admin_enqueue_scripts',	array( $this, 'admin_scripts') );
 	}
 
 	/**
@@ -95,6 +96,7 @@ class AFBInstantArticles {
 	public function do_header(){
 		if(get_option("afbia_page_id")){
 			$afbia_page_id = get_option("afbia_page_id");
+			echo "<!-- Pages parameter from allfacebook.de Instant Articles -->";
 			echo "<meta property=\"fb:pages\" content=\"$afbia_page_id\" />";
 		}
 	}
@@ -133,6 +135,19 @@ class AFBInstantArticles {
 				$query->set("posts_per_rss", $num);
 			}
 		}
+	}
+
+	/**
+	 * Enqueue needed scripts and styles for the backend.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function admin_scripts(){
+		wp_register_style( 'afbia_admin_style', LHAFB__PLUGIN_URL . 'admin/admin.css', false, '0.6.0' );
+		wp_enqueue_style( 'afbia_admin_style' );
+
+		wp_enqueue_script("afbia_admin_script", LHAFB__PLUGIN_URL . 'admin/admin.min.js', array("jquery"), '0.6.0', true);
 	}
 
 

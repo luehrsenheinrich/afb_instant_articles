@@ -25,7 +25,7 @@ if ( !function_exists( 'add_action' ) ) {
 define( 'LHAFB__PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'LHAFB__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'LHAFB__PLUGIN_FILE', ( __FILE__ ) );
-
+define( 'LHAFB__VERSION', '<##= pkg.version ##>');
 
 // Require needed files
 require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.core.php"; // The actual core of the plugin
