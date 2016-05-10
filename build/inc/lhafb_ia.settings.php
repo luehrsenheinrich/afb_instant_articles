@@ -224,8 +224,10 @@ class lhafb_theme_settings {
 										echo "<h2>$icon {$section['title']}</h2>\n";
 									if ( $section['callback'] )
 										call_user_func( $section['callback'], $section );
-									if ( ! isset( $wp_settings_fields ) || !isset( $wp_settings_fields[$page] ) || !isset( $wp_settings_fields[$page][$section['id']] ) )
+									if ( ! isset( $wp_settings_fields ) || !isset( $wp_settings_fields[$page] ) || !isset( $wp_settings_fields[$page][$section['id']] ) ) {
+										echo '</div>';
 										continue;
+									}
 									echo '<table class="form-table">';
 									do_settings_fields( $page, $section['id'] );
 									echo '</table>';
@@ -241,8 +243,22 @@ class lhafb_theme_settings {
 					</div>
 				</div>
 			</div>
-
 			</form>
+
+
+			<div class="credits-container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6">
+						<i class="fa fa-question-circle"></i>
+						<a href="https://github.com/luehrsenheinrich/afb_instant_articles/wiki" target="_blank">
+							<?php _e("Help", "afb"); ?>
+						</a>
+					</div>
+					<div class="col-xs-12 col-sm-6 credits">
+						<?php _e('Made with <i class="fa fa-heart"></i> in Munich by <a href="http://www.luehrsen-heinrich.de" target="_blank">Luehrsen // Heinrich</a> and many <a href="https://github.com/luehrsenheinrich/afb_instant_articles/graphs/contributors" target="_blank">GitHub contributors</a>', 'afb'); ?>
+					</div>
+				</div>
+			</div>
 		</div><!-- wrap -->
 		<?php
 	}
