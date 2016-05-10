@@ -1,0 +1,24 @@
+.fontSizeGrid(@step, @size: "xs"){
+	@scale-factor: "scale-factor-@{size}";
+	@font-size-target: "font-size-target-@{size}";
+
+	font-size: ceil(pow(@@scale-factor, @step) * @@font-size-target);
+}
+
+.lineHeightGrid(@step, @size: "xs"){
+	@scale-factor: "scale-factor-@{size}";
+	@font-size-target: "font-size-target-@{size}";
+	@base-line-height: "base-line-height-@{size}";
+	@line-height-target: "line-height-target-@{size}";
+
+	@font-size: ceil(pow(@@scale-factor, @step) * @@font-size-target);
+	@line: @@base-line-height / pow(@@scale-factor, @step) * ((pow(@@scale-factor, @step) * @@font-size-target) / @font-size);
+	@line-height: @line * unit(ceil( (@font-size / @@font-size-target)  / (@@base-line-height) ) );
+
+	line-height: @line-height;
+}
+
+.verticalRhythm(@step, @size: "xs"){
+	.fontSizeGrid(@step, @size);
+	.lineHeightGrid(@step, @size);
+}

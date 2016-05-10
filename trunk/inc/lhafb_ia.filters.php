@@ -160,7 +160,7 @@ class AFBInstantArticles_Filters {
 
 		// A set of inline tags, that are allowed within the li element
 		$allowed_tags = array(
-			"p", "b", "u", "i", "em", "span", "strong", "#text"
+			"p", "b", "u", "i", "em", "span", "strong", "#text", "a"
 		);
 
 		// Find all the list items
@@ -198,7 +198,7 @@ class AFBInstantArticles_Filters {
 	 */
 	public function no_empty_p_tags($DOMDocument){
 		$allowed_tags = array(
-			"p", "b", "u", "i", "em", "span", "strong", "#text"
+			"p", "b", "u", "i", "em", "span", "strong", "#text", "a"
 		);
 
 		// Find all the paragraph items

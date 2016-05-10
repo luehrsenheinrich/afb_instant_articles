@@ -19,21 +19,10 @@ module.exports = function(grunt) {
           optimization: 2
         },
         files: {
-          "build/css/admin.css": "build/less/admin.less" // destination file and source file
+          "build/admin/admin.css": "build/admin/less/admin.less" // destination file and source file
         }
       }
     },
-
-
-    autoprefixer: {
-		options: {
-			// Task-specific options go here.
-		},
-		style: {
-            src: 'build/css/admin.css',
-			dest: 'build/css/admin.css'
-   		}
-	},
 
     // JAVASCRIPT
 
@@ -52,7 +41,9 @@ module.exports = function(grunt) {
 	concat_in_order: {
 		main: {
 			files: {
-				'build/js/afb_ia.min.js': ['build/js/afb_ia.js']
+				'build/js/afb_ia.min.js': ['build/js/afb_ia.js'],
+				'build/admin/admin.min.js': ['build/admin/admin.js']
+
 			},
 			options: {
 			    extractRequired: function(filepath, filecontent) {
@@ -83,7 +74,9 @@ module.exports = function(grunt) {
 	      options: {
 	      },
 	      files: {
-			'build/js/afb_ia.min.js': ['build/js/afb_ia.min.js']
+			'build/js/afb_ia.min.js': ['build/js/afb_ia.min.js'],
+			'build/admin/admin.min.js': ['build/admin/admin.min.js']
+
 	      }
 	    }
 	},
@@ -99,14 +92,14 @@ module.exports = function(grunt) {
     // Watch
     watch: {
 	    js: {
-		    files: ['build/js/**/*.js', '!build/js/**/*.min.js'],
+		    files: ['build/js/**/*.js', '!build/js/**/*.min.js','build/admin/**/*.js', '!build/admin/**/*.min.js'],
 		    tasks: ['dev-deploy'],
 			options: {
 				livereload: true
 			},
 	    },
 		less: {
-			files: ['build/css/**/*.less'], // which files to watch
+			files: ['build/**/*.less'], // which files to watch
 			tasks: ['dev-deploy'],
 			options: {
 				// livereload: true
@@ -138,9 +131,9 @@ module.exports = function(grunt) {
             return grunt.template.process(content, {delimiters: 'custom-delimiters'});
           }
 	    },
-	    build: {expand: true, cwd: 'build', src: ['**/*.php', '**/*.min.js', '**/*.css', '**/*.txt','**/*.svg','**/*.po','**/*.pot','**/*.mo', '!node_modules', '!node_modules/**/*'], dest: 'trunk/', filter: 'isFile'},
-	    release: {expand: true, cwd: 'build', src: ['**/*.php', '**/*.min.js', '**/*.css', '**/*.txt','**/*.svg','**/*.po','**/*.pot','**/*.mo', '!node_modules', '!node_modules/**/*'], dest: 'tags/<%= pkg.version %>/', filter: 'isFile'},
-	    zip: {expand: true, cwd: 'build', src: ['**/*.php', '**/*.min.js', '**/*.css', '**/*.txt','**/*.svg','**/*.po','**/*.pot','**/*.mo', '!node_modules', '!node_modules/**/*'], dest: '<%= pkg.slug %>/', filter: 'isFile'},
+	    build: {expand: true, cwd: 'build', src: ['**/*.php', '**/*.min.js', '**/*.css', '**/*.txt','**/*.svg','**/*.po','**/*.pot','**/*.mo', '**/fonts/*', '!node_modules', '!node_modules/**/*'], dest: 'trunk/', filter: 'isFile'},
+	    release: {expand: true, cwd: 'build', src: ['**/*.php', '**/*.min.js', '**/*.css', '**/*.txt','**/*.svg','**/*.po','**/*.pot','**/*.mo', '**/fonts/*', '!node_modules', '!node_modules/**/*'], dest: 'tags/<%= pkg.version %>/', filter: 'isFile'},
+	    zip: {expand: true, cwd: 'build', src: ['**/*.php', '**/*.min.js', '**/*.css', '**/*.txt','**/*.svg','**/*.po','**/*.pot','**/*.mo', '**/fonts/*', '!node_modules', '!node_modules/**/*'], dest: '<%= pkg.slug %>/', filter: 'isFile'},
     },
 
     // Clean out folders
@@ -180,12 +173,12 @@ module.exports = function(grunt) {
   });
 
   // These tasks are not needed at the moment, as we do not have any css or js files (yet).
-  grunt.registerTask( 'handle_css', ['less', 'autoprefixer', 'uglify'] );
+  grunt.registerTask( 'handle_css', ['less'] );
   grunt.registerTask( 'handle_js', ['concat_in_order', 'uglify'] );
 
   // Deployment strategies. The dev-deploy runs with the watcher and performs quicker. The deploy performs a clean of the trunk folder and a clean copy of the needed files.
-  grunt.registerTask( 'deploy', ['phplint', 'clean:build', 'copy:build'] );
-  grunt.registerTask( 'dev-deploy', ['phplint', 'newer:copy:build'] );
+  grunt.registerTask( 'deploy', ['handle_js', 'handle_css', 'phplint', 'clean:build', 'copy:build'] );
+  grunt.registerTask( 'dev-deploy', ['handle_js', 'handle_css', 'phplint', 'newer:copy:build'] );
 
   // The release task adds a new tag in the release folder.
   grunt.registerTask( 'zip', ['copy:zip', 'compress', 'clean:zip'] );
