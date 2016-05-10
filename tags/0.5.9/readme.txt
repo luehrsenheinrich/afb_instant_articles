@@ -52,7 +52,7 @@ Keep calm. Development of this plugin will continue and we will add more feature
 
 == Changelog ==
 
-= 0.5.9 =
+= 0.6.0 =
 - Enforce HTML5 support for galleries and captions, if that is not already active.
 - Clean out the embed code from whatever the theme might have put in there
 - Added new filter `instant_articles_oembed_result` to let developers purposefully change the embed code for instant articles
