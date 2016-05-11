@@ -121,6 +121,17 @@ class lhafb_theme_settings {
 		);
 		$afbia_comment_media = new afbia_settings_field($args);
 
+		$args = array(
+			'id'				=> 'afbia_articles_style',
+			'title'				=> __("Style of Articles", 'afb'),
+			'page'				=> 'afbia_settings_page',
+			'section'			=> 'feed_settings',
+			'description'		=> __("Style for articles if different from default", 'afb'),
+			'type'				=> 'text', // text, textarea, password, checkbox
+			'option_group'		=> "settings_page_afbia_settings_page",
+		);
+		$afbia_comment_media = new afbia_settings_field($args);
+
 
 		//
 		// Ad Settings
