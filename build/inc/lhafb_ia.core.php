@@ -127,6 +127,7 @@ class AFBInstantArticles {
 			);
 			$query->set( 'meta_query', $meta_query );
 
+			$query->set( 'orderby', 'modified');
 
 			// Set the number of posts to be shown on the feed
 			// If the number is not set or returns 0, fall back to the default posts_per_rss option.
