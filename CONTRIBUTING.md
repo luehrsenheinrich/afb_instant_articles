@@ -27,3 +27,5 @@ To test the plugin make a [symbolic link](https://en.wikipedia.org/wiki/Symbolic
 Start the grunt watcher with the terminal command `grunt watch`. Grunt will make sure that the code will be compiled and copied to the trunk folder.
 
 Before committing execute the command `grunt deploy` to perform a clean deploy from the build to the trunk folder.
+
+*IMPORTANT*: Edits outside the `build` directory will be overwritten by the grunt tasks. So make sure you don't work within the `trunk` folder. 
