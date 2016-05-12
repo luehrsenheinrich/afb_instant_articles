@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: allfacebook Instant Articles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-11 12:59+0200\n"
-"PO-Revision-Date: 2016-05-11 13:02+0200\n"
+"POT-Creation-Date: 2016-05-12 10:07+0100\n"
+"PO-Revision-Date: 2016-05-12 10:09+0100\n"
 "Last-Translator: Jens Wiese <jens_wiese@gmx.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -18,11 +18,11 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: inc/lhafb_ia.metaboxes.php:38 inc/lhafb_ia.settings.php:149
-#: inc/lhafb_ia.settings.php:163
+#: inc/lhafb_ia.metaboxes.php:38 inc/lhafb_ia.settings.php:161
+#: inc/lhafb_ia.settings.php:175
 msgid "Instant Articles"
 msgstr ""
 
@@ -109,34 +109,42 @@ msgstr "Anzahl der Artikel"
 msgid "The number of articles, that will be rendered on the feed."
 msgstr "Die Anzahl der Artikel, die im Feed aufgenommen werden."
 
-#: inc/lhafb_ia.settings.php:131
-msgid "Ads"
-msgstr ""
+#: inc/lhafb_ia.settings.php:127
+msgid "Style of Articles"
+msgstr "Style der Artikel"
 
-#: inc/lhafb_ia.settings.php:133
+#: inc/lhafb_ia.settings.php:130
+msgid "Style for articles if different from default"
+msgstr "Artikel Style, wenn dieser sich von \"default\" unterscheidet."
+
+#: inc/lhafb_ia.settings.php:143
+msgid "Ads"
+msgstr "Anzeigen"
+
+#: inc/lhafb_ia.settings.php:145
 msgid ""
 "COMING SOON - Ads for Facebook Instant Articles will be implemented shortly."
 msgstr ""
 "IN KÜRZE - Anzeigen für Facebook Instant Articles werden in Kürze "
 "hinzugefügt."
 
-#: inc/lhafb_ia.settings.php:163 inc/lhafb_ia.settings.php:182
+#: inc/lhafb_ia.settings.php:175 inc/lhafb_ia.settings.php:194
 msgid "Show feed"
 msgstr "Feed zeigen"
 
-#: inc/lhafb_ia.settings.php:171
+#: inc/lhafb_ia.settings.php:183
 msgid "Save Changes"
 msgstr "Änderungen speichern"
 
-#: inc/lhafb_ia.settings.php:182
+#: inc/lhafb_ia.settings.php:194
 msgid "<span class='hidden-xs'>allfacebook.de</span> Instant Articles"
 msgstr ""
 
-#: inc/lhafb_ia.settings.php:254
+#: inc/lhafb_ia.settings.php:266
 msgid "Help"
 msgstr "Hilfe"
 
-#: inc/lhafb_ia.settings.php:258
+#: inc/lhafb_ia.settings.php:270
 msgid ""
 "Made with <i class=\"fa fa-heart\"></i> in Munich by <a href=\"http://www."
 "luehrsen-heinrich.de\" target=\"_blank\">Luehrsen // Heinrich</a> and many "
@@ -148,33 +156,20 @@ msgstr ""
 "vielen <a href=\"https://github.com/luehrsenheinrich/afb_instant_articles/"
 "graphs/contributors\" target=\"_blank\">GitHub Unterstützern</a>"
 
-#: inc/lhafb_ia.settings.php:278
+#: inc/lhafb_ia.settings.php:290
 msgid "Successfully updated."
 msgstr "Erfolgreich aktualisiert."
 
-#: inc/lhafb_ia.settings.php:445
+#: inc/lhafb_ia.settings.php:457
 msgid "Not selected"
 msgstr "Nicht ausgewählt"
 
-#. Plugin Name of the plugin/theme
-msgid "allfacebook Instant Articles"
-msgstr ""
-
-#. Description of the plugin/theme
-msgid ""
-"This plugin lets your WordPress display instant articles directly on your "
-"facebook page."
-msgstr ""
-"Dieses Plugin lässt dein Wordpress Instant Articles direkt auf Facebook "
-"anzeigen."
-
-#. Author of the plugin/theme
-msgid "Luehrsen // Heinrich"
-msgstr ""
-
-#. Author URI of the plugin/theme
-msgid "http://www.luehrsen-heinrich.de"
-msgstr ""
+#~ msgid ""
+#~ "This plugin lets your WordPress display instant articles directly on your "
+#~ "facebook page."
+#~ msgstr ""
+#~ "Dieses Plugin lässt dein Wordpress Instant Articles direkt auf Facebook "
+#~ "anzeigen."
 
 #~ msgid "Settings"
 #~ msgstr "Einstellungen"
