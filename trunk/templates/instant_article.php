@@ -101,6 +101,8 @@ if(defined("DEV_IA")){
 		</figure>
 	<?php endif; ?>
 
+	<?php do_action( 'afbia_article_body', $post->ID); ?>
+
 	<footer>
 		<?php if(isset($options['credits']) && !empty($options['credits'])): ?>
 			<!-- Credits for your article -->
