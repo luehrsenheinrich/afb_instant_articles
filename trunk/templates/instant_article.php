@@ -19,9 +19,6 @@
 		<!-- URL of the web version of this article -->
 		<link rel="canonical" href="<?php echo $permalink; ?>">
 		<meta property="op:markup_version" content="v1.0">
-		<?php if(get_option('afbia_articles_style')): ?>
-			<meta property="fb:article_style" content="<?php echo get_option('afbia_articles_style'); ?>">
-        <?php endif; ?>
 	</head>
 	<body>
 		<article>
