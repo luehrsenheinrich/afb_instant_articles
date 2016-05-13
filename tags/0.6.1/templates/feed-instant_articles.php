@@ -42,7 +42,7 @@ do_action( 'rss_tag_pre', 'rss2' );
 ?>
 
 <channel>
-	<title><?php bloginfo_rss('name'); wp_title_rss(); ?></title>
+	<title><?php bloginfo_rss('name'); ?></title>
 	<link><?php bloginfo_rss('url') ?></link>
 	<description><?php bloginfo_rss("description") ?></description>
 	<lastBuildDate><?php echo $last_build; ?></lastBuildDate>
