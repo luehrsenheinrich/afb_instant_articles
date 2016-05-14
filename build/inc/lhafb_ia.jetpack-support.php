@@ -17,7 +17,7 @@ class AFBInstantArticles_JetpackSupport {
 
 	function init() {
 		if(class_exists('Jetpack')){
-			if ( Jetpack::is_module_active( 'stats' ) OR true) {
+			if ( Jetpack::is_module_active( 'stats' )) {
 				add_action( 'afbia_article_body', array($this, 'add_jetpack_stats_pixel') );
 			}
 		}
