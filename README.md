@@ -9,6 +9,10 @@ Instant Articles are available for all Publishers since [Facebook f8 Developer C
 
 This plugin is made with love and brought to you by the folks of [allfacebook.de](http://www.allfacebook.de) and [Luehrsen // Heinrich](http://www.luehrsen-heinrich.de)
 
+## Documentation
+
+Developer documentation is available in the [Wiki](https://github.com/luehrsenheinrich/afb_instant_articles/wiki) 
+
 ## Contributing
 
 Every bit of help is highly appreciated. Even if you don't code you can file an issue and help us find bugs or shape new features. Please see the [CONTRIBUTING.md](./CONTRIBUTING.md) on how to contribute.
