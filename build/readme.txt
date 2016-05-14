@@ -52,10 +52,11 @@ Keep calm. Development of this plugin will continue and we will add more feature
 
 == Changelog ==
 
-= 0.6.1 =
+= 0.7.0 =
 - Redesigned backend (now with more glitches!)
 - Fixed a bug in the feed title (thanks to blaulichtgiessen)
-- Changed the order of posts in the feed from most recent to recent edited. (thanks to Fabian)
+- Changed the order of posts in the feed from most recent to recent edited (thanks to Fabian)
+- Added a method to implement wp.com/JetPack tracking (thanks to Fabian)
 
 = 0.6.0 =
 - Enforce HTML5 support for galleries and captions, if that is not already active.

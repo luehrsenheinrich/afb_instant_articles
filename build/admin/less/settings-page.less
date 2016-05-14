@@ -48,6 +48,9 @@
 				font-size: 14px;
 				line-height: 18px;
 				color: @grayDark;
+				border-top: 1px solid @grayLighter;
+				border-bottom: 1px solid @grayLighter;
+
 
 				&:focus {
 					box-shadow: none;
@@ -56,6 +59,8 @@
 				&:hover {
 					background: @brandColor;
 					color: #fff;
+					border-top: 1px solid @brandColor;
+					border-bottom: 1px solid @brandColor;
 				}
 			}
 
@@ -64,11 +69,19 @@
 					color: @brandColor;
 					background: #fff;
 					margin-right: -1px;
+					border-top: 1px solid @grayLight;
+					border-bottom: 1px solid @grayLight;
 
 					&:hover {
 						background: @brandColor;
 						color: #fff;
 					}
+				}
+			}
+
+			&:first-child.active {
+				a {
+					border-top: 1px solid #fff;
 				}
 			}
 		}
@@ -90,6 +103,10 @@
 
 		.credits {
 			text-align: right;
+		}
+
+		a {
+			text-decoration: none;
 		}
 	}
 }

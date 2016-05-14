@@ -139,7 +139,7 @@ class lhafb_theme_settings {
 		//
 		$args = array(
 			'id'			=> "adbia_ad_settings",
-			'icon'			=> "line-chart",
+			'icon'			=> "money",
 			'title'			=> __("Ads", 'afb'),
 			'page'			=> "afbia_settings_page",
 			'description'	=> __("COMING SOON - Ads for Facebook Instant Articles will be implemented shortly.", 'afb'),
@@ -261,8 +261,8 @@ class lhafb_theme_settings {
 			<div class="credits-container">
 				<div class="row">
 					<div class="col-xs-12 col-sm-6">
-						<i class="fa fa-question-circle"></i>
 						<a href="https://github.com/luehrsenheinrich/afb_instant_articles/wiki" target="_blank">
+							<i class="fa fa-question-circle"></i>
 							<?php _e("Help", "afb"); ?>
 						</a>
 					</div>
