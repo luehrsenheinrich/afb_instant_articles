@@ -10,6 +10,7 @@ class AFBInstantArticles {
 		$this->action_dispatcher();
 
 		$this->content_filters = new AFBInstantArticles_Filters();
+		$this->jetpack_support = new AFBInstantArticles_JetpackSupport();
 	}
 
 
