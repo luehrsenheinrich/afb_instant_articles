@@ -57,17 +57,25 @@ if(defined("DEV_IA")){
 			<time class="op-modified" datetime="<?php echo $modified_date; ?>"><?php echo get_the_modified_date(get_option('date_format') . ", " . get_option('time_format')); ?></time>
 
 			<!-- The authors of your article -->
-			<?php if(get_the_author_meta('facebook')): ?>
-				<address>
-					<a rel="facebook" href="<?php the_author_meta('facebook'); ?>"><?php the_author(); ?></a>
-					<?php the_author_meta('description'); ?>
-				</address>
-			<?php else: ?>
-				<address>
-					<a><?php the_author(); ?></a>
-					<?php the_author_meta('description'); ?>
-				</address>
-			<?php endif; ?>
+			<?php
+			$author = get_the_author();
+			$author = apply_filters( 'afbia_author', $author, $post->ID);
+			$author_meta = get_the_author_meta('description');
+			$author_meta = apply_filters( 'afbia_author_meta', $author_meta, $post->ID);
+			$author_role = "";
+			$author_role = apply_filters( 'afbia_author_role', $author_role, $post->ID);
+			?>
+
+			<address>
+				<?php if(get_the_author_meta('facebook')): ?>
+					<a<?php if(!empty($author_role)):?> title="<?php echo esc_attr($author_role); ?>"<?php endif; ?> rel="facebook" href="<?php the_author_meta('facebook'); ?>"><?php echo $author; ?></a>
+				<?php else: ?>
+					<a<?php if(!empty($author_role)):?> title="<?php echo esc_attr($author_role); ?>"<?php endif; ?>><?php echo esc_html($author); ?></a>
+				<?php endif; ?>
+				<?php if(!empty($author_meta)): ?>
+					<?php echo esc_html($author_meta); ?>
+				<?php endif; ?>
+			</address>
 
 
 			<?php if(has_post_thumbnail($post->ID)):
