@@ -83,6 +83,10 @@ function lhafb_instant_articles_embed_get_html( $provider_name, $html, $url, $at
 	 */
 	$html = apply_filters( "instant_articles_social_embed_{$provider_name}", $html, $url, $attr, $post_id );
 
+	if ( false === strpos( $html, '<iframe' ) ) {
+		$html = sprintf( '<iframe>%s</iframe>', $html );
+	}
+
 	$html = sprintf( '<figure class="op-social">%s</figure>', $html );
 
 	/**
