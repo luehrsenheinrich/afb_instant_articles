@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: allfacebook Instant Articles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-12 10:07+0100\n"
-"PO-Revision-Date: 2016-05-12 10:09+0100\n"
+"POT-Creation-Date: 2016-05-17 11:25+0100\n"
+"PO-Revision-Date: 2016-05-17 11:27+0100\n"
 "Last-Translator: Jens Wiese <jens_wiese@gmx.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -20,6 +20,14 @@ msgstr ""
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: inc/lhafb_ia.filters.php:442
+msgid ""
+"<b>ERROR</b>: The \"allfacebook Instant Articles\" plugin needs the "
+"\"DOMDocument\" PHP extension to run properly!"
+msgstr ""
+"<b>FEHLER</b>: Das \"allfacebook Instant Articles\" Plugin benötigt die "
+"\"DOMDocument\" PHP Erweiterung zum Betrieb!"
 
 #: inc/lhafb_ia.metaboxes.php:38 inc/lhafb_ia.settings.php:161
 #: inc/lhafb_ia.settings.php:175
