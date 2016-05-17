@@ -8,7 +8,7 @@ Plugin URI:
 Description: This plugin lets your WordPress display instant articles directly on your facebook page.
 Author: Luehrsen // Heinrich
 Author URI: http://www.luehrsen-heinrich.de
-Version: 0.6.1
+Version: 0.7.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: facebook, allfacebook, instant articles, articles
@@ -25,7 +25,7 @@ if ( !function_exists( 'add_action' ) ) {
 define( 'LHAFB__PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'LHAFB__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'LHAFB__PLUGIN_FILE', ( __FILE__ ) );
-define( 'LHAFB__VERSION', '0.6.1');
+define( 'LHAFB__VERSION', '0.7.0');
 
 // Require needed files
 require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.core.php"; // The actual core of the plugin

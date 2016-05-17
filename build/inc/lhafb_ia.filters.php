@@ -13,6 +13,10 @@ class AFBInstantArticles_Filters {
 	 */
 	public function __construct(){
 		add_action( 'call_ia_filters', array($this, "filter_dispatcher") );
+
+		if(!class_exists("DOMDocument")) {
+			add_action( 'admin_notices', 		array($this, 'dom_document_warning' ) );
+		}
 	}
 
 	/**
@@ -35,9 +39,11 @@ class AFBInstantArticles_Filters {
 		add_filter( 'afbia_content', 	array($this, 'address_tag') );
 
 		// DOM Document Filter
-		add_filter( 'afbia_content_dom', 	array($this, 'list_items_with_content') );
-		add_filter( 'afbia_content_dom',	array($this, 'no_empty_p_tags') );
-		add_filter( 'afbia_content_dom',	array($this, 'resize_images') );
+		if(class_exists("DOMDocument")){
+			add_filter( 'afbia_content_dom', 	array($this, 'list_items_with_content') );
+			add_filter( 'afbia_content_dom',	array($this, 'no_empty_p_tags') );
+			add_filter( 'afbia_content_dom',	array($this, 'resize_images') );
+		}
 
 		// Display the galleries in a way that facebook can handle them
 		remove_all_filters( 'post_gallery' );
@@ -424,5 +430,18 @@ class AFBInstantArticles_Filters {
 		return $filtered_content;
 	}
 
+	/**
+	 * Print a warning, that the DOMDocument class is needed.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function dom_document_warning(){
+		?>
+	    <div class="notice notice-error is-dismissible">
+	        <p><?php _e( '<b>ERROR</b>: The "allfacebook Instant Articles" plugin needs the "DOMDocument" PHP extension to run properly!', 'afb' ); ?></p>
+	    </div>
+	    <?php
+	}
 
 }
