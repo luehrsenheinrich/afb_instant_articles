@@ -30,13 +30,14 @@ if(defined("DEV_IA")){
 			<h1><?php the_title(); ?></h1>
 
 			<?php
+			// Defining your article Category as the Kicker
 			$categories = get_the_category();
 			$kicker = "";
 			if(is_array($categories) && count($categories) > 0){
 				$the_category = array_pop($categories);
 				$kicker = $the_category->name;
 			}
-
+			// Can be overwritten with this filter
 			$kicker = apply_filters( 'afbia_kicker', $kicker, $post->ID);
 
 			if(!empty($kicker)):
@@ -79,7 +80,7 @@ if(defined("DEV_IA")){
 
 
 			<?php if(has_post_thumbnail($post->ID)):
-
+			// Defining article thumbnail as cover image
 			$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' );
 			$attachment = get_post(get_post_thumbnail_id($post->ID));
 			$thumbnail_url = $thumb[0];
@@ -102,6 +103,7 @@ if(defined("DEV_IA")){
 	<?php echo apply_filters('afbia_content', apply_filters('the_content', get_the_content( '' ))); ?>
 
 	<?php if(get_option('afbia_tracking')): ?>
+		<!-- Adding tracking if defined -->
 		<figure class="op-tracker">
 			<iframe>
 				<?php echo get_option('afbia_tracking'); ?>
@@ -109,6 +111,7 @@ if(defined("DEV_IA")){
 		</figure>
 	<?php endif; ?>
 
+	<!-- Additional Body stuff, like dynamic tracking pixel (VG Wort) could go here: -->
 	<?php do_action( 'afbia_article_body', $post->ID); ?>
 
 	<footer>
@@ -121,7 +124,7 @@ if(defined("DEV_IA")){
 			<!-- Copyright details for your article -->
 			<small><?php echo esc_attr(get_option('afbia_copyright')); ?></small>
 		<?php endif; ?>
-
+		<!-- Additional Footer stuff, like related articles could go here: -->
 		<?php do_action( 'afbia_article_footer' ); ?>
 	</footer>
 </article>
