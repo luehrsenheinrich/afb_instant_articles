@@ -52,6 +52,9 @@ Keep calm. Development of this plugin will continue and we will add more feature
 
 == Changelog ==
 
+= 0.7.2 =
+- Changed to the correct use of 'the_content' and wp_kses_post filters (thanks to Fabian)
+
 = 0.7.1 =
 - Added a warning for DOMDocument requirements
 - Fixed a missing function for reliable translation

@@ -91,7 +91,7 @@ if(defined("DEV_IA")){
 			<figure>
 				<img src="<?php echo $thumbnail_url; ?>" />
 				<?php if(!empty($attachment->post_excerpt)): ?>
-					<figcaption><?php echo apply_filters("the_content", $attachment->post_excerpt); ?></figcaption>
+					<figcaption><?php echo wp_kses_post( $attachment->post_excerpt); ?></figcaption>
 				<?php endif; ?>
 			</figure>
 		<?php endif; endif; ?>
@@ -117,7 +117,7 @@ if(defined("DEV_IA")){
 	<footer>
 		<?php if(isset($options['credits']) && !empty($options['credits'])): ?>
 			<!-- Credits for your article -->
-			<aside><?php echo apply_filters('the_content', esc_attr($options['credits'])); ?></aside>
+			<aside><?php echo wp_kses_post( esc_attr($options['credits']) ); ?></aside>
 		<?php endif; ?>
 
 		<?php if(get_option('afbia_copyright')): ?>
