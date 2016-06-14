@@ -267,7 +267,7 @@ class lhafb_theme_settings {
 						</a>
 					</div>
 					<div class="col-xs-12 col-sm-6 credits">
-						<?php _e('Made with <i class="fa fa-heart"></i> in Munich by <a href="http://www.luehrsen-heinrich.de" target="_blank">Luehrsen // Heinrich</a> and many <a href="https://github.com/luehrsenheinrich/afb_instant_articles/graphs/contributors" target="_blank">GitHub contributors</a>', 'afb'); ?>
+						<?php _e('Made with <i class="fa fa-heart"></i> in Munich by <a href="http://www.luehrsen-heinrich.de/?utm_source=wp-plugin&utm_medium=afbia-settings-footer&utm_campaign=settings-footer-link" target="_blank">Luehrsen // Heinrich</a> and many <a href="https://github.com/luehrsenheinrich/afb_instant_articles/graphs/contributors" target="_blank">GitHub contributors</a>', 'afb'); ?>
 					</div>
 				</div>
 			</div>
