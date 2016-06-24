@@ -19,21 +19,44 @@
  */
 function lhafb_instant_articles_embed_oembed_html( $html, $url, $attr, $post_id ) {
 
+
 	if ( ! class_exists( 'WP_oEmbed' ) ) {
 		include_once( ABSPATH . WPINC . '/class-oembed.php' );
 	}
 
-	// Instead of checking all possible URL variants, use the provider list from WP_oEmbed.
-	$wp_oembed = new WP_oEmbed();
-	$provider_url = $wp_oembed->get_provider( $url );
-
 	// Remove all filters before trying to fetch a clean embed
 	remove_all_filters('oembed_result');
 
-	// Refresh the html with a clean oEmbed fetch
-	if($fresh_html = $wp_oembed->get_html($url)){
-		$html = $fresh_html;
+
+	// Instead of checking all possible URL variants, use the provider list from WP_oEmbed.
+	$wp_oembed = new WP_oEmbed();
+
+
+	// Fetch the provider_url and store it in a transient
+	$transient_name = "afbia_provider_url_" . md5($url);
+	$expiration = 24 * HOUR_IN_SECONDS;
+	if ( false === ( $provider_url = get_transient( $transient_name ) ) ) {
+
+		$provider_url = $wp_oembed->get_provider( $url );
+
+		set_transient( $transient_name, $provider_url, $expiration );
 	}
+	// delete_transient($transient_name);
+
+	// Fetch the HTML and store it in a transient
+	$transient_name = "afbia_oembed_html_" . md5($url);
+	$expiration = 24 * HOUR_IN_SECONDS;
+	if ( false === ( $html = get_transient( $transient_name ) ) ) {
+
+		// Refresh the html with a clean oEmbed fetch
+		if($fresh_html = $wp_oembed->get_html($url)){
+			$html = $fresh_html;
+		}
+
+		set_transient( $transient_name, $html, $expiration);
+	}
+	// delete_transient($transient_name);
+
 
 	$provider_name = false;
 	if ( false !== strpos( $provider_url, 'instagram.com' ) ) {
