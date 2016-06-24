@@ -87,7 +87,7 @@ function lhafb_instant_articles_embed_get_html( $provider_name, $html, $url, $at
 		$html = sprintf( '<iframe>%s</iframe>', $html );
 	}
 
-	$html = sprintf( '<figure class="op-social">%s</figure>', $html );
+	$html = sprintf( '<figure class="op-interactive">%s</figure>', $html );
 
 	/**
 	 * Filter the Instant Article Social Embed markup.
