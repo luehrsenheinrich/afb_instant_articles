@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-This plugin creates a special RSS Feed for your Wordpress blog to harvest the power of Facebook Instant Articles.
+This plugin creates a special RSS Feed for your WordPress blog to harvest the power of Facebook Instant Articles.
 
 Instant Articles is a new technology by Facebook that will load your webpage content „instant“. That means Facebook will cache your articles on Facebooks servers and will load them within the native FB iOS or Android App without opening a browser window and connecting to your webserver.
 
