@@ -1,7 +1,7 @@
 # allfacebook Instant Articles
 ![allfacebook Instant Articles](https://raw.githubusercontent.com/luehrsenheinrich/afb_instant_articles/master/assets/banner-1544x500.png)
 
-This WordPress plugin creates a special RSS Feed for your Wordpress blog to harvest the power of [Facebook Instant Articles](http://instantarticles.fb.com).
+This WordPress plugin creates a special RSS Feed for your WordPress blog to harvest the power of [Facebook Instant Articles](http://instantarticles.fb.com).
 
 Instant Articles is a new technology by Facebook that will load your webpage content „instant“. That means Facebook will cache your articles on Facebooks servers and will load them within the native FB iOS or Android App without opening a browser window and connecting to your webserver.
 
