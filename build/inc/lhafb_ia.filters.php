@@ -38,16 +38,18 @@ class AFBInstantArticles_Filters {
 		add_filter( 'afbia_content', 	array($this, 'filter_dom') );
 		add_filter( 'afbia_content', 	array($this, 'address_tag') );
 
-		// DOM Document Filter
-		if(class_exists("DOMDocument")){
-			add_filter( 'afbia_content_dom', 	array($this, 'list_items_with_content') );
-			add_filter( 'afbia_content_dom',	array($this, 'no_empty_p_tags') );
-			add_filter( 'afbia_content_dom',	array($this, 'resize_images') );
-		}
-
 		// Display the galleries in a way that facebook can handle them
 		remove_all_filters( 'post_gallery' );
 		add_filter( 'post_gallery', 		array($this, 'gallery_shortcode' ), 10, 3 );
+
+		// DOM Document Filter
+		if(class_exists("DOMDocument")){
+			add_filter( 'afbia_content_dom', 	array($this, 'list_items_with_content') );
+			add_filter( 'afbia_content_dom',	array($this, 'resize_images') );
+
+			// The empty P tags class should run last
+			add_filter( 'afbia_content_dom',	array($this, 'no_empty_p_tags') );
+		}
 	}
 
 	/**
@@ -224,14 +226,17 @@ class AFBInstantArticles_Filters {
 				// Iterate over all child nodes
 				for ( $n = 0; $n < $element->childNodes->length; ++$n ) {
 					$childNode = $element->childNodes->item($n);
-					if(in_array($childNode->nodeName, $allowed_tags)){
-						if(isset($childNode->wholeText) && !trim($childNode->wholeText,chr(0xC2).chr(0xA0))){
 
+					if(in_array($childNode->nodeName, $allowed_tags)){
+
+						if(!isset($childNode->wholeText) || empty(trim($childNode->wholeText,chr(0xC2).chr(0xA0))) ){
 							// this node is empty
 							$element->removeChild($childNode);
 						} else {
 							$elementHasText = true;
 						}
+					} else {
+						$element->removeChild($childNode);
 					}
 				}
 
