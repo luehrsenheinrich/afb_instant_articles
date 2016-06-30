@@ -228,8 +228,11 @@ class AFBInstantArticles_Filters {
 					$childNode = $element->childNodes->item($n);
 
 					if(in_array($childNode->nodeName, $allowed_tags)){
+
 						// If the child node has text, check if it is empty text
-						if(!isset($childNode->wholeText) || empty(trim($childNode->wholeText,chr(0xC2).chr(0xA0))) ){
+						// isset($childNode->childNodes->length) || !isset($childNode->nodeValue) || trim($childNode->nodeValue,chr(0xC2).chr(0xA0)) == false
+
+						if( (!isset($childNode->childNodes) || $childNode->childNodes->length == 0) && (isset($childNode->nodeValue) && !trim($childNode->nodeValue,chr(0xC2).chr(0xA0)))){
 							// this node is empty
 							$element->removeChild($childNode);
 						} else {
@@ -255,6 +258,7 @@ class AFBInstantArticles_Filters {
 
 		return $DOMDocument;
 	}
+
 
 	/**
 	 * Find and replace all WordPress images.
