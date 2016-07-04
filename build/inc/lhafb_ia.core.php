@@ -97,8 +97,8 @@ class AFBInstantArticles {
 	 */
 	public function do_header(){
 		if(get_option("afbia_page_id")){
-			$afbia_page_id = get_option("afbia_page_id");
-			echo "<!-- Pages parameter from allfacebook.de Instant Articles -->";
+			$afbia_page_id = wp_kses(get_option("afbia_page_id"));
+			echo "<!-- afb Instant Articles -->";
 			echo "<meta property=\"fb:pages\" content=\"$afbia_page_id\" />";
 		}
 	}
