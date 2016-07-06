@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: allfacebook Instant Articles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-17 11:25+0100\n"
-"PO-Revision-Date: 2016-05-18 10:20+0200\n"
+"POT-Creation-Date: 2016-07-06 15:53+0100\n"
+"PO-Revision-Date: 2016-07-06 15:56+0100\n"
 "Last-Translator: Jens Wiese <jens_wiese@gmx.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -18,10 +18,10 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: inc/lhafb_ia.filters.php:442
+#: inc/lhafb_ia.filters.php:449
 msgid ""
 "<b>ERROR</b>: The \"allfacebook Instant Articles\" plugin needs the "
 "\"DOMDocument\" PHP extension to run properly!"
@@ -29,8 +29,8 @@ msgstr ""
 "<b>FEHLER</b>: Das \"allfacebook Instant Articles\" Plugin benötigt die "
 "\"DOMDocument\" PHP Erweiterung zum Betrieb!"
 
-#: inc/lhafb_ia.metaboxes.php:38 inc/lhafb_ia.settings.php:161
-#: inc/lhafb_ia.settings.php:175
+#: inc/lhafb_ia.metaboxes.php:38 inc/lhafb_ia.settings.php:205
+#: inc/lhafb_ia.settings.php:219
 msgid "Instant Articles"
 msgstr ""
 
@@ -130,47 +130,86 @@ msgid "Ads"
 msgstr "Anzeigen"
 
 #: inc/lhafb_ia.settings.php:145
-msgid ""
-"COMING SOON - Ads for Facebook Instant Articles will be implemented shortly."
+msgid "Facebook Audience Network for Facebook Instant Articles - BETA"
 msgstr ""
-"IN KÜRZE - Anzeigen für Facebook Instant Articles werden in Kürze "
-"hinzugefügt."
 
-#: inc/lhafb_ia.settings.php:175 inc/lhafb_ia.settings.php:194
+#: inc/lhafb_ia.settings.php:151
+msgid "Audience Network"
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:154
+msgid "Activate Audience Network for Instant Articles."
+msgstr "Aktiviere Audience Network für Instant Articles."
+
+#: inc/lhafb_ia.settings.php:162
+msgid "Placement ID 1"
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:165
+msgid "Audience Network Placement ID 1"
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:173
+msgid "Placement ID 2"
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:176
+msgid "Audience Network Placement ID 2"
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:184
+msgid "Placement ID 3"
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:187
+msgid "Audience Network Placement ID 3"
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:219 inc/lhafb_ia.settings.php:238
 msgid "Show feed"
 msgstr "Feed zeigen"
 
-#: inc/lhafb_ia.settings.php:183
+#: inc/lhafb_ia.settings.php:227
 msgid "Save Changes"
 msgstr "Änderungen speichern"
 
-#: inc/lhafb_ia.settings.php:194
+#: inc/lhafb_ia.settings.php:238
 msgid "<span class='hidden-xs'>allfacebook.de</span> Instant Articles"
 msgstr ""
 
-#: inc/lhafb_ia.settings.php:266
+#: inc/lhafb_ia.settings.php:310
 msgid "Help"
 msgstr "Hilfe"
 
-#: inc/lhafb_ia.settings.php:270
+#: inc/lhafb_ia.settings.php:314
+#, fuzzy
 msgid ""
 "Made with <i class=\"fa fa-heart\"></i> in Munich by <a href=\"http://www."
-"luehrsen-heinrich.de\" target=\"_blank\">Luehrsen // Heinrich</a> and many "
-"<a href=\"https://github.com/luehrsenheinrich/afb_instant_articles/graphs/"
-"contributors\" target=\"_blank\">GitHub contributors</a>"
+"luehrsen-heinrich.de/?utm_source=wp-plugin&utm_medium=afbia-settings-"
+"footer&utm_campaign=settings-footer-link\" target=\"_blank\">Luehrsen // "
+"Heinrich</a> and many <a href=\"https://github.com/luehrsenheinrich/"
+"afb_instant_articles/graphs/contributors\" target=\"_blank\">GitHub "
+"contributors</a>"
 msgstr ""
 "Erstellt mit <i class=\"fa fa-heart\"></i> in München von <a href=\"http://"
 "www.luehrsen-heinrich.de\" target=\"_blank\">Luehrsen // Heinrich</a> und "
 "vielen <a href=\"https://github.com/luehrsenheinrich/afb_instant_articles/"
 "graphs/contributors\" target=\"_blank\">GitHub Unterstützern</a>"
 
-#: inc/lhafb_ia.settings.php:290
+#: inc/lhafb_ia.settings.php:334
 msgid "Successfully updated."
 msgstr "Erfolgreich aktualisiert."
 
-#: inc/lhafb_ia.settings.php:457
+#: inc/lhafb_ia.settings.php:501
 msgid "Not selected"
 msgstr "Nicht ausgewählt"
+
+#~ msgid ""
+#~ "COMING SOON - Ads for Facebook Instant Articles will be implemented "
+#~ "shortly."
+#~ msgstr ""
+#~ "IN KÜRZE - Anzeigen für Facebook Instant Articles werden in Kürze "
+#~ "hinzugefügt."
 
 #~ msgid ""
 #~ "This plugin lets your WordPress display instant articles directly on your "
