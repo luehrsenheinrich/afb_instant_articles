@@ -138,13 +138,57 @@ class lhafb_theme_settings {
 		// Ad Settings
 		//
 		$args = array(
-			'id'			=> "adbia_ad_settings",
+			'id'			=> "afbia_ad_settings",
 			'icon'			=> "money",
 			'title'			=> __("Ads", 'afb'),
 			'page'			=> "afbia_settings_page",
-			'description'	=> __("COMING SOON - Ads for Facebook Instant Articles will be implemented shortly.", 'afb'),
+			'description'	=> __("Facebook Audience Network for Facebook Instant Articles - BETA", 'afb'),
 		);
 		$facebook_settings = new afbia_settings_section($args);
+
+		$args = array(
+			'id'				=> 'afbia_audience_active',
+			'title'				=> __("Audience Network", 'afb'),
+			'page'				=> 'afbia_settings_page',
+			'section'			=> 'afbia_ad_settings',
+			'description'		=> __("Activate Audience Network for Instant Articles.", 'afb'),
+			'type'				=> 'checkbox', // text, textarea, password, checkbox
+			'option_group'		=> "settings_page_afbia_settings_page",
+		);
+		$afbia_comment_media = new afbia_settings_field($args);
+
+		$args = array(
+			'id'				=> 'afbia_audienceplacement_1',
+			'title'				=> __("Placement ID 1", 'afb'),
+			'page'				=> 'afbia_settings_page',
+			'section'			=> 'afbia_ad_settings',
+			'description'		=> __("Audience Network Placement ID 1", 'afb'),
+			'type'				=> 'text', // text, textarea, password, checkbox
+			'option_group'		=> "settings_page_afbia_settings_page",
+		);
+		$afbia_comment_media = new afbia_settings_field($args);
+
+		$args = array(
+			'id'				=> 'afbia_audienceplacement_2',
+			'title'				=> __("Placement ID 2", 'afb'),
+			'page'				=> 'afbia_settings_page',
+			'section'			=> 'afbia_ad_settings',
+			'description'		=> __("Audience Network Placement ID 2", 'afb'),
+			'type'				=> 'text', // text, textarea, password, checkbox
+			'option_group'		=> "settings_page_afbia_settings_page",
+		);
+		$afbia_comment_media = new afbia_settings_field($args);
+
+		$args = array(
+			'id'				=> 'afbia_audienceplacement_3',
+			'title'				=> __("Placement ID 3", 'afb'),
+			'page'				=> 'afbia_settings_page',
+			'section'			=> 'afbia_ad_settings',
+			'description'		=> __("Audience Network Placement ID 3", 'afb'),
+			'type'				=> 'text', // text, textarea, password, checkbox
+			'option_group'		=> "settings_page_afbia_settings_page",
+		);
+		$afbia_comment_media = new afbia_settings_field($args);
 	}
 
 	//

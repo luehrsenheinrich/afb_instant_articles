@@ -20,12 +20,38 @@ if(defined("DEV_IA")){
 	<link rel="canonical" href="<?php echo $permalink; ?>">
 	<meta property="op:markup_version" content="v1.0">
 	<?php if(get_option('afbia_articles_style')): ?>
+		<!-- use different style -->
 		<meta property="fb:article_style" content="<?php echo get_option('afbia_articles_style'); ?>">
+	<?php endif; ?>
+	<?php if(get_option('afbia_audience_active')): ?>
+		<!-- use facebook audeince network automatic placement -->
+		<meta property="fb:use_automatic_ad_placement" content="true">
 	<?php endif; ?>
 </head>
 <body>
 	<article>
 		<header>
+			<?php if(get_option('afbia_audience_active')): ?>
+			<!-- Audience network placements -->
+			<section class="op-ad-template">
+				<?php if(get_option('afbia_audienceplacement_1')): ?>
+					<!-- First ad is default ad, will be reused if not enought ad placements available -->
+					<figure class="op-ad op-ad-default">
+						<iframe width="300" height="250" style="border:0; margin:0;" src="https://www.facebook.com/adnw_request?placement=<?php echo get_option('afbia_audienceplacement_1'); ?>&adtype=banner300x250"></iframe>
+					</figure>
+				<?php endif; ?>
+				<?php if(get_option('afbia_audienceplacement_2')): ?>
+					<figure class="op-ad">
+						<iframe width="300" height="250" style="border:0; margin:0;" src="https://www.facebook.com/adnw_request?placement=<?php echo get_option('afbia_audienceplacement_2'); ?>&adtype=banner300x250"></iframe>
+					</figure>
+				<?php endif; ?>
+				<?php if(get_option('afbia_audienceplacement_3')): ?>
+					<figure class="op-ad">
+						<iframe width="300" height="250" style="border:0; margin:0;" src="https://www.facebook.com/adnw_request?placement=<?php echo get_option('afbia_audienceplacement_3'); ?>&adtype=banner300x250"></iframe>
+					</figure>
+				<?php endif; ?>	
+			</section>
+			<?php endif; ?>
 			<!-- The title and subtitle shown in your Instant Article -->
 			<h1><?php the_title(); ?></h1>
 
