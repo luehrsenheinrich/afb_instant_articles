@@ -63,12 +63,12 @@ function afb_instant_articles($object, $box){
 	$afbia_o = (array) get_post_meta($object->ID, "_instant_article_options", true);
 
 	?>
-		<h4><?php _e("Exclude from Instant Articles", "afb"); ?></h4>
+		<h4><?php _e("Exclude from Instant Articles", 'allfacebook-instant-articles'); ?></h4>
 		<p>
-			<label><input type="checkbox" name="instant_article_options[exclude_post]" value="exclude" <?php echo isset($afbia_o['exclude_post']) ? ' checked' : ''; ?>> <?php _e("Don't send to facebook", "afb"); ?></label>
+			<label><input type="checkbox" name="instant_article_options[exclude_post]" value="exclude" <?php echo isset($afbia_o['exclude_post']) ? ' checked' : ''; ?>> <?php _e("Don't send to facebook", 'allfacebook-instant-articles'); ?></label>
 		</p>
 
-		<h4><?php _e("Credits", "afb"); ?></h4>
+		<h4><?php _e("Credits", 'allfacebook-instant-articles'); ?></h4>
 		<p>
 			<textarea name="instant_article_options[credits]" class="widefat"><?php echo isset($afbia_o['credits']) ? $afbia_o['credits'] : NULL; ?></textarea>
 		</p>

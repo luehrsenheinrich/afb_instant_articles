@@ -446,7 +446,7 @@ class AFBInstantArticles_Filters {
 	public function dom_document_warning(){
 		?>
 	    <div class="notice notice-error is-dismissible">
-	        <p><?php _e( '<b>ERROR</b>: The "allfacebook Instant Articles" plugin needs the "DOMDocument" PHP extension to run properly!', 'afb' ); ?></p>
+	        <p><?php _e( '<b>ERROR</b>: The "allfacebook Instant Articles" plugin needs the "DOMDocument" PHP extension to run properly!', 'allfacebook-instant-articles' ); ?></p>
 	    </div>
 	    <?php
 	}

@@ -149,7 +149,7 @@ class AFBInstantArticles {
 	 * @return void
 	 */
 	function load_textdomain() {
-		load_plugin_textdomain( 'afb', false, dirname( plugin_basename( LHAFB__PLUGIN_FILE ) ) . '/lang/' );
+		load_plugin_textdomain( 'allfacebook-instant-articles', false, dirname( plugin_basename( LHAFB__PLUGIN_FILE ) ) . '/lang/' );
 	}
 
 	/**

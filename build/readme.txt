@@ -52,6 +52,9 @@ Keep calm. Development of this plugin will continue and we will add more feature
 
 == Changelog ==
 
+= 0.8.1 =
+- Changed the language text domain to 'allfacebook-instant-articles' to enable GlotPress and translate.wordpress.org
+
 = 0.8.0 =
 - Beta Version of Facebook Audience Network for Instant Articles. Please handle with care!
 

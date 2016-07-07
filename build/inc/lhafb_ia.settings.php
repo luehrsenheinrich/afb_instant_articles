@@ -36,19 +36,19 @@ class lhafb_theme_settings {
 		$args = array(
 			'id'			=> "facebook_settings",
 			'icon'			=> "facebook-square",
-			'title'			=> __("Facebook", 'afb'),
+			'title'			=> __("Facebook", 'allfacebook-instant-articles'),
 			'page'			=> "afbia_settings_page",
-			'description'	=> __("Settings that require input from Facebook.", 'afb'),
+			'description'	=> __("Settings that require input from Facebook.", 'allfacebook-instant-articles'),
 		);
 		$facebook_settings = new afbia_settings_section($args);
 
 
 		$args = array(
 			'id'				=> 'afbia_page_id',
-			'title'				=> __("Page ID", 'afb'),
+			'title'				=> __("Page ID", 'allfacebook-instant-articles'),
 			'page'				=> 'afbia_settings_page',
 			'section'			=> 'facebook_settings',
-			'description'		=> __("The page ID of the facebook page you want to add Instant Articles to.", 'afb'),
+			'description'		=> __("The page ID of the facebook page you want to add Instant Articles to.", 'allfacebook-instant-articles'),
 			'type'				=> 'text', // text, textarea, password, checkbox
 			'option_group'		=> "settings_page_afbia_settings_page",
 		);
@@ -61,18 +61,18 @@ class lhafb_theme_settings {
 		$args = array(
 			'id'			=> "feed_settings",
 			'icon'			=> "feed",
-			'title'			=> __("Feed", 'afb'),
+			'title'			=> __("Feed", 'allfacebook-instant-articles'),
 			'page'			=> "afbia_settings_page",
-			'description'	=> __("Settings that modify parts of the Instant Articles feed.", 'afb'),
+			'description'	=> __("Settings that modify parts of the Instant Articles feed.", 'allfacebook-instant-articles'),
 		);
 		$facebook_settings = new afbia_settings_section($args);
 
 		$args = array(
 			'id'				=> 'afbia_copyright',
-			'title'				=> __("Copyright", 'afb'),
+			'title'				=> __("Copyright", 'allfacebook-instant-articles'),
 			'page'				=> 'afbia_settings_page',
 			'section'			=> 'feed_settings',
-			'description'		=> __("The standard copyright details for your instant articles.", 'afb'),
+			'description'		=> __("The standard copyright details for your instant articles.", 'allfacebook-instant-articles'),
 			'type'				=> 'textarea', // text, textarea, password, checkbox
 			'option_group'		=> "settings_page_afbia_settings_page",
 		);
@@ -80,10 +80,10 @@ class lhafb_theme_settings {
 
 		$args = array(
 			'id'				=> 'afbia_tracking',
-			'title'				=> __("Tracking", 'afb'),
+			'title'				=> __("Tracking", 'allfacebook-instant-articles'),
 			'page'				=> 'afbia_settings_page',
 			'section'			=> 'feed_settings',
-			'description'		=> __("The tracking code, that will be embedded in your instant articles. See <a href=\"https://developers.facebook.com/docs/instant-articles/reference/analytics\" target=\"_blank\">this link</a> for more information.", 'afb'),
+			'description'		=> __("The tracking code, that will be embedded in your instant articles. See <a href=\"https://developers.facebook.com/docs/instant-articles/reference/analytics\" target=\"_blank\">this link</a> for more information.", 'allfacebook-instant-articles'),
 			'type'				=> 'textarea', // text, textarea, password, checkbox
 			'option_group'		=> "settings_page_afbia_settings_page",
 		);
@@ -91,10 +91,10 @@ class lhafb_theme_settings {
 
 		$args = array(
 			'id'				=> 'afbia_like_media',
-			'title'				=> __("Like Media", 'afb'),
+			'title'				=> __("Like Media", 'allfacebook-instant-articles'),
 			'page'				=> 'afbia_settings_page',
 			'section'			=> 'feed_settings',
-			'description'		=> __("Allow users to like the media you embedded.", 'afb'),
+			'description'		=> __("Allow users to like the media you embedded.", 'allfacebook-instant-articles'),
 			'type'				=> 'checkbox', // text, textarea, password, checkbox
 			'option_group'		=> "settings_page_afbia_settings_page",
 		);
@@ -102,10 +102,10 @@ class lhafb_theme_settings {
 
 		$args = array(
 			'id'				=> 'afbia_comment_media',
-			'title'				=> __("Comment Media", 'afb'),
+			'title'				=> __("Comment Media", 'allfacebook-instant-articles'),
 			'page'				=> 'afbia_settings_page',
 			'section'			=> 'feed_settings',
-			'description'		=> __("Allow users to comment on the media you embedded.", 'afb'),
+			'description'		=> __("Allow users to comment on the media you embedded.", 'allfacebook-instant-articles'),
 			'type'				=> 'checkbox', // text, textarea, password, checkbox
 			'option_group'		=> "settings_page_afbia_settings_page",
 		);
@@ -114,10 +114,10 @@ class lhafb_theme_settings {
 
 		$args = array(
 			'id'				=> 'afbia_articles_num',
-			'title'				=> __("Number of Articles", 'afb'),
+			'title'				=> __("Number of Articles", 'allfacebook-instant-articles'),
 			'page'				=> 'afbia_settings_page',
 			'section'			=> 'feed_settings',
-			'description'		=> __("The number of articles, that will be rendered on the feed.", 'afb'),
+			'description'		=> __("The number of articles, that will be rendered on the feed.", 'allfacebook-instant-articles'),
 			'type'				=> 'text', // text, textarea, password, checkbox
 			'option_group'		=> "settings_page_afbia_settings_page",
 		);
@@ -126,10 +126,10 @@ class lhafb_theme_settings {
 
 		$args = array(
 			'id'				=> 'afbia_articles_style',
-			'title'				=> __("Style of Articles", 'afb'),
+			'title'				=> __("Style of Articles", 'allfacebook-instant-articles'),
 			'page'				=> 'afbia_settings_page',
 			'section'			=> 'feed_settings',
-			'description'		=> __("Style for articles if different from default", 'afb'),
+			'description'		=> __("Style for articles if different from default", 'allfacebook-instant-articles'),
 			'type'				=> 'text', // text, textarea, password, checkbox
 			'option_group'		=> "settings_page_afbia_settings_page",
 		);
@@ -142,18 +142,18 @@ class lhafb_theme_settings {
 		$args = array(
 			'id'			=> "afbia_ad_settings",
 			'icon'			=> "money",
-			'title'			=> __("Ads", 'afb'),
+			'title'			=> __("Ads", 'allfacebook-instant-articles'),
 			'page'			=> "afbia_settings_page",
-			'description'	=> __("Facebook Audience Network for Instant Articles - BETA - <a href=\"https://developers.facebook.com/docs/instant-articles/ads#audience-network\" target=\"_blank\">More Information</a>", 'afb'),
+			'description'	=> __("Facebook Audience Network for Instant Articles - BETA - <a href=\"https://developers.facebook.com/docs/instant-articles/ads#audience-network\" target=\"_blank\">More Information</a>", 'allfacebook-instant-articles'),
 		);
 		$facebook_settings = new afbia_settings_section($args);
 
 		$args = array(
 			'id'				=> 'afbia_audience_active',
-			'title'				=> __("Audience Network", 'afb'),
+			'title'				=> __("Audience Network", 'allfacebook-instant-articles'),
 			'page'				=> 'afbia_settings_page',
 			'section'			=> 'afbia_ad_settings',
-			'description'		=> __("Activate Audience Network for Instant Articles.", 'afb'),
+			'description'		=> __("Activate Audience Network for Instant Articles.", 'allfacebook-instant-articles'),
 			'type'				=> 'checkbox', // text, textarea, password, checkbox
 			'option_group'		=> "settings_page_afbia_settings_page",
 		);
@@ -161,10 +161,10 @@ class lhafb_theme_settings {
 
 		$args = array(
 			'id'				=> 'afbia_audienceplacement_1',
-			'title'				=> __("Placement ID 1", 'afb'),
+			'title'				=> __("Placement ID 1", 'allfacebook-instant-articles'),
 			'page'				=> 'afbia_settings_page',
 			'section'			=> 'afbia_ad_settings',
-			'description'		=> __("Audience Network Placement ID 1", 'afb'),
+			'description'		=> __("Audience Network Placement ID 1", 'allfacebook-instant-articles'),
 			'type'				=> 'text', // text, textarea, password, checkbox
 			'option_group'		=> "settings_page_afbia_settings_page",
 		);
@@ -172,10 +172,10 @@ class lhafb_theme_settings {
 
 		$args = array(
 			'id'				=> 'afbia_audienceplacement_2',
-			'title'				=> __("Placement ID 2", 'afb'),
+			'title'				=> __("Placement ID 2", 'allfacebook-instant-articles'),
 			'page'				=> 'afbia_settings_page',
 			'section'			=> 'afbia_ad_settings',
-			'description'		=> __("Audience Network Placement ID 2", 'afb'),
+			'description'		=> __("Audience Network Placement ID 2", 'allfacebook-instant-articles'),
 			'type'				=> 'text', // text, textarea, password, checkbox
 			'option_group'		=> "settings_page_afbia_settings_page",
 		);
@@ -183,10 +183,10 @@ class lhafb_theme_settings {
 
 		$args = array(
 			'id'				=> 'afbia_audienceplacement_3',
-			'title'				=> __("Placement ID 3", 'afb'),
+			'title'				=> __("Placement ID 3", 'allfacebook-instant-articles'),
 			'page'				=> 'afbia_settings_page',
 			'section'			=> 'afbia_ad_settings',
-			'description'		=> __("Audience Network Placement ID 3", 'afb'),
+			'description'		=> __("Audience Network Placement ID 3", 'allfacebook-instant-articles'),
 			'type'				=> 'text', // text, textarea, password, checkbox
 			'option_group'		=> "settings_page_afbia_settings_page",
 		);
@@ -199,9 +199,9 @@ class lhafb_theme_settings {
 		$args = array(
 			'id'			=> "help_page",
 			'icon'			=> "question-circle",
-			'title'			=> __("Help", 'afb'),
+			'title'			=> __("Help", 'allfacebook-instant-articles'),
 			'page'			=> "afbia_settings_page",
-			'description'	=> __("One day this will be a proper help page.", 'afb'),
+			'description'	=> __("One day this will be a proper help page.", 'allfacebook-instant-articles'),
 		);
 		$help_page = new afbia_settings_section($args);
 		/**/
@@ -219,7 +219,7 @@ class lhafb_theme_settings {
 	 * @return void
 	 */
 	public function add_theme_settings_page(){
-		$theme_page = add_options_page( __("Instant Articles", "afb"), __("Instant Articles", "afb"), 'switch_themes', 'afbia_settings_page', array($this, 'lh_settings_page_v2') );
+		$theme_page = add_options_page( __("Instant Articles", 'allfacebook-instant-articles'), __("Instant Articles", 'allfacebook-instant-articles'), 'switch_themes', 'afbia_settings_page', array($this, 'lh_settings_page_v2') );
 
 	}
 
@@ -233,7 +233,7 @@ class lhafb_theme_settings {
 		?>
 		<div class="wrap">
 			<div class="icon32" id="icon-options-general"></div>
-			<h2><?php _e("Instant Articles", 'afb'); ?> <a href="<?php echo add_query_arg(array("feed" => "instant_articles"), trailingslashit(get_home_url())); ?>" class="button-primary" target="_blank"> <?php _e("Show feed", "afb"); ?> </a></h2>
+			<h2><?php _e("Instant Articles", 'allfacebook-instant-articles'); ?> <a href="<?php echo add_query_arg(array("feed" => "instant_articles"), trailingslashit(get_home_url())); ?>" class="button-primary" target="_blank"> <?php _e("Show feed", 'allfacebook-instant-articles'); ?> </a></h2>
 
 			<form action="options.php" method="post">
 				<?php
@@ -252,7 +252,7 @@ class lhafb_theme_settings {
 	public function lh_settings_page_v2(){
 		?>
 		<div class="wrap afbia-settings-page">
-			<h2><?php _e("<span class='hidden-xs'>allfacebook.de</span> Instant Articles", 'afb'); ?> <a href="<?php echo add_query_arg(array("feed" => "instant_articles"), trailingslashit(get_home_url())); ?>" class="page-title-action" target="_blank"> <?php _e("Show feed", "afb"); ?> </a></h2>
+			<h2><?php _e("<span class='hidden-xs'>allfacebook.de</span> Instant Articles", 'allfacebook-instant-articles'); ?> <a href="<?php echo add_query_arg(array("feed" => "instant_articles"), trailingslashit(get_home_url())); ?>" class="page-title-action" target="_blank"> <?php _e("Show feed", 'allfacebook-instant-articles'); ?> </a></h2>
 			<form action="options.php" method="post">
 			<?php
 				global $wp_settings_sections, $wp_settings_fields;
@@ -327,11 +327,11 @@ class lhafb_theme_settings {
 					<div class="col-xs-12 col-sm-6">
 						<a href="https://github.com/luehrsenheinrich/afb_instant_articles/wiki" target="_blank">
 							<i class="fa fa-question-circle"></i>
-							<?php _e("Help", "afb"); ?>
+							<?php _e("Help", 'allfacebook-instant-articles'); ?>
 						</a>
 					</div>
 					<div class="col-xs-12 col-sm-6 credits">
-						<?php _e('Made with <i class="fa fa-heart"></i> in Munich by <a href="http://www.luehrsen-heinrich.de/?utm_source=wp-plugin&utm_medium=afbia-settings-footer&utm_campaign=settings-footer-link" target="_blank">Luehrsen // Heinrich</a> and many <a href="https://github.com/luehrsenheinrich/afb_instant_articles/graphs/contributors" target="_blank">GitHub contributors</a>', 'afb'); ?>
+						<?php _e('Made with <i class="fa fa-heart"></i> in Munich by <a href="http://www.luehrsen-heinrich.de/?utm_source=wp-plugin&utm_medium=afbia-settings-footer&utm_campaign=settings-footer-link" target="_blank">Luehrsen // Heinrich</a> and many <a href="https://github.com/luehrsenheinrich/afb_instant_articles/graphs/contributors" target="_blank">GitHub contributors</a>', 'allfacebook-instant-articles'); ?>
 					</div>
 				</div>
 			</div>
@@ -357,7 +357,7 @@ class lhafb_theme_settings {
 		}
 
 		if(isset($_GET['settings-updated']) && $_GET['settings-updated'] == true){
-			add_settings_error('afbia_settings_page', 'afbia_settings_page', __("Successfully updated.", 'afb') , 'updated');
+			add_settings_error('afbia_settings_page', 'afbia_settings_page', __("Successfully updated.", 'allfacebook-instant-articles') , 'updated');
 		}
 
 		settings_errors('afbia_settings_page');
@@ -524,7 +524,7 @@ class afbia_settings_field {
 					"name"				=> $this->args['id'],
 					"id"				=> $this->args['id'],
 					"selected"			=> get_option($this->args['id']),
-					"show_option_none"	=> __("Not selected", 'afb'),
+					"show_option_none"	=> __("Not selected", 'allfacebook-instant-articles'),
 				);
 				wp_dropdown_categories( $args ); ?>
  				<p class="description">

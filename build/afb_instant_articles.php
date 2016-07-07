@@ -4,7 +4,7 @@
  */
 /*
 Plugin Name: <##= pkg.title ##>
-Plugin URI:
+Plugin URI: https://wordpress.org/plugins/allfacebook-instant-articles/
 Description: <##= pkg.description ##>
 Author: Luehrsen // Heinrich
 Author URI: http://www.luehrsen-heinrich.de
@@ -13,7 +13,7 @@ License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: facebook, allfacebook, instant articles, articles
 Domain Path: /lang
-Text Domain: afb
+Text Domain: allfacebook-instant-articles
 */
 
 // Make sure we don't expose any info if called directly
