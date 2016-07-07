@@ -14,9 +14,11 @@ class lhafb_theme_settings {
 	 */
 	public function __construct(){
 		// Actions
-		add_action(	'admin_menu',		array($this, 'add_theme_settings_page') );
-		add_action( 'admin_notices', 	array($this, 'theme_settings_admin_notices') );
-		add_action( 'admin_init',		array($this, 'register_settings') );
+		add_action(	'admin_menu',						array($this, 'add_theme_settings_page') );
+		add_action( 'admin_notices', 					array($this, 'theme_settings_admin_notices') );
+		add_action( 'admin_init',						array($this, 'register_settings') );
+
+		add_action( 'afb_settings_section_help_page',	array($this, 'help_page') );
 	}
 
 	/**
@@ -142,7 +144,7 @@ class lhafb_theme_settings {
 			'icon'			=> "money",
 			'title'			=> __("Ads", 'afb'),
 			'page'			=> "afbia_settings_page",
-			'description'	=> __("Facebook Audience Network for Facebook Instant Articles - BETA", 'afb'),
+			'description'	=> __("Facebook Audience Network for Instant Articles - BETA - <a href=\"https://developers.facebook.com/docs/instant-articles/ads#audience-network\" target=\"_blank\">More Information</a>", 'afb'),
 		);
 		$facebook_settings = new afbia_settings_section($args);
 
@@ -189,6 +191,21 @@ class lhafb_theme_settings {
 			'option_group'		=> "settings_page_afbia_settings_page",
 		);
 		$afbia_comment_media = new afbia_settings_field($args);
+
+		//
+		// Help Page
+		//
+		/*
+		$args = array(
+			'id'			=> "help_page",
+			'icon'			=> "question-circle",
+			'title'			=> __("Help", 'afb'),
+			'page'			=> "afbia_settings_page",
+			'description'	=> __("One day this will be a proper help page.", 'afb'),
+		);
+		$help_page = new afbia_settings_section($args);
+		/**/
+
 	}
 
 	//
@@ -280,12 +297,15 @@ class lhafb_theme_settings {
 										echo "<h2>$icon {$section['title']}</h2>\n";
 									if ( $section['callback'] )
 										call_user_func( $section['callback'], $section );
+
+									do_action("afb_settings_section_" . $section['id']);
+
 									if ( ! isset( $wp_settings_fields ) || !isset( $wp_settings_fields[$page] ) || !isset( $wp_settings_fields[$page][$section['id']] ) ) {
 										echo '</div>';
 										continue;
 									}
 									echo '<table class="form-table">';
-									do_settings_fields( $page, $section['id'] );
+										do_settings_fields( $page, $section['id'] );
 									echo '</table>';
 									echo '
 				<p class="submit">
@@ -316,6 +336,12 @@ class lhafb_theme_settings {
 				</div>
 			</div>
 		</div><!-- wrap -->
+		<?php
+	}
+
+	public function help_page(){
+		?>
+			This is the preparation of a proper help page.
 		<?php
 	}
 
