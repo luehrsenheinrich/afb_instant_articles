@@ -159,10 +159,10 @@ class AFBInstantArticles {
 	 * @return void
 	 */
 	public function admin_scripts(){
-		wp_register_style( 'afbia_admin_style', LHAFB__PLUGIN_URL . 'admin/admin.css', false, '<##= pkg.version ##>' );
+		wp_register_style( 'afbia_admin_style', LHAFB__PLUGIN_URL . 'admin/admin.css', false, '0.8.1' );
 		wp_enqueue_style( 'afbia_admin_style' );
 
-		wp_enqueue_script("afbia_admin_script", LHAFB__PLUGIN_URL . 'admin/admin.min.js', array("jquery"), '<##= pkg.version ##>', true);
+		wp_enqueue_script("afbia_admin_script", LHAFB__PLUGIN_URL . 'admin/admin.min.js', array("jquery"), '0.8.1', true);
 	}
 
 
