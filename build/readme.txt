@@ -17,8 +17,21 @@ Instant Articles is a new technology by Facebook that will load your webpage con
 
 You can learn more about Instant Articles on the official [Facebook Developer Documentation](https://developers.facebook.com/docs/instant-articles).
 
-Instant Articles are available for all Publishers since [Facebook f8 Developer Conference](http://fbf8.com) in April. [Please signup for the Instant Article Feature on Facebook](https://www.facebook.com/instant_articles/signup) before you install the plugin.
+Instant Articles are available for all Publishers since [Facebook f8 Developer Conference](http://fbf8.com) in April 2016. [Please signup for the Instant Article Feature on Facebook](https://www.facebook.com/instant_articles/signup) before you install the plugin.
 
+### <##= pkg.title ##> Features
+* Easy to use Instant Article RSS Feed Creation
+* Per Article Credits Field
+* Global Copyright Information
+* Jetpack Tracking
+* Easy adjustable 3rd Party Tracking
+* Global Style Selection
+* Audience Network Support (Beta)
+* RTL Publishing Support
+* Regular Plugin Updates
+
+
+### Get involved
 If you want to participate in the development [head over to GitHub](https://github.com/luehrsenheinrich/afb_instant_articles)!
 
 This plugin is brought to you by the awesome folks at [Luehrsen // Heinrich](http://www.luehrsen-heinrich.de).
@@ -46,6 +59,7 @@ Please use the Yoast SEO Plugin to add this additional profile information to yo
 
 ###Feature XYZ is not available! Why?
 Keep calm. Development of this plugin will continue and we will add more features in the future!
+If you are missing something special, please open a support ticket on wordpress.org.
 
 == Screenshots ==
 
