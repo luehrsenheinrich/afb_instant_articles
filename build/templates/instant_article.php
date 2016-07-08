@@ -13,7 +13,7 @@ if(defined("DEV_IA")){
 	$permalink = get_the_permalink();
 }
 ?>
-<html lang="en" prefix="op: http://media.facebook.com/op#">
+<html lang="en" <?php if(get_option('afbia_rtl_publishing')): ?>dir="rtl" <?php endif; ?>prefix="op: http://media.facebook.com/op#">
 <head>
 	<meta charset="utf-8">
 	<!-- URL of the web version of this article -->

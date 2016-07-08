@@ -111,6 +111,17 @@ class lhafb_theme_settings {
 		);
 		$afbia_comment_media = new afbia_settings_field($args);
 
+		$args = array(
+			'id'				=> 'afbia_rtl_publishing',
+			'title'				=> __("RTL Publishing", 'allfacebook-instant-articles'),
+			'page'				=> 'afbia_settings_page',
+			'section'			=> 'feed_settings',
+			'description'		=> __("Allows Right to Left Publishing for Arabic, Hebrew, Persian and other languages", 'allfacebook-instant-articles'),
+			'type'				=> 'checkbox', // text, textarea, password, checkbox
+			'option_group'		=> "settings_page_afbia_settings_page",
+		);
+		$afbia_comment_media = new afbia_settings_field($args);
+
 
 		$args = array(
 			'id'				=> 'afbia_articles_num',
