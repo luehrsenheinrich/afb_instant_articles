@@ -19,6 +19,7 @@ if(defined("DEV_IA")){
 	<!-- URL of the web version of this article -->
 	<link rel="canonical" href="<?php echo $permalink; ?>">
 	<meta property="op:markup_version" content="v1.0">
+	<meta property="op:generator:application" content=“allfacebook-instant-article”/>
 	<?php if(get_option('afbia_articles_style')): ?>
 		<!-- use different style -->
 		<meta property="fb:article_style" content="<?php echo get_option('afbia_articles_style'); ?>">
