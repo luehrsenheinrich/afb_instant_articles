@@ -19,7 +19,8 @@ if(defined("DEV_IA")){
 	<!-- URL of the web version of this article -->
 	<link rel="canonical" href="<?php echo $permalink; ?>">
 	<meta property="op:markup_version" content="v1.0">
-	<meta property="op:generator:application" content=“allfacebook-instant-article”/>
+	<meta property="op:generator:application" content="<?php echo LHAFB__SLUG; ?>"/>
+	<meta property="op:generator:application:version" content="<?php echo LHAFB__VERSION; ?>"/>
 	<?php if(get_option('afbia_articles_style')): ?>
 		<!-- use different style -->
 		<meta property="fb:article_style" content="<?php echo get_option('afbia_articles_style'); ?>">
@@ -50,7 +51,7 @@ if(defined("DEV_IA")){
 					<figure class="op-ad">
 						<iframe width="300" height="250" style="border:0; margin:0;" src="https://www.facebook.com/adnw_request?placement=<?php echo get_option('afbia_audienceplacement_3'); ?>&adtype=banner300x250"></iframe>
 					</figure>
-				<?php endif; ?>	
+				<?php endif; ?>
 			</section>
 			<?php endif; ?>
 			<!-- The title and subtitle shown in your Instant Article -->

@@ -34,6 +34,8 @@ Instant Articles are available for all Publishers since [Facebook f8 Developer C
 ### Get involved
 If you want to participate in the development [head over to GitHub](https://github.com/luehrsenheinrich/afb_instant_articles)!
 
+If you are good with languages, head over to [WordPress Translations and translate this plugin](https://translate.wordpress.org/projects/wp-plugins/allfacebook-instant-articles) to your language!
+
 This plugin is brought to you by the awesome folks at [Luehrsen // Heinrich](http://www.luehrsen-heinrich.de).
 
 == Installation ==
@@ -65,6 +67,11 @@ If you are missing something special, please open a support ticket on wordpress.
 
 
 == Changelog ==
+
+= 0.8.2 =
+- Added RTL support (thanks Jens)
+- Added new markup for Facebook (thanks Chris)
+- Updated i18n (thanks Jens)
 
 = 0.8.1 =
 - Changed the language text domain to 'allfacebook-instant-articles' to enable GlotPress and translate.wordpress.org
