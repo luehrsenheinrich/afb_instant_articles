@@ -33,7 +33,6 @@ class AFBInstantArticles_Filters {
 
 
 		// Regex and regular "content" filter
-		add_filter( 'afbia_content', 	array($this, 'images') );
 		add_filter( 'afbia_content', 	array($this, 'headlines') );
 		add_filter( 'afbia_content', 	array($this, 'filter_dom') );
 		add_filter( 'afbia_content', 	array($this, 'address_tag') );
@@ -45,6 +44,7 @@ class AFBInstantArticles_Filters {
 		// DOM Document Filter
 		if(class_exists("DOMDocument")){
 			add_filter( 'afbia_content_dom', 	array($this, 'list_items_with_content') );
+			add_filter( 'afbia_content_dom', 	array($this, 'validate_images') );
 			add_filter( 'afbia_content_dom',	array($this, 'resize_images') );
 
 			// The empty P tags class should run last
@@ -64,52 +64,6 @@ class AFBInstantArticles_Filters {
 		$DOMDocument = apply_filters("afbia_content_dom", $DOMDocument);
 
 		$content = $this->get_content_from_DOM($DOMDocument);
-
-		return $content;
-	}
-
-
-	/**
-	 * Format the images for Instant Articles.
-	 *
-	 * @access public
-	 * @param mixed $content
-	 * @return void
-	 */
-	public function images($content){
-
-        $feedback = array();
-        $data_feedback = '';
-
-        if (get_option('afbia_like_media')) {
-            $feedback[] = 'fb:likes';
-        }
-
-        if (get_option('afbia_comment_media')) {
-            $feedback[] = 'fb:comments';
-        }
-
-        if (!empty($feedback)) {
-            $comma_separated = implode(',', $feedback);
-            $data_feedback = ' data-feedback="'.$comma_separated.'"';
-        }
-
-		// The image is directly at the beginning of the <p> Tag
-		/**/
-		$content = preg_replace(
-			'/<p>\s*?((?:<a.*?rel="[\w-\s]*?attachment[\w-\s]*?".*?>)?<img.*?class="[\w-\s]*?wp-image[\w-\s]*?".*?>(?:<\/a>)?)(.*?)<\/p>/',
-			'<figure'.$data_feedback.'>$1</figure><p>$2</p>',
-			$content
-		);
-
-		// The image is directly at the end of the <p> Tag
-		/**/
-		$content = preg_replace(
-			'/<p>(.*?)((?:<a.*?rel="[\w-\s]*?attachment[\w-\s]*?".*?>)?<img.*?class="[\w-\s]*?wp-image[\w-\s]*?".*?>(?:<\/a>)?)\s*?<\/p>/',
-			'<p>$1</p><figure'.$data_feedback.'>$2</figure>',
-			$content
-		);
-		/**/
 
 		return $content;
 	}
@@ -259,6 +213,57 @@ class AFBInstantArticles_Filters {
 		return $DOMDocument;
 	}
 
+
+	/**
+	 * Format the images for Instant Articles.
+	 * For Instant Articles we have to make sure, that every image is wrapped in an
+	 * figure tag and is not part of a paragraph.
+	 *
+	 * @see https://developers.facebook.com/docs/instant-articles/reference/image
+	 * @author Hendrik Luhersen <hl@luehrsen-heinrich.de>
+	 * @since 0.8.3
+	 * @access public
+	 * @param DOMDocument $DOMDocument The DOM representation of the content
+	 * @return DOMDocument $DOMDocument The modified DOM representation of the content
+	 */
+	public function validate_images($DOMDocument){
+
+		// Find all the image items
+		$elements = $DOMDocument->getElementsByTagName( 'img' );
+
+		// Iterate over all the list items
+		for ( $i = 0; $i < $elements->length; ++$i ) {
+			$element = $elements->item( $i );
+
+			if($element->parentNode->nodeName == "figure"){
+				// This element is already wrapped in a figure tag, we only need to make sure it's placed right
+				$element = $element->parentNode;
+			} else {
+				// Wrap this image into a figure tag
+				$figure = $DOMDocument->createElement('figure');
+				$element->parentNode->replaceChild($figure, $element);
+				$figure->appendChild($element);
+
+				// Let's continue working with the figure tag
+				$element = $figure;
+			}
+
+
+			if($element->parentNode->nodeName != "body"){
+				// Let's find the highest container if it does not reside in the body already
+				$highestParent = $element->parentNode;
+
+				while($highestParent->parentNode->nodeName != "body"){
+					$highestParent = $highestParent->parentNode;
+				}
+
+				// Insert the figure tag before the highest parent which is not the body tag
+				$highestParent->parentNode->insertBefore($element, $highestParent);
+			}
+		}
+
+		return $DOMDocument;
+	}
 
 	/**
 	 * Find and replace all WordPress images.
