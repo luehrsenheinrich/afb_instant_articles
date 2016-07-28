@@ -145,12 +145,12 @@ if(defined("DEV_IA")){
 	<footer>
 		<?php if(isset($options['credits']) && !empty($options['credits'])): ?>
 			<!-- Credits for your article -->
-			<aside><?php echo wp_kses_post( esc_attr($options['credits']) ); ?></aside>
+			<aside><?php echo wp_kses_post( $options['credits'] ); ?></aside>
 		<?php endif; ?>
 
 		<?php if(get_option('afbia_copyright')): ?>
 			<!-- Copyright details for your article -->
-			<small><?php echo esc_attr(get_option('afbia_copyright')); ?></small>
+			<small><?php echo wp_kses_post( get_option('afbia_copyright') ); ?></small>
 		<?php endif; ?>
 		<!-- Additional Footer stuff, like related articles could go here: -->
 		<?php do_action( 'afbia_article_footer' ); ?>
