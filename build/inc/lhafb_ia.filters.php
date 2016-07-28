@@ -231,6 +231,17 @@ class AFBInstantArticles_Filters {
 		// Find all the image items
 		$elements = $DOMDocument->getElementsByTagName( 'img' );
 
+		// Are we allowing feedback?
+        if (get_option('afbia_like_media')) {
+            $feedback[] = 'fb:likes';
+        }
+        if (get_option('afbia_comment_media')) {
+            $feedback[] = 'fb:comments';
+        }
+        if (!empty($feedback)) {
+            $comma_separated_feedback = implode(' ', $feedback);
+        }
+
 		// Iterate over all the list items
 		for ( $i = 0; $i < $elements->length; ++$i ) {
 			$element = $elements->item( $i );
@@ -246,6 +257,11 @@ class AFBInstantArticles_Filters {
 
 				// Let's continue working with the figure tag
 				$element = $figure;
+			}
+
+			// Add the feedback option to the figure tag
+			if($comma_separated_feedback){
+				$element->setAttribute("data-feedback", $comma_separated_feedback);
 			}
 
 
