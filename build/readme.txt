@@ -65,6 +65,7 @@ If you are missing something special, please open a support ticket on wordpress.
 
 == Screenshots ==
 
+1. An easy to use backend lets you configure your settings and prepare your feed for publishing on facebook.
 
 == Changelog ==
 
