@@ -24,6 +24,8 @@ if(defined("DEV_IA")){
 	<?php if(get_option('afbia_article_interaction')): ?>
 		<!-- allow like and comments on article level -->
 		<meta property="fb:likes_and_comments" content="enable">
+	<?php else: ?>
+		<meta property="fb:likes_and_comments" content="disable">
 	<?php endif; ?>
 	<?php if(get_option('afbia_articles_style')): ?>
 		<!-- use different style -->
