@@ -21,6 +21,10 @@ if(defined("DEV_IA")){
 	<meta property="op:markup_version" content="v1.0">
 	<meta property="op:generator:application" content="<?php echo LHAFB__SLUG; ?>"/>
 	<meta property="op:generator:application:version" content="<?php echo LHAFB__VERSION; ?>"/>
+	<?php if(get_option('afbia_article_interaction')): ?>
+		<!-- allow like and comments on article level -->
+		<meta property="fb:likes_and_comments" content="enable">
+	<?php endif; ?>
 	<?php if(get_option('afbia_articles_style')): ?>
 		<!-- use different style -->
 		<meta property="fb:article_style" content="<?php echo get_option('afbia_articles_style'); ?>">

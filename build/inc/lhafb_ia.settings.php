@@ -98,7 +98,7 @@ class lhafb_theme_settings {
 			'type'				=> 'checkbox', // text, textarea, password, checkbox
 			'option_group'		=> "settings_page_afbia_settings_page",
 		);
-		$afbia_tracking = new afbia_settings_field($args);
+		$afbia_like_media = new afbia_settings_field($args);
 
 		$args = array(
 			'id'				=> 'afbia_comment_media',
@@ -110,6 +110,17 @@ class lhafb_theme_settings {
 			'option_group'		=> "settings_page_afbia_settings_page",
 		);
 		$afbia_comment_media = new afbia_settings_field($args);
+
+		$args = array(
+			'id'				=> 'afbia_article_interaction',
+			'title'				=> __("Article Interaction", 'allfacebook-instant-articles'),
+			'page'				=> 'afbia_settings_page',
+			'section'			=> 'feed_settings',
+			'description'		=> __("Allow users to like and comment the whole article.", 'allfacebook-instant-articles'),
+			'type'				=> 'checkbox', // text, textarea, password, checkbox
+			'option_group'		=> "settings_page_afbia_settings_page",
+		);
+		$afbia_article_interaction = new afbia_settings_field($args);
 
 		$args = array(
 			'id'				=> 'afbia_rtl_publishing',
