@@ -159,64 +159,6 @@ class lhafb_theme_settings {
 
 
 		//
-		// Ad Settings
-		//
-		$args = array(
-			'id'			=> "afbia_ad_settings",
-			'icon'			=> "money",
-			'title'			=> __("Ads", 'allfacebook-instant-articles'),
-			'page'			=> "afbia_settings_page",
-			'description'	=> __("Facebook Audience Network for Instant Articles - BETA - <a href=\"https://developers.facebook.com/docs/instant-articles/ads#audience-network\" target=\"_blank\">More Information</a>", 'allfacebook-instant-articles'),
-		);
-		$facebook_settings = new afbia_settings_section($args);
-
-		$args = array(
-			'id'				=> 'afbia_audience_active',
-			'title'				=> __("Audience Network", 'allfacebook-instant-articles'),
-			'page'				=> 'afbia_settings_page',
-			'section'			=> 'afbia_ad_settings',
-			'description'		=> __("Activate Audience Network for Instant Articles.", 'allfacebook-instant-articles'),
-			'type'				=> 'checkbox', // text, textarea, password, checkbox
-			'option_group'		=> "settings_page_afbia_settings_page",
-		);
-		$afbia_comment_media = new afbia_settings_field($args);
-
-		$args = array(
-			'id'				=> 'afbia_audienceplacement_1',
-			'title'				=> __("Placement ID 1", 'allfacebook-instant-articles'),
-			'page'				=> 'afbia_settings_page',
-			'section'			=> 'afbia_ad_settings',
-			'description'		=> __("Audience Network Placement ID 1", 'allfacebook-instant-articles'),
-			'type'				=> 'text', // text, textarea, password, checkbox
-			'option_group'		=> "settings_page_afbia_settings_page",
-		);
-		$afbia_comment_media = new afbia_settings_field($args);
-
-		$args = array(
-			'id'				=> 'afbia_audienceplacement_2',
-			'title'				=> __("Placement ID 2", 'allfacebook-instant-articles'),
-			'page'				=> 'afbia_settings_page',
-			'section'			=> 'afbia_ad_settings',
-			'description'		=> __("Audience Network Placement ID 2", 'allfacebook-instant-articles'),
-			'type'				=> 'text', // text, textarea, password, checkbox
-			'option_group'		=> "settings_page_afbia_settings_page",
-		);
-		$afbia_comment_media = new afbia_settings_field($args);
-
-		$args = array(
-			'id'				=> 'afbia_audienceplacement_3',
-			'title'				=> __("Placement ID 3", 'allfacebook-instant-articles'),
-			'page'				=> 'afbia_settings_page',
-			'section'			=> 'afbia_ad_settings',
-			'description'		=> __("Audience Network Placement ID 3", 'allfacebook-instant-articles'),
-			'type'				=> 'text', // text, textarea, password, checkbox
-			'option_group'		=> "settings_page_afbia_settings_page",
-		);
-		$afbia_comment_media = new afbia_settings_field($args);
-
-
-
-		//
 		// Ad Settings Version 2
 		// Added in 0.8.3
 		//
@@ -242,10 +184,10 @@ class lhafb_theme_settings {
 
 		$args = array(
 			'id'				=> 'afbia_audienceplacement',
-			'title'				=> __("Placement ID", 'allfacebook-instant-articles'),
+			'title'				=> __("Placement IDs", 'allfacebook-instant-articles'),
 			'page'				=> 'afbia_settings_page',
 			'section'			=> 'afbia_ad_settings_2',
-			'description'		=> __("Audience Network Placement ID", 'allfacebook-instant-articles'),
+			'description'		=> __("Audience Network Placement IDs", 'allfacebook-instant-articles'),
 			'type'				=> 'text', // text, textarea, password, checkbox
 			'multi'				=> true,
 			'option_group'		=> "settings_page_afbia_settings_page",

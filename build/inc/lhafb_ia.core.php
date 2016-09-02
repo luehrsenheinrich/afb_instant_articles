@@ -38,6 +38,7 @@ class AFBInstantArticles {
 		add_action( 'init', 					array( $this, 'load_textdomain' ) );
 
 		add_action( 'admin_enqueue_scripts',	array( $this, 'admin_scripts') );
+		add_action( 'plugins_loaded', 			array( $this, 'maybe_update') );
 	}
 
 	/**
@@ -86,6 +87,53 @@ class AFBInstantArticles {
 	 */
 	public function on_deactivation(){
 
+	}
+
+
+	/**
+	 * Check if we recently ran an update and have to execute code because of it.
+	 * Called by 'plugins_loaded' hook
+	 *
+	 *
+	 * @author Hendrik Luehrsen <hl@luehrsen-heinrich.de>
+	 * @since 0.8.3
+	 * @access public
+	 * @return void
+	 */
+	public function maybe_update(){
+		// If we can't find a previous version number, this is likely a fresh install
+		// but if we do, we have to compare version numbers
+		if ( get_site_option( 'lhafbia_version' ) && version_compare(get_site_option( 'lhafbia_version' ), LHAFB__VERSION, "!=" ) ) {
+			$this->do_updates();
+
+			update_site_option( 'lhafbia_version', LHAFB__VERSION );
+		}
+	}
+
+	/**
+	 * Actually execute the updates.
+	 * Called by 'maybe_update' function
+	 *
+	 *
+	 * @author Hendrik Luehrsen <hl@luehrsen-heinrich.de>
+	 * @since 0.8.3
+	 * @access public
+	 * @return void
+	 */
+	private function do_updates(){
+
+		// Do updates necessary for version 0.8.3
+		if(version_compare(get_site_option( 'lhafbia_version' ), "0.8.3", "!=" )){
+
+			// Update our ad placement ids, as we have changed the format of those to a single array
+			update_option("afbia_audienceplacement", array(
+				get_option("afbia_audienceplacement_1"),
+				get_option("afbia_audienceplacement_2"),
+				get_option("afbia_audienceplacement_3"),
+			));
+
+
+		}
 	}
 
 	/**
