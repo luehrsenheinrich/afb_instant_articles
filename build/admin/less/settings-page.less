@@ -109,6 +109,32 @@
 			text-decoration: none;
 		}
 	}
+
+	fieldset.multi {
+		.multi-input {
+			.add-input, .remove-input {
+				display: none;
+				cursor: pointer;
+				color: #999;
+
+				&:hover {
+					color: @brandColor;
+				}
+			}
+		}
+
+		.multi-input:last-of-type {
+			.add-input, .remove-input {
+				display: inline;
+			}
+		}
+
+		.multi-input:first-of-type {
+			.remove-input {
+				display: none;
+			}
+		}
+	}
 }
 
 @media (min-width: @screen-sm-min) {

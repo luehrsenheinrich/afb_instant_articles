@@ -214,6 +214,44 @@ class lhafb_theme_settings {
 		);
 		$afbia_comment_media = new afbia_settings_field($args);
 
+
+
+		//
+		// Ad Settings Version 2
+		// Added in 0.8.3
+		//
+		$args = array(
+			'id'			=> "afbia_ad_settings_2",
+			'icon'			=> "money",
+			'title'			=> __("Ads", 'allfacebook-instant-articles'),
+			'page'			=> "afbia_settings_page",
+			'description'	=> __("Facebook Audience Network for Instant Articles - BETA - <a href=\"https://developers.facebook.com/docs/instant-articles/ads#audience-network\" target=\"_blank\">More Information</a>", 'allfacebook-instant-articles'),
+		);
+		new afbia_settings_section($args);
+
+		$args = array(
+			'id'				=> 'afbia_audience_active',
+			'title'				=> __("Audience Network", 'allfacebook-instant-articles'),
+			'page'				=> 'afbia_settings_page',
+			'section'			=> 'afbia_ad_settings_2',
+			'description'		=> __("Activate Audience Network for Instant Articles.", 'allfacebook-instant-articles'),
+			'type'				=> 'checkbox', // text, textarea, password, checkbox
+			'option_group'		=> "settings_page_afbia_settings_page",
+		);
+		new afbia_settings_field($args);
+
+		$args = array(
+			'id'				=> 'afbia_audienceplacement',
+			'title'				=> __("Placement ID", 'allfacebook-instant-articles'),
+			'page'				=> 'afbia_settings_page',
+			'section'			=> 'afbia_ad_settings_2',
+			'description'		=> __("Audience Network Placement ID", 'allfacebook-instant-articles'),
+			'type'				=> 'text', // text, textarea, password, checkbox
+			'multi'				=> true,
+			'option_group'		=> "settings_page_afbia_settings_page",
+		);
+		new afbia_settings_field($args);
+
 		//
 		// Help Page
 		//
@@ -467,6 +505,7 @@ class afbia_settings_field {
 			'section'			=> NULL,
 			'description'		=> NULL,
 			'type'				=> 'text', // text, textarea, password, checkbox
+			'multi'				=> false,
 			'sanitize_callback'	=> NULL,
 			'option_group'		=> NULL,
 		);
@@ -503,9 +542,23 @@ class afbia_settings_field {
 	public function output_callback(){
 		$t = $this->args['type'];
 		if($t == "text"):
+			$classes = array("text");
+			if($this->args['multi']){
+				$classes[] = "multi";
+			}
 		?>
-			<fieldset>
-				<input type="text" class="all-options" name="<?=$this->args['id']?>" id="<?=$this->args['id']?>" value="<?=get_option($this->args['id'])?>">
+			<fieldset class="<?php echo implode(" ", $classes); ?>">
+				<?php if($this->args['multi']): // Show multiple instances of this setting, save in array
+					foreach(array_filter((array) get_option($this->args['id'])) as $value):
+				?>
+					<span class="multi-input">
+						<input type="text" class="all-options" name="<?=$this->args['id']?>[]" id="<?=$this->args['id']?>" value="<?=$value?>"> <span class="add-input fa fa-plus-square"></span> <span class="remove-input fa fa-minus-square"></span> <br /></span>
+				<?php endforeach; ?>
+				<span class="multi-input">
+					<input type="text" class="all-options" name="<?=$this->args['id']?>[]" id="<?=$this->args['id']?>"> <span class="add-input fa fa-plus-square"></span> <span class="remove-input fa fa-minus-square"></span> <br /></span>
+				<?php else: ?>
+					<input type="text" class="all-options" name="<?=$this->args['id']?>" id="<?=$this->args['id']?>" value="<?=get_option($this->args['id'])?>">
+				<?php endif; ?>
 				<p class="description">
 					<?php echo $this->args['description']; ?>
 				</p>

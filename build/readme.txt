@@ -69,6 +69,9 @@ If you are missing something special, please open a support ticket on wordpress.
 
 == Changelog ==
 
+= 0.8.3 =
+- New image handling (Should resolve some placement issues)
+
 = 0.8.2 =
 - Added RTL support (thanks Jens)
 - Added new markup for Facebook (thanks Chris)
