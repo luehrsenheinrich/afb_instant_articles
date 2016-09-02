@@ -41,3 +41,7 @@ function run_instant_articles(){
 	$_afb_ia = new AFBInstantArticles();
 }
 run_instant_articles();
+
+// The plugin activation and deactivation classes
+register_activation_hook( __FILE__, array( 'AFBInstantArticles', 'on_activation' ) );
+register_deactivation_hook( __FILE__, array( 'AFBInstantArticles', 'on_deactivation' ) );

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: allfacebook Instant Articles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-08 11:58+0100\n"
-"PO-Revision-Date: 2016-07-08 12:02+0100\n"
+"POT-Creation-Date: 2016-08-03 12:38+0100\n"
+"PO-Revision-Date: 2016-08-03 12:40+0100\n"
 "Last-Translator: Jens Wiese <jens_wiese@gmx.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -29,8 +29,8 @@ msgstr ""
 "<b>FEHLER</b>: Das \"allfacebook Instant Articles\" Plugin benötigt die "
 "\"DOMDocument\" PHP Erweiterung zum Betrieb!"
 
-#: inc/lhafb_ia.metaboxes.php:38 inc/lhafb_ia.settings.php:233
-#: inc/lhafb_ia.settings.php:247
+#: inc/lhafb_ia.metaboxes.php:38 inc/lhafb_ia.settings.php:244
+#: inc/lhafb_ia.settings.php:258
 msgid "Instant Articles"
 msgstr ""
 
@@ -110,10 +110,18 @@ msgid "Allow users to comment on the media you embedded."
 msgstr "Erlaube Nutzern eingebettete Medien zu kommentieren."
 
 #: inc/lhafb_ia.settings.php:116
+msgid "Article Interaction"
+msgstr "Artikel Interaktion"
+
+#: inc/lhafb_ia.settings.php:119
+msgid "Allow users to like and comment the whole article."
+msgstr "Erlaube Nutzern den ganzen Beitrag zu kommentieren und zu liken."
+
+#: inc/lhafb_ia.settings.php:127
 msgid "RTL Publishing"
 msgstr "RTL Veröffentlichung"
 
-#: inc/lhafb_ia.settings.php:119
+#: inc/lhafb_ia.settings.php:130
 msgid ""
 "Allows Right to Left Publishing for Arabic, Hebrew, Persian and other "
 "languages"
@@ -121,27 +129,27 @@ msgstr ""
 "Erlaubt das veröffentlichen von Beiträgen in Arabisch, Hebräisch, Persisch "
 "und anderen Sprachen mit Right-to-Left Leserichtung."
 
-#: inc/lhafb_ia.settings.php:128
+#: inc/lhafb_ia.settings.php:139
 msgid "Number of Articles"
 msgstr "Anzahl der Artikel"
 
-#: inc/lhafb_ia.settings.php:131
+#: inc/lhafb_ia.settings.php:142
 msgid "The number of articles, that will be rendered on the feed."
 msgstr "Die Anzahl der Artikel, die im Feed aufgenommen werden."
 
-#: inc/lhafb_ia.settings.php:140
+#: inc/lhafb_ia.settings.php:151
 msgid "Style of Articles"
 msgstr "Style der Artikel"
 
-#: inc/lhafb_ia.settings.php:143
+#: inc/lhafb_ia.settings.php:154
 msgid "Style for articles if different from default"
 msgstr "Artikel Style, wenn dieser sich von \"default\" unterscheidet."
 
-#: inc/lhafb_ia.settings.php:156
+#: inc/lhafb_ia.settings.php:167
 msgid "Ads"
 msgstr "Anzeigen"
 
-#: inc/lhafb_ia.settings.php:158
+#: inc/lhafb_ia.settings.php:169
 msgid ""
 "Facebook Audience Network for Instant Articles - BETA - <a href=\"https://"
 "developers.facebook.com/docs/instant-articles/ads#audience-network\" target="
@@ -151,55 +159,55 @@ msgstr ""
 "developers.facebook.com/docs/instant-articles/ads#audience-network\" target="
 "\"_blank\">Weitere Informationen</a>"
 
-#: inc/lhafb_ia.settings.php:164
+#: inc/lhafb_ia.settings.php:175
 msgid "Audience Network"
 msgstr ""
 
-#: inc/lhafb_ia.settings.php:167
+#: inc/lhafb_ia.settings.php:178
 msgid "Activate Audience Network for Instant Articles."
 msgstr "Aktiviere Audience Network für Instant Articles."
 
-#: inc/lhafb_ia.settings.php:175
+#: inc/lhafb_ia.settings.php:186
 msgid "Placement ID 1"
 msgstr ""
 
-#: inc/lhafb_ia.settings.php:178
+#: inc/lhafb_ia.settings.php:189
 msgid "Audience Network Placement ID 1"
 msgstr ""
 
-#: inc/lhafb_ia.settings.php:186
+#: inc/lhafb_ia.settings.php:197
 msgid "Placement ID 2"
 msgstr ""
 
-#: inc/lhafb_ia.settings.php:189
+#: inc/lhafb_ia.settings.php:200
 msgid "Audience Network Placement ID 2"
 msgstr ""
 
-#: inc/lhafb_ia.settings.php:197
+#: inc/lhafb_ia.settings.php:208
 msgid "Placement ID 3"
 msgstr ""
 
-#: inc/lhafb_ia.settings.php:200
+#: inc/lhafb_ia.settings.php:211
 msgid "Audience Network Placement ID 3"
 msgstr ""
 
-#: inc/lhafb_ia.settings.php:247 inc/lhafb_ia.settings.php:266
+#: inc/lhafb_ia.settings.php:258 inc/lhafb_ia.settings.php:277
 msgid "Show feed"
 msgstr "Feed zeigen"
 
-#: inc/lhafb_ia.settings.php:255
+#: inc/lhafb_ia.settings.php:266
 msgid "Save Changes"
 msgstr "Änderungen speichern"
 
-#: inc/lhafb_ia.settings.php:266
+#: inc/lhafb_ia.settings.php:277
 msgid "<span class='hidden-xs'>allfacebook.de</span> Instant Articles"
 msgstr ""
 
-#: inc/lhafb_ia.settings.php:341
+#: inc/lhafb_ia.settings.php:352
 msgid "Help"
 msgstr "Hilfe"
 
-#: inc/lhafb_ia.settings.php:345
+#: inc/lhafb_ia.settings.php:356
 #, fuzzy
 msgid ""
 "Made with <i class=\"fa fa-heart\"></i> in Munich by <a href=\"http://www."
@@ -214,11 +222,11 @@ msgstr ""
 "vielen <a href=\"https://github.com/luehrsenheinrich/afb_instant_articles/"
 "graphs/contributors\" target=\"_blank\">GitHub Unterstützern</a>"
 
-#: inc/lhafb_ia.settings.php:371
+#: inc/lhafb_ia.settings.php:382
 msgid "Successfully updated."
 msgstr "Erfolgreich aktualisiert."
 
-#: inc/lhafb_ia.settings.php:538
+#: inc/lhafb_ia.settings.php:549
 msgid "Not selected"
 msgstr "Nicht ausgewählt"
 

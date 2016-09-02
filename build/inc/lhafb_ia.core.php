@@ -103,11 +103,11 @@ class AFBInstantArticles {
 	public function maybe_update(){
 		// If we can't find a previous version number, this is likely a fresh install
 		// but if we do, we have to compare version numbers
-		if ( get_site_option( 'lhafbia_version' ) && version_compare(get_site_option( 'lhafbia_version' ), LHAFB__VERSION, "!=" ) ) {
+		if (get_site_option( 'lhafbia_version' ) && version_compare(get_site_option( 'lhafbia_version' ), LHAFB__VERSION, "<" ) ) {
 			$this->do_updates();
-
-			update_site_option( 'lhafbia_version', LHAFB__VERSION );
 		}
+
+		update_site_option( 'lhafbia_version', LHAFB__VERSION );
 	}
 
 	/**
@@ -123,7 +123,7 @@ class AFBInstantArticles {
 	private function do_updates(){
 
 		// Do updates necessary for version 0.8.3
-		if(version_compare(get_site_option( 'lhafbia_version' ), "0.8.3", "!=" )){
+		if(version_compare(get_site_option( 'lhafbia_version' ), "0.8.3", "<" )){
 
 			// Update our ad placement ids, as we have changed the format of those to a single array
 			update_option("afbia_audienceplacement", array(

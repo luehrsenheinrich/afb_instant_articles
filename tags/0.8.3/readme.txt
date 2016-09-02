@@ -65,8 +65,13 @@ If you are missing something special, please open a support ticket on wordpress.
 
 == Screenshots ==
 
+1. An easy to use backend lets you configure your settings and prepare your feed for publishing on facebook.
 
 == Changelog ==
+
+= 0.8.3 =
+- New image handling (Should resolve some placement issues)
+- New settings view for the placement IDs
 
 = 0.8.2 =
 - Added RTL support (thanks Jens)
