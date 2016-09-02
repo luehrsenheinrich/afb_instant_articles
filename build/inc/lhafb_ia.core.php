@@ -61,6 +61,34 @@ class AFBInstantArticles {
 	}
 
 	/**
+	 * Execute stuff after the plugin activation.
+	 * Called by 'register_activation' hook
+	 *
+	 *
+	 * @author Hendrik Luehrsen <hl@luehrsen-heinrich.de>
+	 * @since 0.8.3
+	 * @access public
+	 * @return void
+	 */
+	public function on_activation(){
+
+	}
+
+	/**
+	 * Execute stuff after the plugin deactivation.
+	 * Called by 'register_deactivation' hook
+	 *
+	 *
+	 * @author Hendrik Luehrsen <hl@luehrsen-heinrich.de>
+	 * @since 0.8.3
+	 * @access public
+	 * @return void
+	 */
+	public function on_deactivation(){
+
+	}
+
+	/**
 	 * Generate the custom RSS Feed for facebook instant articles.
 	 * Called by action 'do_feed_instant_articles'
 	 *
