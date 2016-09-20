@@ -221,7 +221,7 @@ class lhafb_theme_settings {
 	 * @return void
 	 */
 	public function add_theme_settings_page(){
-		$theme_page = add_options_page( __("Instant Articles", 'allfacebook-instant-articles'), __("Instant Articles", 'allfacebook-instant-articles'), 'switch_themes', 'afbia_settings_page', array($this, 'lh_settings_page_v2') );
+		$theme_page = add_options_page( __("Instant Articles", 'allfacebook-instant-articles'), __("Instant Articles", 'allfacebook-instant-articles'), 'manage_options', 'afbia_settings_page', array($this, 'lh_settings_page_v2') );
 
 	}
 
