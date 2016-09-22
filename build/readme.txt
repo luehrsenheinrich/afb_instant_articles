@@ -1,8 +1,8 @@
 === <##= pkg.title ##> ===
 Contributors: luehrsen, wiesejens
-Tags: articles, instant articles, facebook, allfacebook, rss, feed
+Tags: articles, instant articles, facebook, allfacebook, rss, feed, instant articles for wordpress, instant articles for WP, wordpress instant articles, facebook instant articles, facebook, social, news, amp
 Requires at least: 4.0
-Tested up to: 4.6
+Tested up to: 4.7
 Stable tag: <##= pkg.version ##>
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -68,6 +68,11 @@ If you are missing something special, please open a support ticket on wordpress.
 1. An easy to use backend lets you configure your settings and prepare your feed for publishing on facebook.
 
 == Changelog ==
+
+= 0.8.4 =
+- Fixed an issue with ad classes (thanks argentounce and fsalvato)
+- Fixed an issue with permissions on Multisites (thanks to foliovision)
+- Optimizations in the readme file
 
 = 0.8.3 =
 - New image handling (Should resolve some placement issues)
