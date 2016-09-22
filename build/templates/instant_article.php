@@ -42,11 +42,18 @@ if(defined("DEV_IA")){
 			<?php if(get_option('afbia_audience_active')): ?>
 				<!-- Audience network placements -->
 				<section class="op-ad-template">
-					<?php foreach(array_filter((array) get_option('afbia_audienceplacement')) as $value): ?>
-						<figure class="op-ad op-ad-default">
+					<?php $n = 0; foreach(array_filter((array) get_option('afbia_audienceplacement')) as $value):
+
+						$figure_classes = array("op-ad");
+						if($n == 0){
+							$figure_classes[] = "op-ad-default";
+						}
+
+						?>
+						<figure class="<?php echo implode(" ", $figure_classes); ?>">
 							<iframe width="300" height="250" style="border:0; margin:0;" src="https://www.facebook.com/adnw_request?placement=<?php echo esc_attr($value); ?>&adtype=banner300x250"></iframe>
 						</figure>
-					<?php endforeach; ?>
+					<?php $n++; endforeach; ?>
 				</section>
 			<?php endif; ?>
 
