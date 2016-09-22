@@ -61,18 +61,6 @@ if(defined("DEV_IA")){
 			<!-- The title and subtitle shown in your Instant Article -->
 			<h1><?php the_title(); ?></h1>
 
-
-			<?php
-				// Generate a subtitle, that can be filtered in, but WordPress does not
-				// provide a default value, therefore it is null
-				$the_subtitle = apply_filters("adbia_subtitle", NULL, $post->ID);
-				if(!empty($the_subtitle)):
-			?>
-			<h2><?php echo $the_subtitle; ?></h2>
-			<?php
-				endif;
-			?>
-
 			<?php
 			// Defining your article Category as the Kicker
 			$categories = get_the_category();

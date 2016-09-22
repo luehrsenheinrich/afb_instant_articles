@@ -1,13 +1,13 @@
-=== <##= pkg.title ##> ===
+=== allfacebook Instant Articles ===
 Contributors: luehrsen, wiesejens
 Tags: articles, instant articles, facebook, allfacebook, rss, feed, instant articles for wordpress, instant articles for WP, wordpress instant articles, facebook instant articles, facebook, social, news, amp
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: <##= pkg.version ##>
+Stable tag: 0.8.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-<##= pkg.description ##>
+This plugin lets your WordPress display instant articles directly on your facebook page.
 
 == Description ==
 
@@ -19,7 +19,7 @@ You can learn more about Instant Articles on the official [Facebook Developer Do
 
 Instant Articles are available for all Publishers since [Facebook f8 Developer Conference](http://fbf8.com) in April 2016. [Please signup for the Instant Article Feature on Facebook](https://www.facebook.com/instant_articles/signup) before you install the plugin.
 
-### <##= pkg.title ##> Features
+### allfacebook Instant Articles Features
 * Easy to use Instant Article RSS Feed Creation
 * Per Article Credits Field
 * Global Copyright Information
@@ -41,7 +41,7 @@ This plugin is brought to you by the awesome folks at [Luehrsen // Heinrich](htt
 == Installation ==
 
 1. Upload the lhafb_instant_articles folder to the /wp-content/plugins/ directory or install from the WordPress Plugin Directory
-2. Activate the '<##= pkg.title ##>' plugin through the 'Plugins' menu in WordPress
+2. Activate the 'allfacebook Instant Articles' plugin through the 'Plugins' menu in WordPress
 3. Open Settings -> Instant Articles to start your IA setup.
 
 == Frequently Asked Questions ==
@@ -57,7 +57,7 @@ Copy and Paste your Google Analytics code in the „Analytics“ Area of the Plu
 
 
 ###My Author Information is not linked to my Facebook Profile.
-Please use the Yoast SEO Plugin to add this additional profile information to your WordPress user settings. <##= pkg.title ##> will use this information.
+Please use the Yoast SEO Plugin to add this additional profile information to your WordPress user settings. allfacebook Instant Articles will use this information.
 
 ###Feature XYZ is not available! Why?
 Keep calm. Development of this plugin will continue and we will add more features in the future!
@@ -68,9 +68,6 @@ If you are missing something special, please open a support ticket on wordpress.
 1. An easy to use backend lets you configure your settings and prepare your feed for publishing on facebook.
 
 == Changelog ==
-
-= 0.8.5 =
-- Added the filter "afbia_subtitle" for instant article subtitles
 
 = 0.8.4 =
 - Fixed an issue with ad classes (thanks argentounce and fsalvato)
