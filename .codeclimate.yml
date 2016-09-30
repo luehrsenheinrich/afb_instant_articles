@@ -26,8 +26,8 @@ ratings:
   - "**.php"
   - "**.py"
   - "**.rb"
-
 ## other configuration excluded from example...
 exclude_paths:
 - "archives/"
 - "tags/"
+- "Gruntfile.js"
