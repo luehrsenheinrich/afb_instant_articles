@@ -1,4 +1,5 @@
 # allfacebook Instant Articles
+[![Code Climate](https://codeclimate.com/github/luehrsenheinrich/afb_instant_articles/badges/gpa.svg)](https://codeclimate.com/github/luehrsenheinrich/afb_instant_articles)
 ![allfacebook Instant Articles](https://raw.githubusercontent.com/luehrsenheinrich/afb_instant_articles/master/assets/banner-1544x500.png)
 
 This WordPress plugin creates a special RSS Feed for your WordPress blog to harvest the power of [Facebook Instant Articles](http://instantarticles.fb.com).
