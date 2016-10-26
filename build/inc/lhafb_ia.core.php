@@ -33,12 +33,16 @@ class AFBInstantArticles {
 	 * @return void
 	 */
 	private function action_dispatcher(){
-		add_action( 'init',						array( $this, 'on_init' ) );
-		add_action( 'pre_get_posts', 			array( $this, 'modify_query') );
-		add_action( 'init', 					array( $this, 'load_textdomain' ) );
+		add_action( 'init',								array( $this, 'on_init' ) );
+		add_action( 'pre_get_posts', 					array( $this, 'modify_query') );
+		add_action( 'init', 							array( $this, 'load_textdomain' ) );
 
-		add_action( 'admin_enqueue_scripts',	array( $this, 'admin_scripts') );
-		add_action( 'plugins_loaded', 			array( $this, 'maybe_update') );
+		add_action( 'admin_enqueue_scripts',			array( $this, 'admin_scripts') );
+		add_action( 'plugins_loaded', 					array( $this, 'maybe_update') );
+
+		add_action( 'admin_notices', 					array( $this, 'admin_review_notice' ) );
+
+		add_action( 'wp_ajax_afbia_dismiss_review', 	array( $this, 'dismiss_review_notice' ) );
 	}
 
 	/**
@@ -72,7 +76,7 @@ class AFBInstantArticles {
 	 * @return void
 	 */
 	public function on_activation(){
-
+		add_option("afbia_activation_time", current_time('timestamp')); // Add the activation timestamp
 	}
 
 	/**
@@ -87,6 +91,7 @@ class AFBInstantArticles {
 	 */
 	public function on_deactivation(){
 
+		delete_option("afbia_activation_time"); // Remove the activation timestamp
 	}
 
 
@@ -217,6 +222,36 @@ class AFBInstantArticles {
 		}
 	}
 
+	/**
+	 * Show the admin review notice, if the notice has not been shown and the
+	 * first plugin activation is older than 2 weeks.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function admin_review_notice() {
+		$time_offset = get_option('afbia_activation_time') + (60 * 60 * 24 * 14); // Two weeks since activation
+
+		if(current_time('timestamp') >= $time_offset && !get_option("afbia_hide_review_notice")){
+			$class = 'notice notice-info is-dismissible afbia-review';
+			$message = __( 'Do you like the allfacebook.de Instant Articles plugin? Please consider giving it a review in the <a href="https://wordpress.org/support/plugin/allfacebook-instant-articles/reviews/?rate=5#new-post" target="_blank">WordPress Plugin Repository</a>.', 'afbia' );
+
+			printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message );
+		}
+	}
+
+	/**
+	 * This function should be called by the WP Ajax function upon dismissal of the
+	 * review admin notice.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function dismiss_review_notice(){
+		update_option("afbia_hide_review_notice", true);
+		wp_die("success");
+	}
+
 
 	/**
 	 * Load the translation files.
@@ -238,7 +273,7 @@ class AFBInstantArticles {
 		wp_register_style( 'afbia_admin_style', LHAFB__PLUGIN_URL . 'admin/admin.css', false, '<##= pkg.version ##>' );
 		wp_enqueue_style( 'afbia_admin_style' );
 
-		wp_enqueue_script("afbia_admin_script", LHAFB__PLUGIN_URL . 'admin/admin.min.js', array("jquery"), '<##= pkg.version ##>', true);
+		wp_enqueue_script("afbia_admin_script", LHAFB__PLUGIN_URL . 'admin/admin.min.js', array("jquery", "wp-util"), '<##= pkg.version ##>', true);
 	}
 
 

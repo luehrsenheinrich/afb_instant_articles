@@ -64,4 +64,13 @@ var settingsMultiCtrl = function(){
 jQuery(document).ready(function($){
 	var settings_nav_ctrl = new settingsNavCtrl();
 	var settings_multi_ctrl = new settingsMultiCtrl();
+	var wp = window.wp;
+
+	console.log(wp);
+
+	$(".afbia-review.is-dismissible").on("click", ".notice-dismiss", function(event){
+		console.log("test");
+		wp.ajax.send( "afbia_dismiss_review");
+	});
+
 });

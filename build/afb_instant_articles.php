@@ -36,12 +36,10 @@ require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.filters.php"; 			// The filters n
 require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.jetpack-support.php"; 	// The filters needed to support the jetpack plugin
 require_once LHAFB__PLUGIN_DIR . "inc/embeds.php"; 						// The embeds filter
 
-// Initialize the main plugin class
-function run_instant_articles(){
-	$_afb_ia = new AFBInstantArticles();
-}
-run_instant_articles();
+
+$_afb_ia = new AFBInstantArticles();
+
 
 // The plugin activation and deactivation classes
-register_activation_hook( __FILE__, array( 'AFBInstantArticles', 'on_activation' ) );
-register_deactivation_hook( __FILE__, array( 'AFBInstantArticles', 'on_deactivation' ) );
+register_activation_hook( __FILE__, array( $_afb_ia, 'on_activation' ) );
+register_deactivation_hook( __FILE__, array( $_afb_ia, 'on_deactivation' ) );
