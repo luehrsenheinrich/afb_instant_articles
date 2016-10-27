@@ -195,6 +195,24 @@ class lhafb_theme_settings {
 		new afbia_settings_field($args);
 
 		//
+		// Custom Ads
+		// Added in 0.8.3
+		//
+
+		$args = array(
+			'id'				=> 'afbia_customads',
+			'title'				=> __("Custom Ads", 'allfacebook-instant-articles'),
+			'page'				=> 'afbia_settings_page',
+			'section'			=> 'afbia_ad_settings_2',
+			'description'		=> __("The source code of the custom ads, that will be placed in the Instant Article.", 'allfacebook-instant-articles'),
+			'type'				=> 'text', // text, textarea, password, checkbox
+			'placeholder'		=> __('<iframe src="https://www.adserver.com/ss;adtype=banner300x250" height="300" width="250"></iframe>', 'allfacebook-instant-articles'),
+			'multi'				=> true,
+			'option_group'		=> "settings_page_afbia_settings_page",
+		);
+		new afbia_settings_field($args);
+
+		//
 		// Help Page
 		//
 		/*
@@ -448,6 +466,7 @@ class afbia_settings_field {
 			'description'		=> NULL,
 			'type'				=> 'text', // text, textarea, password, checkbox
 			'multi'				=> false,
+			'placeholder'		=> NULL,
 			'sanitize_callback'	=> NULL,
 			'option_group'		=> NULL,
 		);
@@ -494,12 +513,12 @@ class afbia_settings_field {
 					foreach(array_filter((array) get_option($this->args['id'])) as $value):
 				?>
 					<span class="multi-input">
-						<input type="text" class="all-options" name="<?=$this->args['id']?>[]" id="<?=$this->args['id']?>" value="<?=$value?>"> <span class="add-input fa fa-plus-square"></span> <span class="remove-input fa fa-minus-square"></span> <br /></span>
+						<input type="text" placeholder="<?=esc_attr($this->args['placeholder'])?>" class="all-options" name="<?=$this->args['id']?>[]" id="<?=$this->args['id']?>" value="<?=$value?>"> <span class="add-input fa fa-plus-square"></span> <span class="remove-input fa fa-minus-square"></span> <br /></span>
 				<?php endforeach; ?>
 				<span class="multi-input">
-					<input type="text" class="all-options" name="<?=$this->args['id']?>[]" id="<?=$this->args['id']?>"> <span class="add-input fa fa-plus-square"></span> <span class="remove-input fa fa-minus-square"></span> <br /></span>
+					<input type="text" placeholder="<?=esc_attr($this->args['placeholder'])?>" class="all-options" name="<?=$this->args['id']?>[]" id="<?=$this->args['id']?>"> <span class="add-input fa fa-plus-square"></span> <span class="remove-input fa fa-minus-square"></span> <br /></span>
 				<?php else: ?>
-					<input type="text" class="all-options" name="<?=$this->args['id']?>" id="<?=$this->args['id']?>" value="<?=get_option($this->args['id'])?>">
+					<input type="text" placeholder="<?=esc_attr($this->args['placeholder'])?>" class="all-options" name="<?=$this->args['id']?>" id="<?=$this->args['id']?>" value="<?=get_option($this->args['id'])?>">
 				<?php endif; ?>
 				<p class="description">
 					<?php echo $this->args['description']; ?>
