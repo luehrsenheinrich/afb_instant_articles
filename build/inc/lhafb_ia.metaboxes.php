@@ -50,7 +50,7 @@ function afbia_add_post_meta_boxes() {
 
 
 /**
- * bg_color_code function.
+ * afb_instant_articles function.
  *
  * @access public
  * @param mixed $object
@@ -63,15 +63,29 @@ function afb_instant_articles($object, $box){
 	$afbia_o = (array) get_post_meta($object->ID, "_instant_article_options", true);
 
 	?>
-		<h4><?php _e("Exclude from Instant Articles", 'allfacebook-instant-articles'); ?></h4>
 		<p>
-			<label><input type="checkbox" name="instant_article_options[exclude_post]" value="exclude" <?php echo isset($afbia_o['exclude_post']) ? ' checked' : ''; ?>> <?php _e("Don't send to facebook", 'allfacebook-instant-articles'); ?></label>
+			<label><input type="checkbox" name="instant_article_options[exclude_post]" value="exclude" <?php echo isset($afbia_o['exclude_post']) ? ' checked' : ''; ?>> <?php _e("Exclude from Instant Articles", 'allfacebook-instant-articles'); ?> </label>
 		</p>
-
+		<hr>
 		<h4><?php _e("Credits", 'allfacebook-instant-articles'); ?></h4>
 		<p>
 			<textarea name="instant_article_options[credits]" class="widefat"><?php echo isset($afbia_o['credits']) ? $afbia_o['credits'] : NULL; ?></textarea>
 		</p>
+		<p class="description"><?php _e("Overwrites the global credits setting just for this post.", 'allfacebook-instant-articles'); ?></p>
+		<hr>
+		<h4><?php _e("Branded Content", 'allfacebook-instant-articles'); ?></h4>
+		<fieldset class="text multi">
+			<?php
+				foreach(array_filter((array) @$afbia_o['branded']) as $value):
+			?>
+				<span class="multi-input">
+					<input type="text" placeholder="<?php _e("e.g. 'marketingde'", 'allfacebook-instant-articles'); ?>" class="all-options" name="instant_article_options[branded][]" value="<?=$value?>"> <span class="add-input fa fa-plus-square"></span> <span class="remove-input fa fa-minus-square"></span> <br /></span>
+			<?php endforeach; ?>
+			<span class="multi-input">
+				<input type="text" placeholder="<?php _e("e.g. 'marketingde'", 'allfacebook-instant-articles'); ?>" class="all-options" name="instant_article_options[branded][]"> <span class="add-input fa fa-plus-square"></span> <span class="remove-input fa fa-minus-square"></span> <br />
+			</span>
+		</fieldset>
+		<p class="description"><?php _e("The vanity name of the facebook page of the branding partner. <a href=\"https://developers.facebook.com/docs/instant-articles/ads/branded-content\" class=\"fa fa-question-circle\" target=\"_blank\"></a>", 'allfacebook-instant-articles'); ?></p>
 
 	<?php
 }

@@ -34,7 +34,7 @@ var settingsMultiCtrl = function(){
 
 	this.init = function(){
 		var that = this;
-		$(".settings-container fieldset.multi").each(function(){
+		$("fieldset.multi").each(function(){
 			var $fieldset = $(this);
 			var $template = $(".multi-input", $fieldset).first().clone();
 			$("input", $template).val("");
@@ -66,10 +66,8 @@ jQuery(document).ready(function($){
 	var settings_multi_ctrl = new settingsMultiCtrl();
 	var wp = window.wp;
 
-	console.log(wp);
-
+	// When the dismiss button on the review notice is clicked we send an ajax request to the backend to hide the notice forever
 	$(".afbia-review.is-dismissible").on("click", ".notice-dismiss", function(event){
-		console.log("test");
 		wp.ajax.send( "afbia_dismiss_review");
 	});
 
