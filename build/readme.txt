@@ -63,6 +63,9 @@ Please use the Yoast SEO Plugin to add this additional profile information to yo
 Keep calm. Development of this plugin will continue and we will add more features in the future!
 If you are missing something special, please open a support ticket on wordpress.org.
 
+###My feed has stopped working!
+Usually this is due to performance reasons. If you use a lot of social media embeds the generation of the feed will be performance heavy, so you might try to reduce the number of posts shown in the Instant Articles feed.
+
 == Screenshots ==
 
 1. An easy to use backend lets you configure your settings and prepare your feed for publishing on facebook.
@@ -71,6 +74,8 @@ If you are missing something special, please open a support ticket on wordpress.
 
 = 0.8.5 =
 - Added the filter "afbia_subtitle" for instant article subtitles
+- Custom sold ads are now a thing and can be activated in the "ads" section
+- We now have a little prompt, that reminds you to review this plugin after two weeks of usage
 
 = 0.8.4 =
 - Fixed an issue with ad classes (thanks argentounce and fsalvato)

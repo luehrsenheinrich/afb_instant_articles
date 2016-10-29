@@ -329,7 +329,7 @@ class lhafb_theme_settings {
 									echo '</table>';
 									echo '
 				<p class="submit">
-					<input name="Submit" type="submit" class="button-primary" value="'.esc_attr('Save Changes','gb').'" />
+					<input name="Submit" type="submit" class="button-primary" value="'.esc_attr(__('Save Changes','allfacebook-instant-articles')).'" />
 				</p>';
 									echo '</div>';
 								}
