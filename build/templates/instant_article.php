@@ -54,6 +54,16 @@ if(defined("DEV_IA")){
 							<iframe width="300" height="250" style="border:0; margin:0;" src="https://www.facebook.com/adnw_request?placement=<?php echo esc_attr($value); ?>&adtype=banner300x250"></iframe>
 						</figure>
 					<?php $n++; endforeach; ?>
+					<?php foreach(array_filter((array) get_option('afbia_customads')) as $value):
+
+						$figure_classes = array("op-ad");
+						if($n == 0){
+							$figure_classes[] = "op-ad-default";
+						}
+
+						?>
+						<figure class="<?php echo implode(" ", $figure_classes); ?>"><?php echo $value; ?></figure>
+					<?php $n++; endforeach; ?>
 				</section>
 			<?php endif; ?>
 

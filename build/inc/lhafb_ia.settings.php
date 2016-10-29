@@ -172,11 +172,11 @@ class lhafb_theme_settings {
 		new afbia_settings_section($args);
 
 		$args = array(
-			'id'				=> 'afbia_audience_active',
-			'title'				=> __("Audience Network", 'allfacebook-instant-articles'),
+			'id'				=> 'afbia_audience_active', // TODO: Change and migrate the ID name to something, that makes more sense
+			'title'				=> __("Automatic Placement", 'allfacebook-instant-articles'),
 			'page'				=> 'afbia_settings_page',
 			'section'			=> 'afbia_ad_settings_2',
-			'description'		=> __("Activate Audience Network for Instant Articles.", 'allfacebook-instant-articles'),
+			'description'		=> __("Activate automatic placement of ads for Instant Articles.", 'allfacebook-instant-articles'),
 			'type'				=> 'checkbox', // text, textarea, password, checkbox
 			'option_group'		=> "settings_page_afbia_settings_page",
 		);
@@ -201,10 +201,10 @@ class lhafb_theme_settings {
 
 		$args = array(
 			'id'				=> 'afbia_customads',
-			'title'				=> __("Custom Ads", 'allfacebook-instant-articles'),
+			'title'				=> __("Direct-Sold Ads", 'allfacebook-instant-articles'),
 			'page'				=> 'afbia_settings_page',
 			'section'			=> 'afbia_ad_settings_2',
-			'description'		=> __("The source code of the custom ads, that will be placed in the Instant Article.", 'allfacebook-instant-articles'),
+			'description'		=> __("The source code of the custom ads, that will be placed in the Instant Article. <a href=\"https://developers.facebook.com/docs/instant-articles/monetization/direct-sold\" class=\"fa fa-question-circle\" target=\"_blank\"></a>", 'allfacebook-instant-articles'),
 			'type'				=> 'text', // text, textarea, password, checkbox
 			'placeholder'		=> __('<iframe src="https://www.adserver.com/ss;adtype=banner300x250" height="300" width="250"></iframe>', 'allfacebook-instant-articles'),
 			'multi'				=> true,
