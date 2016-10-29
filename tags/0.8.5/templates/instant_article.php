@@ -67,6 +67,14 @@ if(defined("DEV_IA")){
 				</section>
 			<?php endif; ?>
 
+			<?php if(isset($options['branded']) && is_array($options['branded']) && count($options['branded']) > 0): ?>
+				<ul class="op-sponsors">
+					<?php foreach($options['branded'] as $brand): ?>
+						<li><a href="<?php echo esc_url('http://facebook.com/' . $brand); ?>" rel="facebook"></a></li>
+					<?php endforeach; ?>
+				</ul>
+			<?php endif; ?>
+
 
 			<!-- The title and subtitle shown in your Instant Article -->
 			<h1><?php the_title(); ?></h1>
