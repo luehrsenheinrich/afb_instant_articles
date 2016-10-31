@@ -5,7 +5,7 @@
 /*
 Plugin Name: allfacebook Instant Articles
 Plugin URI: https://wordpress.org/plugins/allfacebook-instant-articles/
-Description: This plugin creates a special RSS Feed for your WordPress blog to harvest the power of Facebook Instant Articles. Instant Articles is a new technology by Facebook that will load your webpage content „instant“. That means Facebook will cache your articles on Facebooks servers and will load them within the native FB iOS or Android App without opening a browser window and connecting to your webserver.
+Description: This plugin creates a special RSS Feed for your WordPress blog to harvest the power of Facebook Instant Articles. Instant Articles is a technology by Facebook that will load your webpage content „instant“. That means Facebook will cache your articles on Facebooks servers and will load them within the native FB iOS or Android App without opening a browser window and connecting to your webserver.
 Author: Luehrsen // Heinrich
 Author URI: http://www.luehrsen-heinrich.de
 Version: 0.8.5
