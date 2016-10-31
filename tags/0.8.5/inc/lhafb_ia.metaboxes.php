@@ -71,7 +71,7 @@ function afb_instant_articles($object, $box){
 		<p>
 			<textarea name="instant_article_options[credits]" class="widefat"><?php echo isset($afbia_o['credits']) ? $afbia_o['credits'] : NULL; ?></textarea>
 		</p>
-		<p class="description"><?php _e("Overwrites the global credits setting just for this post.", 'allfacebook-instant-articles'); ?></p>
+		<p class="description"><?php _e("Add a custom credit just for this post.", 'allfacebook-instant-articles'); ?></p>
 		<hr>
 		<h4><?php _e("Branded Content", 'allfacebook-instant-articles'); ?></h4>
 		<fieldset class="text multi">

@@ -167,7 +167,7 @@ class lhafb_theme_settings {
 			'icon'			=> "money",
 			'title'			=> __("Ads", 'allfacebook-instant-articles'),
 			'page'			=> "afbia_settings_page",
-			'description'	=> __("Facebook Audience Network for Instant Articles - BETA - <a href=\"https://developers.facebook.com/docs/instant-articles/ads#audience-network\" target=\"_blank\">More Information</a>", 'allfacebook-instant-articles'),
+			'description'	=> __("Facebook Audience Network for Instant Articles <a href=\"https://developers.facebook.com/docs/instant-articles/ads#audience-network\" target=\"_blank\" class=\"fa fa-question-circle\"></a>", 'allfacebook-instant-articles'),
 		);
 		new afbia_settings_section($args);
 
@@ -187,7 +187,7 @@ class lhafb_theme_settings {
 			'title'				=> __("Placement IDs", 'allfacebook-instant-articles'),
 			'page'				=> 'afbia_settings_page',
 			'section'			=> 'afbia_ad_settings_2',
-			'description'		=> __("Audience Network Placement IDs", 'allfacebook-instant-articles'),
+			'description'		=> __("Audience Network Placement IDs <a href=\"https://developers.facebook.com/docs/instant-articles/monetization/audience-network\" class=\"fa fa-question-circle\" target=\"_blank\"></a>", 'allfacebook-instant-articles'),
 			'type'				=> 'text', // text, textarea, password, checkbox
 			'multi'				=> true,
 			'option_group'		=> "settings_page_afbia_settings_page",
