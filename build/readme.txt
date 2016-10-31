@@ -26,7 +26,9 @@ Instant Articles are available for all Publishers since [Facebook f8 Developer C
 * Jetpack Tracking
 * Easy adjustable 3rd Party Tracking
 * Global Style Selection
-* Audience Network Support (Beta)
+* Audience Network Support
+* Direct Sold Ads Support (Beta)
+* Branded Content Tagging
 * RTL Publishing Support
 * Regular Plugin Updates
 
