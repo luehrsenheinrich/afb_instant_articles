@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: allfacebook Instant Articles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-03 12:38+0100\n"
-"PO-Revision-Date: 2016-08-03 12:40+0100\n"
+"POT-Creation-Date: 2016-10-31 10:30+0100\n"
+"PO-Revision-Date: 2016-10-31 10:30+0100\n"
 "Last-Translator: Jens Wiese <jens_wiese@gmx.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -21,7 +21,19 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: inc/lhafb_ia.filters.php:449
+#: inc/lhafb_ia.core.php:250
+msgid ""
+"Do you like the allfacebook.de Instant Articles plugin? Please consider "
+"giving it a review in the <a href=\"https://wordpress.org/support/plugin/"
+"allfacebook-instant-articles/reviews/?rate=5#new-post\" target=\"_blank"
+"\">WordPress Plugin Repository</a>."
+msgstr ""
+"Magst du das allfacebook Instant Article Plugin? Gib uns doch eine Bewertung "
+"im <a href=\"https://wordpress.org/support/plugin/allfacebook-instant-"
+"articles/reviews/?rate=5#new-post\" target=\"_blank\">WordPress Plugin "
+"Repository</a>."
+
+#: inc/lhafb_ia.filters.php:470
 msgid ""
 "<b>ERROR</b>: The \"allfacebook Instant Articles\" plugin needs the "
 "\"DOMDocument\" PHP extension to run properly!"
@@ -29,22 +41,40 @@ msgstr ""
 "<b>FEHLER</b>: Das \"allfacebook Instant Articles\" Plugin benötigt die "
 "\"DOMDocument\" PHP Erweiterung zum Betrieb!"
 
-#: inc/lhafb_ia.metaboxes.php:38 inc/lhafb_ia.settings.php:244
-#: inc/lhafb_ia.settings.php:258
+#: inc/lhafb_ia.metaboxes.php:38 inc/lhafb_ia.settings.php:242
+#: inc/lhafb_ia.settings.php:256
 msgid "Instant Articles"
 msgstr ""
 
-#: inc/lhafb_ia.metaboxes.php:66
+#: inc/lhafb_ia.metaboxes.php:67
 msgid "Exclude from Instant Articles"
 msgstr "Nicht als Instant Article veröffentlichen"
 
-#: inc/lhafb_ia.metaboxes.php:68
-msgid "Don't send to facebook"
-msgstr "Nicht an Facebook übermitteln"
-
-#: inc/lhafb_ia.metaboxes.php:71
+#: inc/lhafb_ia.metaboxes.php:70
 msgid "Credits"
 msgstr "Bild- und Medienrecht"
+
+#: inc/lhafb_ia.metaboxes.php:74
+msgid "Add a custom credit just for this post."
+msgstr "Eigenen \"Credit\" Text zu diesem Artikel hinzufügen"
+
+#: inc/lhafb_ia.metaboxes.php:76
+msgid "Branded Content"
+msgstr ""
+
+#: inc/lhafb_ia.metaboxes.php:82 inc/lhafb_ia.metaboxes.php:85
+msgid "e.g. 'marketingde'"
+msgstr "z.B. 'marketingde'"
+
+#: inc/lhafb_ia.metaboxes.php:88
+msgid ""
+"The vanity name of the facebook page of the branding partner. <a href="
+"\"https://developers.facebook.com/docs/instant-articles/ads/branded-content"
+"\" class=\"fa fa-question-circle\" target=\"_blank\"></a>"
+msgstr ""
+"Der \"Vanity Name\" der Facebook Seite des \"Branded Content\" Sponsoren. <a "
+"href=\"https://developers.facebook.com/docs/instant-articles/ads/branded-"
+"content\" class=\"fa fa-question-circle\" target=\"_blank\"></a>"
 
 #: inc/lhafb_ia.settings.php:39
 msgid "Facebook"
@@ -145,11 +175,11 @@ msgstr "Style der Artikel"
 msgid "Style for articles if different from default"
 msgstr "Artikel Style, wenn dieser sich von \"default\" unterscheidet."
 
-#: inc/lhafb_ia.settings.php:167
+#: inc/lhafb_ia.settings.php:168
 msgid "Ads"
 msgstr "Anzeigen"
 
-#: inc/lhafb_ia.settings.php:169
+#: inc/lhafb_ia.settings.php:170
 msgid ""
 "Facebook Audience Network for Instant Articles - BETA - <a href=\"https://"
 "developers.facebook.com/docs/instant-articles/ads#audience-network\" target="
@@ -159,55 +189,66 @@ msgstr ""
 "developers.facebook.com/docs/instant-articles/ads#audience-network\" target="
 "\"_blank\">Weitere Informationen</a>"
 
-#: inc/lhafb_ia.settings.php:175
-msgid "Audience Network"
-msgstr ""
+#: inc/lhafb_ia.settings.php:176
+msgid "Automatic Placement"
+msgstr "Automatische Platzierung"
 
-#: inc/lhafb_ia.settings.php:178
-msgid "Activate Audience Network for Instant Articles."
+#: inc/lhafb_ia.settings.php:179
+#, fuzzy
+msgid "Activate automatic placement of ads for Instant Articles."
 msgstr "Aktiviere Audience Network für Instant Articles."
 
-#: inc/lhafb_ia.settings.php:186
-msgid "Placement ID 1"
+#: inc/lhafb_ia.settings.php:187
+msgid "Placement IDs"
 msgstr ""
 
-#: inc/lhafb_ia.settings.php:189
-msgid "Audience Network Placement ID 1"
+#: inc/lhafb_ia.settings.php:190
+msgid "Audience Network Placement IDs"
 msgstr ""
 
-#: inc/lhafb_ia.settings.php:197
-msgid "Placement ID 2"
+#: inc/lhafb_ia.settings.php:204
+msgid "Direct-Sold Ads"
 msgstr ""
 
-#: inc/lhafb_ia.settings.php:200
-msgid "Audience Network Placement ID 2"
+#: inc/lhafb_ia.settings.php:207
+#, fuzzy
+msgid ""
+"The source code of the custom ads, that will be placed in the Instant "
+"Article. <a href=\"https://developers.facebook.com/docs/instant-articles/"
+"monetization/direct-sold\" class=\"fa fa-question-circle\" target=\"_blank"
+"\"></a>"
+msgstr ""
+"Der Trackingcode, der in ihren Instant Articles verwendet werden soll. "
+"Nähere Information dazu <a href=\"https://developers.facebook.com/docs/"
+"instant-articles/reference/analytics\" target=\"_blank\">bei Facebook</a>."
+
+#: inc/lhafb_ia.settings.php:209
+msgid ""
+"<iframe src=\"https://www.adserver.com/ss;adtype=banner300x250\" height="
+"\"300\" width=\"250\"></iframe>"
 msgstr ""
 
-#: inc/lhafb_ia.settings.php:208
-msgid "Placement ID 3"
-msgstr ""
-
-#: inc/lhafb_ia.settings.php:211
-msgid "Audience Network Placement ID 3"
-msgstr ""
-
-#: inc/lhafb_ia.settings.php:258 inc/lhafb_ia.settings.php:277
+#: inc/lhafb_ia.settings.php:256 inc/lhafb_ia.settings.php:275
 msgid "Show feed"
 msgstr "Feed zeigen"
 
-#: inc/lhafb_ia.settings.php:266
+#: inc/lhafb_ia.settings.php:264 inc/lhafb_ia.settings.php:332
 msgid "Save Changes"
 msgstr "Änderungen speichern"
 
-#: inc/lhafb_ia.settings.php:277
+#: inc/lhafb_ia.settings.php:275
 msgid "<span class='hidden-xs'>allfacebook.de</span> Instant Articles"
 msgstr ""
 
-#: inc/lhafb_ia.settings.php:352
+#: inc/lhafb_ia.settings.php:350
 msgid "Help"
 msgstr "Hilfe"
 
-#: inc/lhafb_ia.settings.php:356
+#: inc/lhafb_ia.settings.php:354
+msgid "Version"
+msgstr ""
+
+#: inc/lhafb_ia.settings.php:354
 #, fuzzy
 msgid ""
 "Made with <i class=\"fa fa-heart\"></i> in Munich by <a href=\"http://www."
@@ -222,13 +263,16 @@ msgstr ""
 "vielen <a href=\"https://github.com/luehrsenheinrich/afb_instant_articles/"
 "graphs/contributors\" target=\"_blank\">GitHub Unterstützern</a>"
 
-#: inc/lhafb_ia.settings.php:382
+#: inc/lhafb_ia.settings.php:380
 msgid "Successfully updated."
 msgstr "Erfolgreich aktualisiert."
 
-#: inc/lhafb_ia.settings.php:549
+#: inc/lhafb_ia.settings.php:563
 msgid "Not selected"
 msgstr "Nicht ausgewählt"
+
+#~ msgid "Don't send to facebook"
+#~ msgstr "Nicht an Facebook übermitteln"
 
 #~ msgid ""
 #~ "COMING SOON - Ads for Facebook Instant Articles will be implemented "
