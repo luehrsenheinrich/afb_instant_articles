@@ -76,6 +76,7 @@ Usually this is due to performance reasons. If you use a lot of social media emb
 - Added the filter "afbia_subtitle" for instant article subtitles
 - Custom sold ads are now a thing and can be activated in the "ads" section
 - We now have a little prompt, that reminds you to review this plugin after two weeks of usage
+- Added the option to mark a post as 'branded content'
 
 = 0.8.4 =
 - Fixed an issue with ad classes (thanks argentounce and fsalvato)

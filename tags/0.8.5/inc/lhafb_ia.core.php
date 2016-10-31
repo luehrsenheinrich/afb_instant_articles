@@ -108,7 +108,9 @@ class AFBInstantArticles {
 	public function maybe_update(){
 		// If we can't find a previous version number, this is likely a fresh install
 		// but if we do, we have to compare version numbers
-		if (get_site_option( 'lhafbia_version' ) && version_compare(get_site_option( 'lhafbia_version' ), LHAFB__VERSION, "<" ) ) {
+		if ( get_site_option( 'lhafbia_version' )
+				&& version_compare(get_site_option( 'lhafbia_version' ), LHAFB__VERSION, "<" )
+			) {
 			$this->do_updates();
 		}
 
@@ -136,6 +138,17 @@ class AFBInstantArticles {
 				get_option("afbia_audienceplacement_2"),
 				get_option("afbia_audienceplacement_3"),
 			));
+
+
+		}
+
+		// Do updates necessary for version 0.8.5
+		if(version_compare(get_site_option( 'lhafbia_version' ), "0.8.5", "<" )){
+
+			// We have never saved our activation time up until this release, so we have to emulate that.
+			// For a good experience we set that to 13 days ago, so the update prompt kicks in the day after the update
+			$time_offset = get_option('afbia_activation_time') + (60 * 60 * 24 * 13);
+			update_option("afbia_activation_time", $time_offset);
 
 
 		}

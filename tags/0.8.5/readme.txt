@@ -7,7 +7,7 @@ Stable tag: 0.8.5
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin lets your WordPress display instant articles directly on your facebook page.
+This plugin creates a special RSS Feed for your WordPress blog to harvest the power of Facebook Instant Articles. Instant Articles is a new technology by Facebook that will load your webpage content „instant“. That means Facebook will cache your articles on Facebooks servers and will load them within the native FB iOS or Android App without opening a browser window and connecting to your webserver.
 
 == Description ==
 
@@ -76,6 +76,7 @@ Usually this is due to performance reasons. If you use a lot of social media emb
 - Added the filter "afbia_subtitle" for instant article subtitles
 - Custom sold ads are now a thing and can be activated in the "ads" section
 - We now have a little prompt, that reminds you to review this plugin after two weeks of usage
+- Added the option to mark a post as 'branded content'
 
 = 0.8.4 =
 - Fixed an issue with ad classes (thanks argentounce and fsalvato)
