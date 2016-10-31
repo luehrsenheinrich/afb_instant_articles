@@ -74,6 +74,9 @@ Usually this is due to performance reasons. If you use a lot of social media emb
 
 == Changelog ==
 
+= 0.8.6 =
+- New working version
+
 = 0.8.5 =
 - Added the filter "afbia_subtitle" for instant article subtitles
 - Custom sold ads are now a thing and can be activated in the "ads" section
