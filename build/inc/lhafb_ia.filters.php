@@ -445,8 +445,8 @@ class AFBInstantArticles_Filters {
 		$body = $DOMDocument->getElementsByTagName( 'body' )->item( 0 );
 		$filtered_content = '';
 		foreach ( $body->childNodes as $node ) {
-			if ( method_exists( $DOMDocument, 'saveHTML' ) ) { // Requires PHP 5.3.6
-				$filtered_content .= $DOMDocument->saveHTML( $node );
+			if ( method_exists( $DOMDocument, 'saveHTML' ) &&  version_compare(phpversion(), '5.3.6', '>=') ) { 
+				$filtered_content .= $DOMDocument->saveHTML( $node );// Requires PHP 5.3.6
 			} else {
 				$temp_content = $DOMDocument->saveXML( $node );
 				$iframe_pattern = "#<iframe([^>]+)/>#is"; // self-closing iframe element
