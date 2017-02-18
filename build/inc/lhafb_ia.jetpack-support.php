@@ -54,22 +54,23 @@ class AFBInstantArticles_JetpackSupport {
 	 * @return string The tracking pixel url
 	 */
 	function build_jetpack_stats_pixel_url() {
-		global $post;
-
-		$blog = Jetpack_Options::get_option( 'id' );
-		$tz = get_option( 'gmt_offset' );
-		$v = 'ext';
-		$blog_url = parse_url( site_url() );
-		$srv = $blog_url['host'];
-		$j = sprintf( '%s:%s', JETPACK__API_VERSION, JETPACK__VERSION );
-		$post = !empty($post) ? $post->ID : 0;
-		$data = compact( 'v', 'j', 'blog', 'post', 'tz', 'srv' );
-
+		global $wp_the_query;
+		if ( function_exists( 'stats_build_view_data' ) ) { // added in https://github.com/Automattic/jetpack/pull/3445
+			$data = stats_build_view_data();
+		} else {
+			$blog = Jetpack_Options::get_option( 'id' );
+			$tz = get_option( 'gmt_offset' );
+			$v = 'ext';
+			$blog_url = parse_url( site_url() );
+			$srv = $blog_url['host'];
+			$j = sprintf( '%s:%s', JETPACK__API_VERSION, JETPACK__VERSION );
+			$post = $wp_the_query->get_queried_object_id();
+			$data = compact( 'v', 'j', 'blog', 'post', 'tz', 'srv' );
+		}
 		$data['host'] = rawurlencode( $_SERVER['HTTP_HOST'] );
-		$data['rand'] = (float)rand()/(float)getrandmax();
-		$data['ref'] = '';
+		$data['rand'] = 'RANDOM'; // amp placeholder
+		$data['ref'] = 'DOCUMENT_REFERRER'; // amp placeholder
 		$data = array_map( 'rawurlencode' , $data );
-
 		return add_query_arg( $data, 'https://pixel.wp.com/g.gif' );
 	}
 
