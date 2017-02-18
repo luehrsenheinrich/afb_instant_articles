@@ -262,6 +262,8 @@ class AFBInstantArticles_Filters {
         }
         if (!empty($feedback)) {
             $comma_separated_feedback = implode(' ', $feedback);
+        } else {
+	        $comma_separated_feedback = null;
         }
 
 		// Iterate over all the list items
