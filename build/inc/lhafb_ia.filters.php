@@ -37,6 +37,9 @@ class AFBInstantArticles_Filters {
 		add_filter( 'afbia_content', 	array($this, 'filter_dom') );
 		add_filter( 'afbia_content', 	array($this, 'address_tag') );
 
+		// Force single post paginated posts on one page
+		add_filter( 'content_pagination', array( $this, 'content_pagination' ), 10, 2 );
+
 		// Display the galleries in a way that facebook can handle them
 		remove_all_filters( 'post_gallery' );
 		add_filter( 'post_gallery', 		array($this, 'gallery_shortcode' ), 10, 3 );
@@ -106,6 +109,25 @@ class AFBInstantArticles_Filters {
 		);
 
 		return $content;
+	}
+
+	/**
+	 * content_pagination function.
+	 *
+	 * @author Hendrik Luehrsen <hl@luehrsen-heinrich.de>
+	 * @since 0.8.8
+	 * @access public
+	 * @param array   $pages Array of "pages" derived from the post content.
+	 *                       of `<!-- nextpage -->` tags..
+	 * @param WP_Post $post  Current post object.
+	 * @return $pages
+	 */
+	public function content_pagination($pages, $post){
+
+		$pages = array( $post->post_content );
+
+		return $pages;
+
 	}
 
 	/**
@@ -445,7 +467,7 @@ class AFBInstantArticles_Filters {
 		$body = $DOMDocument->getElementsByTagName( 'body' )->item( 0 );
 		$filtered_content = '';
 		foreach ( $body->childNodes as $node ) {
-			if ( method_exists( $DOMDocument, 'saveHTML' ) &&  version_compare(phpversion(), '5.3.6', '>=') ) { 
+			if ( method_exists( $DOMDocument, 'saveHTML' ) &&  version_compare(phpversion(), '5.3.6', '>=') ) {
 				$filtered_content .= $DOMDocument->saveHTML( $node );// Requires PHP 5.3.6
 			} else {
 				$temp_content = $DOMDocument->saveXML( $node );
