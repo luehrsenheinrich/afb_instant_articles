@@ -78,6 +78,7 @@ Usually this is due to performance reasons. If you use a lot of social media emb
 - Better PHP version detection (thanks jacksonlessa)
 - Jetpack tracking is now more reliable (thanks dwien)
 - Better compatibility to multi page posts (thanks mapzter)
+- Escape the author facebook URL as an actual URL
 
 = 0.8.7 =
 - Hotfix for an error in the branded content code (thanks imaddima)

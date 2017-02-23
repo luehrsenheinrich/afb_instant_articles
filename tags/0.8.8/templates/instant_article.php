@@ -138,7 +138,7 @@ if(defined("DEV_IA")){
 
 			<address>
 				<?php if(get_the_author_meta('facebook')): ?>
-					<a<?php if(!empty($author_role)):?> title="<?php echo esc_attr($author_role); ?>"<?php endif; ?> rel="facebook" href="<?php the_author_meta('facebook'); ?>"><?php echo $author; ?></a>
+					<a<?php if(!empty($author_role)):?> title="<?php echo esc_attr($author_role); ?>"<?php endif; ?> rel="facebook" href="<?php echo esc_url( get_the_author_meta('facebook') ); ?>"><?php echo $author; ?></a>
 				<?php else: ?>
 					<a<?php if(!empty($author_role)):?> title="<?php echo esc_attr($author_role); ?>"<?php endif; ?>><?php echo esc_html($author); ?></a>
 				<?php endif; ?>
