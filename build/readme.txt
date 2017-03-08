@@ -40,6 +40,13 @@ If you are good with languages, head over to [WordPress Translations and transla
 
 This plugin is brought to you by the awesome folks at [Luehrsen // Heinrich](http://www.luehrsen-heinrich.de).
 
+### Happy Users
+
+Our plugin is in heavy use at:
+* [Phantasialand](https://www.facebook.com/phantasialand/)
+* [Tirol Werbung](https://www.facebook.com/tirol/)
+* [POWERVOICE](https://www.facebook.com/POWERVOICE/)
+
 == Installation ==
 
 1. Upload the lhafb_instant_articles folder to the /wp-content/plugins/ directory or install from the WordPress Plugin Directory
