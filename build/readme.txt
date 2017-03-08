@@ -44,7 +44,10 @@ This plugin is brought to you by the awesome folks at [Luehrsen // Heinrich](htt
 
 Our plugin is in heavy use at:
 * [Phantasialand](https://www.facebook.com/phantasialand/)
+* [Meedia.de](https://www.facebook.com/meedia.de/)
 * [Tirol Werbung](https://www.facebook.com/tirol/)
+* [Onlinemarketing.de](https://www.facebook.com/OnlineMarketing.de/)
+* [Nerdcore] (https://www.facebook.com/Crackajackz)
 * [POWERVOICE](https://www.facebook.com/POWERVOICE/)
 
 == Installation ==
