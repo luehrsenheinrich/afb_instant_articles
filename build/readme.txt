@@ -1,5 +1,5 @@
 === <##= pkg.title ##> ===
-Contributors: luehrsen, wiesejens
+Contributors: wpmunich, luehrsen, wiesejens
 Tags: articles, instant articles, facebook, allfacebook, rss, feed, instant articles for wordpress, instant articles for WP, wordpress instant articles, facebook instant articles, facebook, social, news, amp, fbia, fia, mobile
 Requires at least: 4.0
 Tested up to: 4.7
