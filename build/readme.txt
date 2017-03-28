@@ -84,6 +84,10 @@ Usually this is due to performance reasons. If you use a lot of social media emb
 
 == Changelog ==
 
+= 0.8.9 =
+- Updated the readme.txt
+-
+
 = 0.8.8 =
 - Better PHP version detection (thanks jacksonlessa)
 - Jetpack tracking is now more reliable (thanks dwien)
