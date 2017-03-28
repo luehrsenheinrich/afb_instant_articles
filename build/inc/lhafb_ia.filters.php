@@ -449,7 +449,7 @@ class AFBInstantArticles_Filters {
 			$content = mb_convert_encoding( $content, 'HTML-ENTITIES', get_option( 'blog_charset' ) );
 		}
 
-		$result = $DOMDocument->loadHTML( '<!doctype html><html><body>' . $content . '</body></html>' );
+		$result = $DOMDocument->loadHTML( '<!doctype html><html><body>' . utf8_decode( $content ) . '</body></html>' );
 		libxml_clear_errors();
 		libxml_use_internal_errors( $libxml_previous_state );
 
