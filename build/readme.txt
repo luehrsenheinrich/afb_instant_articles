@@ -86,7 +86,7 @@ Usually this is due to performance reasons. If you use a lot of social media emb
 
 = 0.8.9 =
 - Updated the readme.txt
--
+- Possible fix for broken encoding (thanks hochitom)
 
 = 0.8.8 =
 - Better PHP version detection (thanks jacksonlessa)

@@ -513,7 +513,7 @@ class afbia_settings_field {
 					foreach(array_filter((array) get_option($this->args['id'])) as $value):
 				?>
 					<span class="multi-input">
-						<input type="text" placeholder="<?=esc_attr($this->args['placeholder'])?>" class="all-options" name="<?=$this->args['id']?>[]" id="<?=$this->args['id']?>" value="<?=$value?>"> <span class="add-input fa fa-plus-square"></span> <span class="remove-input fa fa-minus-square"></span> <br /></span>
+						<input type="text" placeholder="<?=esc_attr($this->args['placeholder'])?>" class="all-options" name="<?=$this->args['id']?>[]" id="<?=$this->args['id']?>" value="<?= esc_html(''.$value.''); ?>"> <span class="add-input fa fa-plus-square"></span> <span class="remove-input fa fa-minus-square"></span> <br /></span>
 				<?php endforeach; ?>
 				<span class="multi-input">
 					<input type="text" placeholder="<?=esc_attr($this->args['placeholder'])?>" class="all-options" name="<?=$this->args['id']?>[]" id="<?=$this->args['id']?>"> <span class="add-input fa fa-plus-square"></span> <span class="remove-input fa fa-minus-square"></span> <br /></span>
