@@ -1,4 +1,4 @@
-=== allfacebook.de Instant Articles ===
+=== WordPress Instant Articles by allfacebook.de ===
 Contributors: wpmunich, luehrsen, wiesejens
 Tags: articles, instant articles, facebook, allfacebook, rss, feed, instant articles for wordpress, instant articles for WP, wordpress instant articles, facebook instant articles, facebook, social, news, amp, fbia, fia, mobile
 Requires at least: 4.0
@@ -7,19 +7,21 @@ Stable tag: 0.8.9
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin creates a special RSS Feed for your WordPress blog to harvest the power of Facebook Instant Articles. Instant Articles is a technology by Facebook that will load your webpage content „instant“. That means Facebook will cache your articles on Facebooks servers and will load them within the native FB iOS or Android App without opening a browser window and connecting to your webserver.
+Harness the power of Facebook Instant Articles on your WordPress site.
 
 == Description ==
 
-This plugin creates a special RSS Feed for your WordPress blog to harvest the power of Facebook Instant Articles.
+The WordPress Instant Articles plugin creates a special RSS Feed for your WordPress blog to harvest the power of Facebook Instant Articles.
 
 Instant Articles is a new technology by Facebook that will load your webpage content „instant“. That means Facebook will cache your articles on Facebooks servers and will load them within the native FB iOS or Android App without opening a browser window and connecting to your webserver.
+
+This plugin is brought to you by the awesome folks at [WP Munich](http://www.wp-munich.com).
 
 You can learn more about Instant Articles on the official [Facebook Developer Documentation](https://developers.facebook.com/docs/instant-articles).
 
 Instant Articles are available for all Publishers since [Facebook f8 Developer Conference](http://fbf8.com) in April 2016. [Please signup for the Instant Article Feature on Facebook](https://www.facebook.com/instant_articles/signup) before you install the plugin.
 
-### allfacebook.de Instant Articles Features
+### WordPress Instant Articles by allfacebook.de Features
 * Easy to use Instant Article RSS Feed Creation
 * Per Article Credits Field
 * Global Copyright Information
@@ -38,8 +40,6 @@ If you want to participate in the development [head over to GitHub](https://gith
 
 If you are good with languages, head over to [WordPress Translations and translate this plugin](https://translate.wordpress.org/projects/wp-plugins/allfacebook-instant-articles) to your language!
 
-This plugin is brought to you by the awesome folks at [Luehrsen // Heinrich](http://www.luehrsen-heinrich.de).
-
 ### Happy Users
 
 Our plugin is in heavy use at:
@@ -47,13 +47,13 @@ Our plugin is in heavy use at:
 * [Meedia.de](https://www.facebook.com/meedia.de/)
 * [Tirol Werbung](https://www.facebook.com/tirol/)
 * [Onlinemarketing.de](https://www.facebook.com/OnlineMarketing.de/)
-* [Nerdcore] (https://www.facebook.com/Crackajackz)
+* [Nerdcore](https://www.facebook.com/Crackajackz)
 * [POWERVOICE](https://www.facebook.com/POWERVOICE/)
 
 == Installation ==
 
 1. Upload the lhafb_instant_articles folder to the /wp-content/plugins/ directory or install from the WordPress Plugin Directory
-2. Activate the 'allfacebook.de Instant Articles' plugin through the 'Plugins' menu in WordPress
+2. Activate the 'WordPress Instant Articles by allfacebook.de' plugin through the 'Plugins' menu in WordPress
 3. Open Settings -> Instant Articles to start your IA setup.
 
 == Frequently Asked Questions ==
@@ -69,7 +69,7 @@ Copy and Paste your Google Analytics code in the „Analytics“ Area of the Plu
 
 
 ###My Author Information is not linked to my Facebook Profile.
-Please use the Yoast SEO Plugin to add this additional profile information to your WordPress user settings. allfacebook.de Instant Articles will use this information.
+Please use the Yoast SEO Plugin to add this additional profile information to your WordPress user settings. WordPress Instant Articles by allfacebook.de will use this information.
 
 ###Feature XYZ is not available! Why?
 Keep calm. Development of this plugin will continue and we will add more features in the future!

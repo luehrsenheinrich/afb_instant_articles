@@ -11,9 +11,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-This plugin creates a special RSS Feed for your WordPress blog to harvest the power of Facebook Instant Articles.
+The WordPress Instant Articles plugin creates a special RSS Feed for your WordPress blog to harvest the power of Facebook Instant Articles.
 
 Instant Articles is a new technology by Facebook that will load your webpage content „instant“. That means Facebook will cache your articles on Facebooks servers and will load them within the native FB iOS or Android App without opening a browser window and connecting to your webserver.
+
+This plugin is brought to you by the awesome folks at [WP Munich](http://www.wp-munich.com).
 
 You can learn more about Instant Articles on the official [Facebook Developer Documentation](https://developers.facebook.com/docs/instant-articles).
 
@@ -38,8 +40,6 @@ If you want to participate in the development [head over to GitHub](https://gith
 
 If you are good with languages, head over to [WordPress Translations and translate this plugin](https://translate.wordpress.org/projects/wp-plugins/allfacebook-instant-articles) to your language!
 
-This plugin is brought to you by the awesome folks at [Luehrsen // Heinrich](http://www.luehrsen-heinrich.de).
-
 ### Happy Users
 
 Our plugin is in heavy use at:
@@ -47,7 +47,7 @@ Our plugin is in heavy use at:
 * [Meedia.de](https://www.facebook.com/meedia.de/)
 * [Tirol Werbung](https://www.facebook.com/tirol/)
 * [Onlinemarketing.de](https://www.facebook.com/OnlineMarketing.de/)
-* [Nerdcore] (https://www.facebook.com/Crackajackz)
+* [Nerdcore](https://www.facebook.com/Crackajackz)
 * [POWERVOICE](https://www.facebook.com/POWERVOICE/)
 
 == Installation ==
