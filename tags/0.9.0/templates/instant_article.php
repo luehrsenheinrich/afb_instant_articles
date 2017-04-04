@@ -171,12 +171,37 @@ if(defined("DEV_IA")){
 	<!-- Article body goes here -->
 	<?php echo apply_filters('afbia_content', apply_filters('the_content', get_the_content( '' ))); ?>
 
-	<?php if(get_option('afbia_tracking')): ?>
+	<?php if(get_option('afbia_tracking') || get_option( 'afbia_ga_uid' )): ?>
 		<!-- Adding tracking if defined -->
 		<figure class="op-tracker">
+			<?php if(get_option('afbia_tracking')): ?>
 			<iframe>
 				<?php echo get_option('afbia_tracking'); ?>
 			</iframe>
+			<?php endif; ?>
+			<?php if(get_option('afbia_ga_uid')): ?>
+			<iframe>
+				<script>
+					(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+					m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+					})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+					ga('create', '<?php echo esc_attr(get_option('afbia_ga_uid')); ?>', 'auto');
+					ga('set', 'campaignName', 'Instant Article');
+					ga('set', 'campaignSource', 'Instant Article');
+					ga('set', 'campaignMedium', 'social');
+					<?php if(get_option('afbia_ga_anonymize_ip')): ?>
+					ga('set', 'anonymizeIp', true);
+					<?php endif; ?>
+					ga('send', {
+						hitType: 'pageview',
+						location: ia_document.shareURL,
+						title: ia_document.title
+					});
+				</script>
+			</iframe>
+			<?php endif; ?>
 		</figure>
 	<?php endif; ?>
 
