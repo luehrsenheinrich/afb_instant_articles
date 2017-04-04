@@ -87,6 +87,7 @@ Usually this is due to performance reasons. If you use a lot of social media emb
 = 0.9.0 =
 - Added a dedicated Google Analytics tracking option
 - Updated the readme.txt
+- Added a plugin list action link to make it easier to find the settings
 
 = 0.8.9 =
 - Updated the readme.txt

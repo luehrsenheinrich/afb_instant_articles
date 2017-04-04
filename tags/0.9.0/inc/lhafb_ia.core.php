@@ -22,7 +22,7 @@ class AFBInstantArticles {
 	 */
 	private function filter_dispatcher(){
 		add_filter( 'wp_head', 			array($this, 'do_header') );
-		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array($this, 'action_links') );
+		add_filter( 'plugin_action_links_' . plugin_basename(LHAFB__PLUGIN_FILE), array($this, 'action_links') );
 	}
 
 
@@ -41,8 +41,7 @@ class AFBInstantArticles {
 		add_action( 'plugins_loaded', 					array( $this, 'maybe_update') );
 
 		add_action( 'admin_notices', 					array( $this, 'admin_review_notice' ) );
-
-		add_action( 'wp_ajax_afbia_dismiss_review', 	array( $this, 'dismiss_review_notice' ) );
+		add_action( 'admin_init', 						array( $this, 'admin_review_handler' ) );
 	}
 
 	/**
@@ -77,6 +76,11 @@ class AFBInstantArticles {
 	 */
 	public function on_activation(){
 		add_option("afbia_activation_time", current_time('timestamp')); // Add the activation timestamp
+
+		// If the review timer has not been set, set it to 'now'
+		if(!get_option( 'afbia_review_timer' )){
+			update_option( 'afbia_review_timer', current_time('timestamp') );
+		}
 	}
 
 	/**
@@ -90,7 +94,6 @@ class AFBInstantArticles {
 	 * @return void
 	 */
 	public function on_deactivation(){
-
 		delete_option("afbia_activation_time"); // Remove the activation timestamp
 	}
 
@@ -149,8 +152,18 @@ class AFBInstantArticles {
 			// For a good experience we set that to 13 days ago, so the update prompt kicks in the day after the update
 			$time_offset = get_option('afbia_activation_time') + (60 * 60 * 24 * 13);
 			update_option("afbia_activation_time", $time_offset);
+		}
 
+		// Do updates necessary for version 0.9.0
 
+		// Do updates necessary for version 0.8.5
+		if(version_compare(get_site_option( 'lhafbia_version' ), "0.9.0", "<" )){
+
+			// We have never saved our review timer up until this release, so we have to emulate that.
+			// For a good experience we set that to 13 days ago, so the update prompt kicks in the day after the update
+			if(!get_option( 'afbia_review_timer' )){
+				update_option( 'afbia_review_timer', current_time('timestamp') - (60 * 60 * 24 * 13) );
+			}
 		}
 	}
 
@@ -243,28 +256,43 @@ class AFBInstantArticles {
 	 * @return void
 	 */
 	public function admin_review_notice() {
-		$time_offset = get_option('afbia_activation_time') + (60 * 60 * 24 * 14); // Two weeks since activation
+		$time_offset = get_option('afbia_review_timer') + (60 * 60 * 24 * 14); // Two weeks since activation
+
+
+		$review_url = add_query_arg("afbia_hide_review", "review");
+		$later_url = add_query_arg("afbia_hide_review", "later");
+		$dismiss_url = add_query_arg("afbia_hide_review", "never");
 
 		if(current_time('timestamp') >= $time_offset && !get_option("afbia_hide_review_notice")){
-			$class = 'notice notice-info is-dismissible afbia-review';
-			$message = __( 'Do you like the allfacebook.de Instant Articles plugin? Please consider giving it a review in the <a href="https://wordpress.org/support/plugin/allfacebook-instant-articles/reviews/?rate=5#new-post" target="_blank">WordPress Plugin Repository</a>.', 'afbia' );
+			$class = 'notice notice-info afbia-review';
+			$message = __( 'Hey, you\'ve been using the WordPress <b>Instant Articles by allfacebook.de</b> plugin for a while now. Do you want to leave a review for us? <br />
+			<a href="'.$review_url.'" target="_blank"><b>Yes, leave a review!</b></a> |
+			<a href="'.$dismiss_url.'">No, don\'t bother me.</a> |
+			<a href="'.$later_url.'">Maybe later.</a>' , 'afbia' );
 
 			printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message );
 		}
 	}
 
 	/**
-	 * This function should be called by the WP Ajax function upon dismissal of the
-	 * review admin notice.
+	 * Handle actions triggert by the admin review notice.
 	 *
 	 * @access public
 	 * @return void
 	 */
-	public function dismiss_review_notice(){
-		update_option("afbia_hide_review_notice", true);
-		wp_die("success");
+	public function admin_review_handler(){
+		// Lets see if we've got the order to hide the hide the notice
+		if ( isset($_REQUEST['afbia_hide_review']) && $_REQUEST['afbia_hide_review'] === "never" ) {
+			update_option('afbia_review_timer', current_time('timestamp') + (60 * 60 * 24 * 9999999) );
+			wp_redirect( remove_query_arg('afbia_hide_review') );
+		} elseif ( isset($_REQUEST['afbia_hide_review']) && $_REQUEST['afbia_hide_review'] === "later" ) {
+			update_option('afbia_review_timer', current_time('timestamp') );
+			wp_redirect( remove_query_arg('afbia_hide_review') );
+		} elseif ( isset($_REQUEST['afbia_hide_review']) && $_REQUEST['afbia_hide_review'] === "review" ) {
+			update_option('afbia_review_timer', current_time('timestamp') + (60 * 60 * 24 * 9999999) );
+			wp_redirect( 'https://wordpress.org/support/plugin/allfacebook-instant-articles/reviews/?rate=5#new-post' );
+		}
 	}
-
 
 	/**
 	 * Load the translation files.
@@ -297,9 +325,7 @@ class AFBInstantArticles {
 	 * @return void
 	 */
 	public function action_links($links){
-
-		$links = "test";
-
+		$links['settings'] = '<a href="'.admin_url('options-general.php?page=afbia_settings_page').'">' . __("Settings", "allfacebook-instant-articles") . '</a>';
 		return $links;
 	}
 
