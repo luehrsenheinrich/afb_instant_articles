@@ -79,17 +79,6 @@ class lhafb_theme_settings {
 		$afbia_copyright = new afbia_settings_field($args);
 
 		$args = array(
-			'id'				=> 'afbia_tracking',
-			'title'				=> __("Tracking", 'allfacebook-instant-articles'),
-			'page'				=> 'afbia_settings_page',
-			'section'			=> 'feed_settings',
-			'description'		=> __("The tracking code, that will be embedded in your instant articles. See <a href=\"https://developers.facebook.com/docs/instant-articles/reference/analytics\" target=\"_blank\">this link</a> for more information.", 'allfacebook-instant-articles'),
-			'type'				=> 'textarea', // text, textarea, password, checkbox
-			'option_group'		=> "settings_page_afbia_settings_page",
-		);
-		$afbia_tracking = new afbia_settings_field($args);
-
-		$args = array(
 			'id'				=> 'afbia_like_media',
 			'title'				=> __("Like Media", 'allfacebook-instant-articles'),
 			'page'				=> 'afbia_settings_page',
@@ -156,6 +145,55 @@ class lhafb_theme_settings {
 			'option_group'		=> "settings_page_afbia_settings_page",
 		);
 		$afbia_comment_media = new afbia_settings_field($args);
+
+
+
+		//
+		// Tracking Settings
+		//
+		$args = array(
+			'id'			=> "tracking_settings",
+			'icon'			=> "line-chart",
+			'title'			=> __("Tracking & Analytics", 'allfacebook-instant-articles'),
+			'page'			=> "afbia_settings_page",
+			'description'	=> __("Settings that set how you want to track your content.", 'allfacebook-instant-articles'),
+		);
+		$facebook_settings = new afbia_settings_section($args);
+
+		$args = array(
+			'id'				=> 'afbia_tracking',
+			'title'				=> __("Tracking Code", 'allfacebook-instant-articles'),
+			'page'				=> 'afbia_settings_page',
+			'section'			=> 'tracking_settings',
+			'description'		=> __("The tracking code, that will be embedded in your instant articles. See <a href=\"https://developers.facebook.com/docs/instant-articles/reference/analytics\" target=\"_blank\">this link</a> for more information.", 'allfacebook-instant-articles'),
+			'type'				=> 'textarea', // text, textarea, password, checkbox
+			'option_group'		=> "settings_page_afbia_settings_page",
+		);
+		$afbia_tracking = new afbia_settings_field($args);
+
+		$args = array(
+			'id'				=> 'afbia_ga_uid',
+			'title'				=> __("Google Tracking ID", 'allfacebook-instant-articles'),
+			'page'				=> 'afbia_settings_page',
+			'section'			=> 'tracking_settings',
+			'description'		=> __("If you want us to generate a Google Analytics tracking code for you, enter your analytics tracking ID here. (e.g. UA-XXXXX-Y)", 'allfacebook-instant-articles'),
+			'placeholder'		=> __("UA-XXXXX-Y", 'allfacebook-instant-articles'),
+			'type'				=> 'text', // text, textarea, password, checkbox
+			'option_group'		=> "settings_page_afbia_settings_page",
+		);
+
+		$afbia_tracking = new afbia_settings_field($args);
+
+		$args = array(
+			'id'				=> 'afbia_ga_anonymize_ip',
+			'title'				=> __("Anonymize IP", 'allfacebook-instant-articles'),
+			'page'				=> 'afbia_settings_page',
+			'section'			=> 'tracking_settings',
+			'description'		=> __("For many countries it is advisable to activate IP anonymization, to be compliant with data protection laws. More about that <a href=\"https://support.google.com/analytics/answer/2763052?hl=en\" target=\"_blank\">here</a>.", 'allfacebook-instant-articles'),
+			'type'				=> 'checkbox', // text, textarea, password, checkbox
+			'option_group'		=> "settings_page_afbia_settings_page",
+		);
+		$afbia_tracking = new afbia_settings_field($args);
 
 
 		//
