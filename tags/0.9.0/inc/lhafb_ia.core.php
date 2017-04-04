@@ -22,7 +22,7 @@ class AFBInstantArticles {
 	 */
 	private function filter_dispatcher(){
 		add_filter( 'wp_head', 			array($this, 'do_header') );
-
+		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array($this, 'action_links') );
 	}
 
 
@@ -250,7 +250,6 @@ class AFBInstantArticles {
 			$message = __( 'Do you like the allfacebook.de Instant Articles plugin? Please consider giving it a review in the <a href="https://wordpress.org/support/plugin/allfacebook-instant-articles/reviews/?rate=5#new-post" target="_blank">WordPress Plugin Repository</a>.', 'afbia' );
 
 			printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message );
-			update_option("afbia_hide_review_notice", true);
 		}
 	}
 
@@ -290,5 +289,18 @@ class AFBInstantArticles {
 		wp_enqueue_script("afbia_admin_script", LHAFB__PLUGIN_URL . 'admin/admin.min.js', array("jquery", "wp-util"), '0.9.0', true);
 	}
 
+	/**
+	 * Add action links for the plugin.
+	 *
+	 * @access public
+	 * @param mixed $links
+	 * @return void
+	 */
+	public function action_links($links){
+
+		$links = "test";
+
+		return $links;
+	}
 
 }

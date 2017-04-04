@@ -6,8 +6,8 @@
 Plugin Name: WordPress Instant Articles by allfacebook.de
 Plugin URI: https://wordpress.org/plugins/allfacebook-instant-articles/
 Description: Harness the power of Facebook Instant Articles on your WordPress site.
-Author: Luehrsen // Heinrich
-Author URI: http://www.luehrsen-heinrich.de
+Author: WP Munich
+Author URI: http://www.wp-munich.com
 Version: 0.9.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html

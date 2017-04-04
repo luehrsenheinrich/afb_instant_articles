@@ -1,4 +1,4 @@
-# allfacebook Instant Articles
+# WordPress Instant Articles by allfacebook.de
 [![Code Climate](https://codeclimate.com/github/luehrsenheinrich/afb_instant_articles/badges/gpa.svg)](https://codeclimate.com/github/luehrsenheinrich/afb_instant_articles)
 ![allfacebook Instant Articles](https://raw.githubusercontent.com/luehrsenheinrich/afb_instant_articles/master/assets/banner-1544x500.png)
 
