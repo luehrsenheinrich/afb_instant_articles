@@ -58,6 +58,9 @@ Our plugin is in heavy use at:
 
 == Frequently Asked Questions ==
 
+###I've updated a setting, but the change doesn't show on Facebook?
+In order to preserver performance changing a setting in the backend - like updating the style variable, or the analytics settings - does not prompt the Facebook crawler to recrawl your articles. The only indicator to achieve this is the "last modified" date of the article itself. So if you need to propagate a change to instant articles you have to hit "save" on your articles to reset the last modified date.
+
 ###How can I help with the development of this plugin?
 Head over to the [GitHub Repository](https://github.com/luehrsenheinrich/afb_instant_articles) and start reading. Every bit of help is highly appreciated!
 
