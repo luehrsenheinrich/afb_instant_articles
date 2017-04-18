@@ -3,7 +3,7 @@ Contributors: wpmunich, luehrsen, wiesejens
 Tags: articles, instant articles, facebook, allfacebook, rss, feed, instant articles for wordpress, instant articles for WP, wordpress instant articles, facebook instant articles, facebook, social, news, amp, fbia, fia, mobile
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 0.9.0
+Stable tag: 0.9.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

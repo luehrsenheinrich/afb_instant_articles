@@ -24,10 +24,6 @@ function lhafb_instant_articles_embed_oembed_html( $html, $url, $attr, $post_id 
 		include_once( ABSPATH . WPINC . '/class-oembed.php' );
 	}
 
-	// Remove all filters before trying to fetch a clean embed
-	remove_all_filters('oembed_result');
-
-
 	// Instead of checking all possible URL variants, use the provider list from WP_oEmbed.
 	$wp_oembed = new WP_oEmbed();
 
@@ -74,7 +70,7 @@ function lhafb_instant_articles_embed_oembed_html( $html, $url, $attr, $post_id 
 	if ( $provider_name ) {
 		$html = lhafb_instant_articles_embed_get_html( $provider_name, $html, $url, $attr, $post_id );
 	} else {
-		$html = sprintf( '<iframe class="oembed">%s</iframe>', $html);
+		$html = sprintf( '<figure><iframe class="oembed">%s</iframe></figure>', $html);
 	}
 
 	return apply_filters('instant_articles_oembed_result', $html, $url, $attr, $post_id);

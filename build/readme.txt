@@ -87,6 +87,9 @@ Usually this is due to performance reasons. If you use a lot of social media emb
 
 == Changelog ==
 
+= 0.9.1 =
+- fixed some oEmbed issues (thanks vidpresso, marcello)
+
 = 0.9.0 =
 - Added a dedicated Google Analytics tracking option
 - Updated the readme.txt
