@@ -169,7 +169,27 @@ if(defined("DEV_IA")){
 	</header>
 
 	<!-- Article body goes here -->
-	<?php echo apply_filters('afbia_content', apply_filters('the_content', get_the_content( '' ))); ?>
+	<?php
+
+	$post_modified_date = get_post_modified_time("U", true, $post->ID, false);
+	$cached_post_modified_date = intval(get_transient("afbia_cache_modified_".$post->ID));
+
+	$content = false;
+
+	if($post_modified_date == $cached_post_modified_date){
+		$content = get_transient("afbia_cache_content_".$post->ID);
+	}
+
+	if($content === false || $content == ""){
+		$content = apply_filters('afbia_content', apply_filters('the_content', get_the_content( '' )));
+
+		set_transient( 'afbia_cache_modified_' . $post->ID, $post_modified_date, WEEK_IN_SECONDS );
+		set_transient( 'afbia_cache_content_' . $post->ID, $content, WEEK_IN_SECONDS );
+	}
+
+	echo $content;
+
+	?>
 
 	<?php if(get_option('afbia_tracking') || get_option( 'afbia_ga_uid' )): ?>
 		<!-- Adding tracking if defined -->
