@@ -71,13 +71,12 @@ module.exports = function(grunt) {
 	// Uglify
 	// We minify the files, we just concatenated
 	uglify: {
-	    mstartup: {
+	    development: {
 	      options: {
 	      },
 	      files: {
-			'build/js/afb_ia.min.js': ['build/js/afb_ia.min.js'],
-			'build/admin/admin.min.js': ['build/admin/admin.min.js']
-
+    			'build/js/afb_ia.min.js': ['build/js/afb_ia.min.js'],
+    			'build/admin/admin.min.js': ['build/admin/admin.min.js']
 	      }
 	    }
 	},
@@ -193,4 +192,3 @@ module.exports = function(grunt) {
 
 
 };
-
