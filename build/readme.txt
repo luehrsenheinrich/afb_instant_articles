@@ -15,7 +15,7 @@ The WordPress Instant Articles plugin creates a special RSS Feed for your WordPr
 
 Instant Articles is a new technology by Facebook that will load your webpage content „instant“. That means Facebook will cache your articles on Facebooks servers and will load them within the native FB iOS or Android App without opening a browser window and connecting to your webserver.
 
-This plugin is brought to you by the awesome folks at [WP Munich](http://www.wp-munich.com).
+This plugin is brought to you by the awesome folks at [WP Munich](http://www.wp-munich.com/?utm_source=plugin&utm_medium=plugin-repository-description&utm_campaign=afbia).
 
 You can learn more about Instant Articles on the official [Facebook Developer Documentation](https://developers.facebook.com/docs/instant-articles).
 

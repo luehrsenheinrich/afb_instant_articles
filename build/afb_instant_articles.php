@@ -7,7 +7,7 @@ Plugin Name: <##= pkg.title ##>
 Plugin URI: https://wordpress.org/plugins/allfacebook-instant-articles/
 Description: <##= pkg.description ##>
 Author: WP Munich
-Author URI: http://www.wp-munich.com
+Author URI: http://www.wp-munich.com/?utm_source=plugin&utm_medium=plugin-header&utm_campaign=afbia
 Version: <##= pkg.version ##>
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
