@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ruleset name="WordPress Extra">
+	<description>Some additional rule settings for development at Luehrsen // Heinrich</description>
+
+	<rule ref="WordPress-Extra"/>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" value="agncy" />
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.Files">
+		<exclude name="WordPress.Files.FileName"/>
+	</rule>
+</ruleset>

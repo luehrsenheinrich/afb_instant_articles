@@ -1,108 +1,129 @@
+const webpackConfig = require('./webpack.config');
+const gruntNewerLess = require('grunt-newer-less');
+
 module.exports = function(grunt) {
   require('jit-grunt')(grunt);
-  grunt.template.addDelimiters('underscoresaving', '<##', '##>');
-  grunt.template.setDelimiters('underscoresaving');
 
   grunt.initConfig({
 
   	// Define variables
-    pkg:     grunt.file.readJSON("package.json"),
+	pkg:	 grunt.file.readJSON("package.json"),
+	pkgLck:	 grunt.file.readJSON("package-lock.json"),
 
 	// LESS / CSS
 
 	// Compile Less
 	// Compile the less files
-    less: {
-      development: {
-        options: {
-          compress: true,
-          yuicompress: true,
-          optimization: 2
-        },
-        files: {
-          "build/admin/admin.css": "build/admin/less/admin.less" // destination file and source file
-        }
-      }
-    },
+	less: {
+	  development: {
+		options: {
+		  optimization: 2
+		},
+		files: {
+		  "build/style.css": "build/less/style.less", // destination file and source file
+		  "build/admin/admin.css": "build/admin/less/admin.less", // destination file and source file
 
-    // JAVASCRIPT
+		  "build/blocks/blocks-editor.css": "build/blocks/blocks-editor.less",
+		  "build/blocks/blocks.css": "build/blocks/blocks.less",
 
-    // JS HINT
-    // How's our code quality
-    jshint: {
-	    options: {
-			reporter: require('jshint-stylish'),
-			force: true,
-	    },
-    	all: ['build/js/**/*.js', '!build/js/**/*.min.js', '!build/js/bootstrap/**/*.js', '!build/js/vendor/**/*.js']
-  	},
+		  "build/blocks-premium/blocks-editor.css": "build/blocks-premium/blocks-editor.less",
+		  "build/blocks-premium/blocks.css": "build/blocks-premium/blocks.less",
 
-    // Concat
-    // Join together the needed files.
-	concat_in_order: {
-		main: {
-			files: {
-				'build/js/afb_ia.min.js': ['build/js/afb_ia.js'],
-				'build/admin/admin.min.js': ['build/admin/admin.js']
+		  "build/css/font-awesome.css": "build/less/font-awesome.less"
+		}
+	  },
+	  fonts: {
+		  files: {
+			  "build/webfonts.css": "build/less/webfonts.less",
+		  }
+	  }
+	},
 
-			},
+	postcss: {
+		fonts: {
+			src: 'build/webfonts.css',
 			options: {
-			    extractRequired: function(filepath, filecontent) {
-				    var path = require('path');
-
-			        var workingdir = path.normalize(filepath).split(path.sep);
-			        workingdir.pop();
-
-			        var deps = this.getMatches(/@depend\s"(.*\.js)"/g, filecontent);
-			        deps.forEach(function(dep, i) {
-			            var dependency = workingdir.concat([dep]);
-			            deps[i] = path.join.apply(null, dependency);
-			        });
-			        return deps;
-			    },
-			    extractDeclared: function(filepath) {
-			        return [filepath];
-			    },
-			    onlyConcatRequiredFiles: true
+			  map: false, // inline sourcemaps
+			  processors: [
+				require('postcss-base64')({
+					extensions: ['.woff'],
+					excludeAtFontFace: false,
+					root: 'build',
+				}), // add vendor prefixes
+			  ]
+			},
+		},
+		autoprefix: {
+			options: {
+			  map: false, // inline sourcemaps
+			  processors: [
+				require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
+			  ]
+			},
+			files: {
+				"build/style.css": "build/style.css",
+				"build/admin/admin.css": "build/admin/admin.css",
+				"build/blocks/blocks-editor.css": "build/blocks/blocks-editor.css",
+				"build/blocks/blocks.css": "build/blocks/blocks.css",
+				"build/blocks-premium/blocks-editor.css": "build/blocks-premium/blocks-editor.css",
+				"build/blocks-premium/blocks.css": "build/blocks-premium/blocks.css",
+				"build/css/font-awesome.css": "build/css/font-awesome.css"
+			}
+		},
+		minify: {
+			options: {
+				map: false,
+				processors: [
+					require('cssnano')({}),
+				]
+			},
+			files: {
+				"build/style.css": "build/style.css",
+				"build/admin/admin.css": "build/admin/admin.css",
+				"build/blocks/blocks-editor.css": "build/blocks/blocks-editor.css",
+				"build/blocks/blocks.css": "build/blocks/blocks.css",
+				"build/blocks-premium/blocks-editor.css": "build/blocks-premium/blocks-editor.css",
+				"build/blocks-premium/blocks.css": "build/blocks-premium/blocks.css",
+				"build/css/font-awesome.css": "build/css/font-awesome.css"
 			}
 		}
 	},
 
-	// Uglify
-	// We minify the files, we just concatenated
-	uglify: {
-	    development: {
-	      options: {
-	      },
-	      files: {
-    			'build/js/afb_ia.min.js': ['build/js/afb_ia.min.js'],
-    			'build/admin/admin.min.js': ['build/admin/admin.min.js']
-	      }
-	    }
-	},
+	// JAVASCRIPT
 
-	// Lint
-	// The PHP Linter for code quality
-	phplint: {
-		dev: ['build/**/*.php'],
+	webpack: {
+      prod: webpackConfig,
+    },
+
+	// PHP Coding Standards
+	// Check the PHP Code for the needed PSR2 rule set
+	phpcs: {
+		application: {
+			src: ['build/**/*.php', 'build/theme_engine/**/*', '!build/freemius/**/*']
+		},
+		options: {
+			bin: 'wpcs/vendor/bin/phpcs',
+			standard: 'WordPress-LH',
+			warningSeverity: 0
+		}
 	},
 
 	// WATCHER / SERVER
 
-    // Watch
-    watch: {
-	    js: {
-		    files: ['build/js/**/*.js', '!build/js/**/*.min.js','build/admin/**/*.js', '!build/admin/**/*.min.js'],
-		    tasks: ['dev-deploy'],
+	// Watch
+	watch: {
+		js: {
+			files: ['build/**/*.js', '!build/**/*.min.js', '!build/**/*.bundle.js'],
+			tasks: ['dev-deploy'],
 			options: {
 				livereload: true
 			},
-	    },
+		},
 		less: {
 			files: ['build/**/*.less'], // which files to watch
-			tasks: ['dev-deploy'],
+			tasks: ['deploy_css'],
 			options: {
-				// livereload: true
+				//livereload: true
 			},
 		},
 		css: {
@@ -112,49 +133,59 @@ module.exports = function(grunt) {
 				livereload: true
 			}
 		},
+		php: {
+			files: ['build/**/*.php'], // which files to watch
+			tasks: ['deploy_php'],
+			options: {
+				livereload: true
+			},
+		},
 		livereload: {
-			files: ['build/js/*.min.js', 'build/**/*.php', 'build/**/*.html', 'build/**/*.txt'], // Watch all files
+			files: ['build/**/*.html', 'build/**/*.txt'], // Watch all files
 			tasks: ['dev-deploy'],
 			options: {
 				livereload: true
 			}
 		},
-    },
+	},
 
-    // Deployment Strategies
+	// Deployment Strategies
 
-    // Copy the files to the target destination
-    copy: {
-	    options : {
-          process: function (content, srcpath) {
-	        if(typeof(content) === "object"){
-		     	return content;
-	        };
+	// Copy the files to the target destination
+	copy: {
+		options : {
+		  process: function (content, srcpath) {
+			if(typeof(content) === "object"){
+			 	return content;
+			};
 			grunt.template.addDelimiters('custom-delimiters', '<##', '##>');
-            return grunt.template.process(content, {delimiters: 'custom-delimiters'});
-          },
-	    },
-	    build: {expand: true, cwd: 'build', src: ['**/*.php', '**/*.min.js', '**/*.css', '**/*.txt','**/*.svg','**/*.po','**/*.pot', '**/fonts/*', '!node_modules', '!node_modules/**/*'], dest: 'trunk/', filter: 'isFile'},
-	    build_stream: {expand: true, options: { encoding: null }, cwd: 'build', src: ['**/*.mo'], dest: 'trunk/', filter: 'isFile'},
-	    release: {expand: true, cwd: 'build', src: ['**/*.php', '**/*.min.js', '**/*.css', '**/*.txt','**/*.svg','**/*.po','**/*.pot', '**/fonts/*', '!node_modules', '!node_modules/**/*'], dest: 'tags/<%= pkg.version %>/', filter: 'isFile'},
-	    release_stream: {expand: true, options: { encoding: null }, cwd: 'build', src: ['**/*.mo'], dest: 'tags/<%= pkg.version %>/', filter: 'isFile'},
-	    zip: {expand: true, cwd: 'build', src: ['**/*.php', '**/*.min.js', '**/*.css', '**/*.txt','**/*.svg','**/*.po','**/*.pot', '**/fonts/*', '!node_modules', '!node_modules/**/*'], dest: '<%= pkg.slug %>/', filter: 'isFile'},
-	    zip_stream: {expand: true, options: { encoding: null }, cwd: 'build', src: ['**/*.mo'], dest: '<%= pkg.slug %>/', filter: 'isFile'}
-    },
+			return grunt.template.process(content, {delimiters: 'custom-delimiters'});
+		  },
+		},
+		build_css:  {expand: true, cwd: 'build', src: ['**/*.css'], dest: 'trunk/', filter: 'isFile'},
+		build_php:  {expand: true, cwd: 'build', src: ['**/*.php'], dest: 'trunk/', filter: 'isFile'},
+		build_freemius:  {expand: true, cwd: 'build', src: ['freemius/**/*'], dest: 'trunk/', filter: 'isFile'},
+		build: {expand: true, cwd: 'build', src: ['**/*.min.js', '**/*.css', '**/*.txt','**/*.svg','**/*.po','**/*.pot', '**/*.tmpl.html'], dest: 'trunk/', filter: 'isFile'},
+		build_stream: {expand: true, options: { encoding: null }, cwd: 'build', src: ['**/*.mo', 'img/**/*', 'freemius/assets/img/*', 'screenshot.png'], dest: 'trunk/', filter: 'isFile'},
+		colors_less:  {expand: true, cwd: 'build/less/mixins', src: ['theme.less'], dest: 'trunk/theme_engine', filter: 'isFile'},
 
-    // Clean out folders
-    clean: {
+		build_fontawesome: {
+			expand: true,
+			options: { encoding: null },
+			cwd: 'node_modules/font-awesome/fonts',
+			src: ['*'],
+			dest: 'trunk/fonts/font-awesome',
+			filter: 'isFile'
+		}
+	},
+
+	// Clean out folders
+	clean: {
 		options: { force: true },
 		build: {
 			expand: true,
 			force: true,
 		  	cwd: "trunk/",
-			src: ['**/*'],
-		},
-		release: {
-			expand: true,
-			force: true,
-		  	cwd: 'tags/<%= pkg.version %>/',
 			src: ['**/*'],
 		},
 		zip: {
@@ -168,27 +199,41 @@ module.exports = function(grunt) {
 	// Create a ZIP file of the current trunk
 	compress: {
 	  main: {
-	    options: {
-	      archive: 'archives/<%= pkg.slug %>.<%= pkg.version %>.zip'
-	    },
-	    files: [
-	      {src: ['**'], cwd: 'trunk', expand: true, dest: '<%= pkg.slug %>'}, // includes files in path
-	    ]
+		options: {
+		  archive: 'update/<%= pkg.slug %>.zip'
+		},
+		files: [
+		  {src: ['**'], cwd: 'trunk', expand: true, dest: '<%= pkg.slug %>'}, // includes files in path
+		]
 	  }
+	},
+
+	newer: {
+		options: {
+			override: gruntNewerLess.overrideLess
+		}
 	}
   });
 
   // These tasks are not needed at the moment, as we do not have any css or js files (yet).
-  grunt.registerTask( 'handle_css', ['less'] );
-  grunt.registerTask( 'handle_js', ['concat_in_order', 'uglify'] );
+  grunt.registerTask( 'handle_css', ['newer:less:development', 'newer:postcss:autoprefix'] );
+  grunt.registerTask( 'handle_js', ['webpack'] );
+  grunt.registerTask( 'handle_php', ['newer:phpcs'] );
+  grunt.registerTask( 'handle_fonts', ['less:fonts', 'postcss:fonts'] );
+
+  // copy admin stuff
+  grunt.registerTask( 'handle_admin_copy', ['copy:admin_fonts', 'copy:admin_tmpl', 'copy:admin_assets'] );
 
   // Deployment strategies. The dev-deploy runs with the watcher and performs quicker. The deploy performs a clean of the trunk folder and a clean copy of the needed files.
-  grunt.registerTask( 'deploy', ['handle_js', 'handle_css', 'phplint', 'clean:build', 'copy:build', 'copy:build_stream'] );
-  grunt.registerTask( 'dev-deploy', ['handle_js', 'handle_css', 'phplint', 'newer:copy:build', 'newer:copy:build_stream'] );
+  grunt.registerTask( 'deploy_css', ['handle_css', 'newer:copy:build_css', 'newer:copy:colors_less'] );
+  grunt.registerTask( 'deploy_php', ['handle_php', 'newer:copy:build_php', 'newer:copy:colors_less'] );
+
+  grunt.registerTask( 'deploy', ['handle_js', 'handle_css', 'postcss:minify', 'handle_fonts', 'handle_php', 'clean:build', 'copy:build', 'copy:build_css', 'copy:build_php', 'copy:build_stream', 'copy:build_fontawesome', 'copy:build_freemius', 'copy:colors_less'] );
+
+  grunt.registerTask( 'dev-deploy', ['handle_js', 'handle_css', 'newer:copy:build', 'newer:copy:build_stream'] );
 
   // The release task adds a new tag in the release folder.
-  grunt.registerTask( 'zip', ['copy:zip', 'copy:zip_stream', 'compress', 'clean:zip'] );
-  grunt.registerTask( 'release', ['deploy', 'clean:release', 'copy:release', 'copy:release_stream', 'zip'] );
+  grunt.registerTask( 'release', ['deploy', 'compress'] );
 
 
 };
