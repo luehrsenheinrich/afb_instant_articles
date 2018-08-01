@@ -11,14 +11,14 @@ class AFBInstantArticles_JetpackSupport {
 	 * @access public
 	 * @return void
 	 */
-	public function __construct(){
-		add_action( 'init', array($this, "init") );
+	public function __construct() {
+		add_action( 'init', array( $this, 'init' ) );
 	}
 
 	function init() {
-		if(class_exists('Jetpack')){
-			if ( Jetpack::is_module_active( 'stats' )) {
-				add_action( 'afbia_article_body', array($this, 'add_jetpack_stats_pixel') );
+		if ( class_exists( 'Jetpack' ) ) {
+			if ( Jetpack::is_module_active( 'stats' ) ) {
+				add_action( 'afbia_article_body', array( $this, 'add_jetpack_stats_pixel' ) );
 			}
 		}
 	}
@@ -37,7 +37,7 @@ class AFBInstantArticles_JetpackSupport {
 			<iframe>
 				<script>
 					var x = new Image();
-					x.src = "<?php echo esc_js($pixelUrl); ?>";
+					x.src = "<?php echo esc_js( $pixelUrl ); ?>";
 				</script>
 			</iframe>
 		</figure>

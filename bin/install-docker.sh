@@ -30,7 +30,7 @@ docker stop $(docker ps -a -q --filter="publish=80")
 
 # Download image updates
 echo $(status_message "Downloading Docker image updates...")
-docker-compose pull --parallel
+docker-compose pull
 
 # Launch the containers
 echo $(status_message "Starting Docker containers...")

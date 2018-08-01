@@ -5,10 +5,10 @@
  * @package afb_ia
  */
 
-header('Content-Type: ' . feed_content_type('rss2') . '; charset=' . get_option('blog_charset'), true);
+header( 'Content-Type: ' . feed_content_type( 'rss2' ) . '; charset=' . get_option( 'blog_charset' ), true );
 $more = 1;
 
-echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?'.'>';
+echo '<?xml version="1.0" encoding="' . get_option( 'blog_charset' ) . '"?' . '>';
 
 /**
  * Fires between the xml and rss tags in a feed.
@@ -34,17 +34,17 @@ do_action( 'rss_tag_pre', 'rss2' );
 >
 
 <?php
-	if(defined("DEV_IA")){
-		$last_build = date("D, d M Y H:i:s +0000");
-	} else {
-		$last_build =  mysql2date('D, d M Y H:i:s +0000', get_lastpostmodified('GMT'), false);
-	}
+if ( defined( 'DEV_IA' ) ) {
+	$last_build = date( 'D, d M Y H:i:s +0000' );
+} else {
+	$last_build = mysql2date( 'D, d M Y H:i:s +0000', get_lastpostmodified( 'GMT' ), false );
+}
 ?>
 
 <channel>
-	<title><?php bloginfo_rss('name'); ?></title>
-	<link><?php bloginfo_rss('url') ?></link>
-	<description><?php bloginfo_rss("description") ?></description>
+	<title><?php bloginfo_rss( 'name' ); ?></title>
+	<link><?php bloginfo_rss( 'url' ) ?></link>
+	<description><?php bloginfo_rss( 'description' ) ?></description>
 	<lastBuildDate><?php echo $last_build; ?></lastBuildDate>
 	<language><?php bloginfo_rss( 'language' ); ?></language>
 	<?php
@@ -55,17 +55,17 @@ do_action( 'rss_tag_pre', 'rss2' );
 	 */
 	do_action( 'afbia_head' );
 
-	while( have_posts()) : the_post();
+	while ( have_posts() ) : the_post();
 
-	if(defined("DEV_IA")){
-		$guid = get_the_guid() . time();
-		$permalink = add_query_arg(array("feedbreaker" => time()), get_the_permalink());
-		$pubDate = date("D, d M Y H:i:s +0000");
-	} else {
-		$guid = get_the_guid();
-		$permalink = get_the_permalink();
-		$pubDate = mysql2date('D, d M Y H:i:s +0000', get_post_time('Y-m-d H:i:s', true), false);
-	}
+		if ( defined( 'DEV_IA' ) ) {
+			$guid = get_the_guid() . time();
+			$permalink = add_query_arg( array( 'feedbreaker' => time() ), get_the_permalink() );
+			$pubDate = date( 'D, d M Y H:i:s +0000' );
+		} else {
+			$guid = get_the_guid();
+			$permalink = get_the_permalink();
+			$pubDate = mysql2date( 'D, d M Y H:i:s +0000', get_post_time( 'Y-m-d H:i:s', true ), false );
+		}
 
 	?>
 	<item>
@@ -76,7 +76,7 @@ do_action( 'rss_tag_pre', 'rss2' );
 		<guid isPermaLink="false"><?php echo $guid; ?></guid>
 		<description><![CDATA[<?php the_excerpt(); ?>]]></description>
 		<content:encoded><![CDATA[
-        	<?php
+			<?php
 			$template = 'instant_article.php';
 			$the_template = LHAFB__PLUGIN_DIR . 'templates/' . $template;
 			if ( $overridden_template = locate_template( $template ) ) {
@@ -89,7 +89,7 @@ do_action( 'rss_tag_pre', 'rss2' );
 				load_template( $the_template, false );
 			}
 	        ?>
-      	]]></content:encoded>
+	  	]]></content:encoded>
 	<?php
 	/**
 	 * Fires at the end of each Instant Article feed item.

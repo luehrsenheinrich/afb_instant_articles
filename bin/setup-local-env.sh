@@ -17,6 +17,9 @@ echo $(status_message "Starting the Luehrsen // Heinrich development enviroment.
 # Check Docker is installed and running
 . "$(dirname "$0")/install-docker.sh"
 
+# Deploy a current versions
+grunt deploy
+
 # Install wordpress and needed components
 . "$(dirname "$0")/install-wordpress.sh"
 

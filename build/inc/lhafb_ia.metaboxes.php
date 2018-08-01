@@ -57,35 +57,35 @@ function afbia_add_post_meta_boxes() {
  * @param mixed $box
  * @return void
  */
-function afb_instant_articles($object, $box){
+function afb_instant_articles( $object, $box ) {
 	wp_nonce_field( basename( __FILE__ ), 'lh_data_nonce' );
 
-	$afbia_o = (array) get_post_meta($object->ID, "_instant_article_options", true);
+	$afbia_o = (array) get_post_meta( $object->ID, '_instant_article_options', true );
 
 	?>
 		<p>
-			<label><input type="checkbox" name="instant_article_options[exclude_post]" value="exclude" <?php echo isset($afbia_o['exclude_post']) ? ' checked' : ''; ?>> <?php _e("Exclude from Instant Articles", 'allfacebook-instant-articles'); ?> </label>
+			<label><input type="checkbox" name="instant_article_options[exclude_post]" value="exclude" <?php echo isset( $afbia_o['exclude_post'] ) ? ' checked' : ''; ?>> <?php _e( 'Exclude from Instant Articles', 'allfacebook-instant-articles' ); ?> </label>
 		</p>
 		<hr>
-		<h4><?php _e("Credits", 'allfacebook-instant-articles'); ?></h4>
+		<h4><?php _e( 'Credits', 'allfacebook-instant-articles' ); ?></h4>
 		<p>
-			<textarea name="instant_article_options[credits]" class="widefat"><?php echo isset($afbia_o['credits']) ? $afbia_o['credits'] : NULL; ?></textarea>
+			<textarea name="instant_article_options[credits]" class="widefat"><?php echo isset( $afbia_o['credits'] ) ? $afbia_o['credits'] : null; ?></textarea>
 		</p>
-		<p class="description"><?php _e("Add a custom credit just for this post.", 'allfacebook-instant-articles'); ?></p>
+		<p class="description"><?php _e( 'Add a custom credit just for this post.', 'allfacebook-instant-articles' ); ?></p>
 		<hr>
-		<h4><?php _e("Branded Content", 'allfacebook-instant-articles'); ?></h4>
+		<h4><?php _e( 'Branded Content', 'allfacebook-instant-articles' ); ?></h4>
 		<fieldset class="text multi">
 			<?php
-				foreach(array_filter((array) @$afbia_o['branded']) as $value):
+			foreach ( array_filter( (array) @$afbia_o['branded'] ) as $value ) :
 			?>
-				<span class="multi-input">
-					<input type="text" placeholder="<?php _e("e.g. 'marketingde'", 'allfacebook-instant-articles'); ?>" class="all-options" name="instant_article_options[branded][]" value="<?=$value?>"> <span class="add-input fa fa-plus-square"></span> <span class="remove-input fa fa-minus-square"></span> <br /></span>
+			<span class="multi-input">
+			<input type="text" placeholder="<?php _e( "e.g. 'marketingde'", 'allfacebook-instant-articles' ); ?>" class="all-options" name="instant_article_options[branded][]" value="<?php echo $value?>"> <span class="add-input fa fa-plus-square"></span> <span class="remove-input fa fa-minus-square"></span> <br /></span>
 			<?php endforeach; ?>
 			<span class="multi-input">
-				<input type="text" placeholder="<?php _e("e.g. 'marketingde'", 'allfacebook-instant-articles'); ?>" class="all-options" name="instant_article_options[branded][]"> <span class="add-input fa fa-plus-square"></span> <span class="remove-input fa fa-minus-square"></span> <br />
+				<input type="text" placeholder="<?php _e( "e.g. 'marketingde'", 'allfacebook-instant-articles' ); ?>" class="all-options" name="instant_article_options[branded][]"> <span class="add-input fa fa-plus-square"></span> <span class="remove-input fa fa-minus-square"></span> <br />
 			</span>
 		</fieldset>
-		<p class="description"><?php _e("The vanity name of the facebook page of the branding partner. <a href=\"https://developers.facebook.com/docs/instant-articles/ads/branded-content\" class=\"fa fa-question-circle\" target=\"_blank\"></a>", 'allfacebook-instant-articles'); ?></p>
+		<p class="description"><?php _e( 'The vanity name of the facebook page of the branding partner. <a href="https://developers.facebook.com/docs/instant-articles/ads/branded-content" class="fa fa-question-circle" target="_blank"></a>', 'allfacebook-instant-articles' ); ?></p>
 
 	<?php
 }
@@ -109,8 +109,7 @@ function afbia_box_save( $post_id, $post ) {
 	 * lh_save_post_meta($post_id, $post, 'lh_data_nonce', 'post_value_name', '_meta_value_name');
 	 */
 
-
-	afbia_save_post_meta($post_id, $post, 'lh_data_nonce', 'instant_article_options', '_instant_article_options');
+	afbia_save_post_meta( $post_id, $post, 'lh_data_nonce', 'instant_article_options', '_instant_article_options' );
 
 }
 
@@ -128,35 +127,36 @@ function afbia_box_save( $post_id, $post ) {
 function afbia_save_post_meta( $post_id, $post, $nonce_name, $post_value, $meta_key ) {
 
 	/* Verify the nonce before proceeding. */
-	if ( !isset( $_POST[$nonce_name] ) || !wp_verify_nonce( $_POST[$nonce_name], basename( __FILE__ ) ) )
+	if ( ! isset( $_POST[ $nonce_name ] ) || ! wp_verify_nonce( $_POST[ $nonce_name ], basename( __FILE__ ) ) ) {
 		return $post_id;
+	}
 
 	/* Get the post type object. */
 	$post_type = get_post_type_object( $post->post_type );
 
 	/* Check if the current user has permission to edit the post. */
-	if ( !current_user_can( $post_type->cap->edit_post, $post_id ) )
+	if ( ! current_user_can( $post_type->cap->edit_post, $post_id ) ) {
 		return $post_id;
+	}
 
 	/* Get the posted data and sanitize it for use as an HTML class. */
-	if(isset($_POST[$post_value])){
-		$new_meta_value = ($_POST[$post_value]);
+	if ( isset( $_POST[ $post_value ] ) ) {
+		$new_meta_value = ($_POST[ $post_value ]);
 	} else {
-		$new_meta_value = NULL;
+		$new_meta_value = null;
 	}
 
 	/* Get the meta value of the custom field key. */
 	$meta_value = get_post_meta( $post_id, $meta_key, true );
 
 	/* If a new meta value was added and there was no previous value, add it. */
-	if ( $new_meta_value && '' == $meta_value )
+	if ( $new_meta_value && '' == $meta_value ) {
 		add_post_meta( $post_id, $meta_key, $new_meta_value, true );
-
-	/* If the new meta value does not match the old value, update it. */
-	elseif ( $new_meta_value && $new_meta_value != $meta_value )
+	} /* If the new meta value does not match the old value, update it. */
+	elseif ( $new_meta_value && $new_meta_value != $meta_value ) {
 		update_post_meta( $post_id, $meta_key, $new_meta_value );
-
-	/* If there is no new meta value but an old value exists, delete it. */
-	elseif ( '' == $new_meta_value && $meta_value )
+	} /* If there is no new meta value but an old value exists, delete it. */
+	elseif ( '' == $new_meta_value && $meta_value ) {
 		delete_post_meta( $post_id, $meta_key, $meta_value );
+	}
 }

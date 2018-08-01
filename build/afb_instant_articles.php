@@ -17,7 +17,7 @@ Text Domain: allfacebook-instant-articles
 */
 
 // Make sure we don't expose any info if called directly
-if ( !function_exists( 'add_action' ) ) {
+if ( ! function_exists( 'add_action' ) ) {
 	echo 'Hi there!  I\'m just a plugin, not much I can do when called directly.';
 	exit;
 }
@@ -25,16 +25,16 @@ if ( !function_exists( 'add_action' ) ) {
 define( 'LHAFB__PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'LHAFB__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'LHAFB__PLUGIN_FILE', ( __FILE__ ) );
-define( 'LHAFB__VERSION', '<##= pkg.version ##>');
-define( 'LHAFB__SLUG', '<##= pkg.slug ##>');
+define( 'LHAFB__VERSION', '<##= pkg.version ##>' );
+define( 'LHAFB__SLUG', '<##= pkg.slug ##>' );
 
 // Require needed files
-require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.core.php"; 				// The actual core of the plugin
-require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.metaboxes.php"; 			// The metaboxes, that are loaded in the admin views
-require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.settings.php"; 			// The settings options needed for the plugin
-require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.filters.php"; 			// The filters needed to morph the code for instant articles
-require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.jetpack-support.php"; 	// The filters needed to support the jetpack plugin
-require_once LHAFB__PLUGIN_DIR . "inc/embeds.php"; 						// The embeds filter
+require_once LHAFB__PLUGIN_DIR . 'inc/lhafb_ia.core.php'; 				// The actual core of the plugin
+require_once LHAFB__PLUGIN_DIR . 'inc/lhafb_ia.metaboxes.php'; 			// The metaboxes, that are loaded in the admin views
+require_once LHAFB__PLUGIN_DIR . 'inc/lhafb_ia.settings.php'; 			// The settings options needed for the plugin
+require_once LHAFB__PLUGIN_DIR . 'inc/lhafb_ia.filters.php'; 			// The filters needed to morph the code for instant articles
+require_once LHAFB__PLUGIN_DIR . 'inc/lhafb_ia.jetpack-support.php'; 	// The filters needed to support the jetpack plugin
+require_once LHAFB__PLUGIN_DIR . 'inc/embeds.php'; 						// The embeds filter
 
 
 $_afb_ia = new AFBInstantArticles();

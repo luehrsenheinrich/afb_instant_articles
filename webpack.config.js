@@ -4,16 +4,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   entry: {
-    'js/script.min': path.resolve(__dirname, './build/js/script.js'),
-    'js/script.bundle': path.resolve(__dirname, './build/js/script.js'),
-
-    'blocks/blocks.min': path.resolve(__dirname, './build/blocks/blocks.js'),
-    'blocks/blocks.bundle': path.resolve(__dirname, './build/blocks/blocks.js'),
-
-    'admin/customizer.min': path.resolve(__dirname, './build/admin/customizer.js'),
-    'admin/customizer.bundle': path.resolve(__dirname, './build/admin/customizer.js'),
-
-    'blocks-premium/blocks.min': path.resolve(__dirname, './build/blocks-premium/blocks.js'),
+    'js/afb_ia.min': path.resolve(__dirname, './build/js/afb_ia.js'),
   },
   mode: 'none',
   output: {

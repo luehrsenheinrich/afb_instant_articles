@@ -16,43 +16,16 @@ module.exports = function(grunt) {
 	// Compile the less files
 	less: {
 	  development: {
-		options: {
-		  optimization: 2
-		},
-		files: {
-		  "build/style.css": "build/less/style.less", // destination file and source file
-		  "build/admin/admin.css": "build/admin/less/admin.less", // destination file and source file
-
-		  "build/blocks/blocks-editor.css": "build/blocks/blocks-editor.less",
-		  "build/blocks/blocks.css": "build/blocks/blocks.less",
-
-		  "build/blocks-premium/blocks-editor.css": "build/blocks-premium/blocks-editor.less",
-		  "build/blocks-premium/blocks.css": "build/blocks-premium/blocks.less",
-
-		  "build/css/font-awesome.css": "build/less/font-awesome.less"
-		}
-	  },
-	  fonts: {
-		  files: {
-			  "build/webfonts.css": "build/less/webfonts.less",
-		  }
+  		options: {
+  		  optimization: 2
+  		},
+  		files: {
+  		  "build/admin/admin.css": "build/admin/less/admin.less", // destination file and source file
+  		}
 	  }
 	},
 
 	postcss: {
-		fonts: {
-			src: 'build/webfonts.css',
-			options: {
-			  map: false, // inline sourcemaps
-			  processors: [
-				require('postcss-base64')({
-					extensions: ['.woff'],
-					excludeAtFontFace: false,
-					root: 'build',
-				}), // add vendor prefixes
-			  ]
-			},
-		},
 		autoprefix: {
 			options: {
 			  map: false, // inline sourcemaps
@@ -61,13 +34,7 @@ module.exports = function(grunt) {
 			  ]
 			},
 			files: {
-				"build/style.css": "build/style.css",
 				"build/admin/admin.css": "build/admin/admin.css",
-				"build/blocks/blocks-editor.css": "build/blocks/blocks-editor.css",
-				"build/blocks/blocks.css": "build/blocks/blocks.css",
-				"build/blocks-premium/blocks-editor.css": "build/blocks-premium/blocks-editor.css",
-				"build/blocks-premium/blocks.css": "build/blocks-premium/blocks.css",
-				"build/css/font-awesome.css": "build/css/font-awesome.css"
 			}
 		},
 		minify: {
@@ -78,13 +45,7 @@ module.exports = function(grunt) {
 				]
 			},
 			files: {
-				"build/style.css": "build/style.css",
 				"build/admin/admin.css": "build/admin/admin.css",
-				"build/blocks/blocks-editor.css": "build/blocks/blocks-editor.css",
-				"build/blocks/blocks.css": "build/blocks/blocks.css",
-				"build/blocks-premium/blocks-editor.css": "build/blocks-premium/blocks-editor.css",
-				"build/blocks-premium/blocks.css": "build/blocks-premium/blocks.css",
-				"build/css/font-awesome.css": "build/css/font-awesome.css"
 			}
 		}
 	},
@@ -99,13 +60,24 @@ module.exports = function(grunt) {
 	// Check the PHP Code for the needed PSR2 rule set
 	phpcs: {
 		application: {
-			src: ['build/**/*.php', 'build/theme_engine/**/*', '!build/freemius/**/*']
+			src: ['build/**/*.php', '!build/freemius/**/*']
 		},
 		options: {
 			bin: 'wpcs/vendor/bin/phpcs',
 			standard: 'WordPress-LH',
 			warningSeverity: 0
 		}
+	},
+
+	phpcbf: {
+	    application: {
+	        src: ['build/**/*.php']
+	    },
+	    options: {
+	        bin: 'wpcs/vendor/bin/phpcbf',
+	        standard: 'WordPress-LH',
+	        warningSeverity: 0
+	    }
 	},
 
 	// WATCHER / SERVER
@@ -167,7 +139,6 @@ module.exports = function(grunt) {
 		build_freemius:  {expand: true, cwd: 'build', src: ['freemius/**/*'], dest: 'trunk/', filter: 'isFile'},
 		build: {expand: true, cwd: 'build', src: ['**/*.min.js', '**/*.css', '**/*.txt','**/*.svg','**/*.po','**/*.pot', '**/*.tmpl.html'], dest: 'trunk/', filter: 'isFile'},
 		build_stream: {expand: true, options: { encoding: null }, cwd: 'build', src: ['**/*.mo', 'img/**/*', 'freemius/assets/img/*', 'screenshot.png'], dest: 'trunk/', filter: 'isFile'},
-		colors_less:  {expand: true, cwd: 'build/less/mixins', src: ['theme.less'], dest: 'trunk/theme_engine', filter: 'isFile'},
 
 		build_fontawesome: {
 			expand: true,
@@ -219,7 +190,6 @@ module.exports = function(grunt) {
   grunt.registerTask( 'handle_css', ['newer:less:development', 'newer:postcss:autoprefix'] );
   grunt.registerTask( 'handle_js', ['webpack'] );
   grunt.registerTask( 'handle_php', ['newer:phpcs'] );
-  grunt.registerTask( 'handle_fonts', ['less:fonts', 'postcss:fonts'] );
 
   // copy admin stuff
   grunt.registerTask( 'handle_admin_copy', ['copy:admin_fonts', 'copy:admin_tmpl', 'copy:admin_assets'] );
@@ -228,7 +198,7 @@ module.exports = function(grunt) {
   grunt.registerTask( 'deploy_css', ['handle_css', 'newer:copy:build_css', 'newer:copy:colors_less'] );
   grunt.registerTask( 'deploy_php', ['handle_php', 'newer:copy:build_php', 'newer:copy:colors_less'] );
 
-  grunt.registerTask( 'deploy', ['handle_js', 'handle_css', 'postcss:minify', 'handle_fonts', 'handle_php', 'clean:build', 'copy:build', 'copy:build_css', 'copy:build_php', 'copy:build_stream', 'copy:build_fontawesome', 'copy:build_freemius', 'copy:colors_less'] );
+  grunt.registerTask( 'deploy', ['handle_js', 'handle_css', 'postcss:minify', 'handle_php', 'clean:build', 'copy:build', 'copy:build_css', 'copy:build_php', 'copy:build_stream', 'copy:build_fontawesome', 'copy:build_freemius'] );
 
   grunt.registerTask( 'dev-deploy', ['handle_js', 'handle_css', 'newer:copy:build', 'newer:copy:build_stream'] );
 
