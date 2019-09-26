@@ -1,0 +1,23 @@
+dist: trusty
+
+language: php
+php:
+  - 7
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+    - $HOME/.npm
+    - $HOME/.nvm/.cache
+
+install:
+  - composer install
+  - npm install
+
+script:
+  - npx grunt lint
+  - npx grunt deploy

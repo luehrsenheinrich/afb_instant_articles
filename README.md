@@ -1,23 +1,55 @@
-# WordPress Instant Articles by allfacebook.de
-[![Code Climate](https://codeclimate.com/github/luehrsenheinrich/afb_instant_articles/badges/gpa.svg)](https://codeclimate.com/github/luehrsenheinrich/afb_instant_articles)
-![allfacebook Instant Articles](https://raw.githubusercontent.com/luehrsenheinrich/afb_instant_articles/master/assets/banner-1544x500.png)
+# Luehrsen // Heinrich Plugin Boilerplate for WordPress
 
-This WordPress plugin creates a special RSS Feed for your WordPress blog to harvest the power of [Facebook Instant Articles](http://instantarticles.fb.com).
+[![Build Status](https://travis-ci.com/luehrsenheinrich/wp-plugin-boilerplate.svg?branch=master)](https://travis-ci.com/luehrsenheinrich/wp-plugin-boilerplate)
 
-Instant Articles is a new technology by Facebook that will load your webpage content „instant“. That means Facebook will cache your articles on Facebooks servers and will load them within the native FB iOS or Android App without opening a browser window and connecting to your webserver.
+There are probably more plugin boilerplates than actual plugins available for
+bootstrapping your work on an amazing WordPress plugin. And that is very much
+okay, because every developer, every agency has their own little flavors in how
+they like to do things.
 
-Instant Articles are available for all Publishers since [Facebook f8 Developer Conference](http://fbf8.com) in April. [Please signup for the Instant Article Feature on Facebook](https://www.facebook.com/instant_articles/signup) before you install the plugin.
+That is the reason we made this plugin boilerplate. We liked the work of so many
+other developers before us, but we never found the perfect boilerplate that fit
+our style of work. The result is this, a very opinionated plugin boilerplate
+based on docker, grunt and less-css.
 
-This plugin is made with love and brought to you by the folks of [allfacebook.de](http://www.allfacebook.de) and [Luehrsen // Heinrich](http://www.luehrsen-heinrich.de)
+This boilerplate will give you all the tools you need to write, test and publish
+your plugin, either for commercial clients or to publish the plugin in the
+WordPress.org repository.
 
-## Documentation
 
-Developer documentation is available in the [Wiki](https://github.com/luehrsenheinrich/afb_instant_articles/wiki) 
+## Getting started
 
-## Contributing
+These steps will guide you through the setup process up until you can start
+writing functions, markup and styles for your plugin.
 
-Every bit of help is highly appreciated. Even if you don't code you can file an issue and help us find bugs or shape new features. Please see the [CONTRIBUTING.md](./CONTRIBUTING.md) on how to contribute.
+For the sake of scope we will assume that you know the slug of your plugin.
+Please make sure that the slug is unique to the system of the client, our
+projects and the WordPress.org plugin repository.
 
-## License
+We will also assume, that you have already configured your GitHub repository to
+your liking, downloaded the source of the boilerplate and uploaded it to your
+new repository. So let's get started:
 
-This plugin is licensed under [GNU General Public License v2 (or later)](./LICENSE.md).
+### Plugin Slug & Names
+
+- [ ] Rename the `build/allfacebook-instant-articles.php` file
+- [ ] Search & Replace (case sensitive) `allfacebook-instant-articles` with your new WordPress plugin slug
+- [ ] Search & Replace (case sensitive) `allfacebook-instant-articles` with your new WordPress plugin slug
+- [ ] Search & Replace (case sensitive) `AFBIA` with your new WordPress plugin slug in uppercase
+- [ ] Check success in `package.json`, `docker-compose.json` & `bin/install-wordpress.sh`
+
+### Running the enviroment
+
+- [ ] Type `npm run setup` into the terminal to spin up the docker enviroment
+- [ ] Open `http://localhost/wp-admin` and log in with `wordpress:wordpress`
+- [ ] Make sure the plugin unit demo content is installed and the plugin is active
+
+### Test Release
+
+- [ ] Add a 0.0.2 release by running `npm run release` in your terminal
+- [ ] Check if the release has been created and uploaded in the GitHub release section
+
+### Finishing touches
+
+- [ ] Edit the `README.md` with the appropriate text about your plugin
+- [ ] 🎉  Celebrate!

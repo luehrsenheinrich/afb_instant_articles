@@ -1,0 +1,10 @@
+{
+	"name": "allfacebook-instant-articles/hello",
+	"category": "allfacebook-instant-articles",
+	"attributes": {
+		"content": {
+			"type": "string",
+			"default": "Genral Kenobi!"
+		}
+	}
+}

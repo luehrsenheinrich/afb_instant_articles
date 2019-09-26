@@ -1,6 +1,21 @@
 node_modules
 .svn
+docker/wp
+GITHUB_TOKEN
+wpcs
 trunk
+update
 
 # Ignore OS X .DS_Store files
 .DS_Store
+/vendor/
+.env
+
+# Remove files that are generated during deploy
+
+## CSS
+**/*.min.css
+
+## JS
+**/*.min.js
+**/*.bundle.js

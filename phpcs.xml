@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<ruleset name="WordPress LH">
+	<description>Some additional rule settings for development at Luehrsen // Heinrich</description>
+	<!-- Check for cross-version support for PHP 5.6 and higher. -->
+	<config name="testVersion" value="5.6-"/>
+
+	<rule ref="PHPCompatibilityWP"/>
+
+	<rule ref="WordPress-Core">
+		<!--
+		OK, real talk right now. Yoda conditions are ridiculous.
+		The fundamental problem that Yoda conditions attempts to solve is:
+		the equality operator is very close to the assignment operator.
+		It's easy to mess up and accidentally assign to the variable you're
+		trying to check.
+		Here's the thing though. Yoda conditions just don't read correctly
+		in the code flow. They require you to change the way you think
+		about the control flow.
+		Rather than forcing every conditional to be backwards, why not ban
+		assignment from conditionals? You never really *need* to assign in
+		a conditional.
+		So, here's where I stand: no to Yoda conditions. Yes to banning
+		assignment in conditionals.
+		Thank you Human Made!
+		-->
+		<exclude name="WordPress.PHP.YodaConditions" />
+	</rule>
+	<rule ref="WordPress-Docs"/>
+
+	<arg name="extensions" value="php"/>
+
+	<file>./build</file>
+	<exclude-pattern>./build/puc</exclude-pattern>
+	<exclude-pattern>./bin-php</exclude-pattern>
+
+	<!-- For CI, don't fail on warnings -->
+	<config name="ignore_warnings_on_exit" value="1"/>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" value="allfacebook-instant-articles" />
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.Files">
+		<exclude name="WordPress.Files.FileName"/>
+	</rule>
+</ruleset>

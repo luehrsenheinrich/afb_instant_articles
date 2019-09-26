@@ -1,45 +1,81 @@
 <?php
 /**
- * @package afb_ia
+ * The main file of the <##= pkg.title ##> plugin
+ *
+ * @package allfacebook-instant-articles
+ * @version <##= pkg.version ##>
+ *
+ * Plugin Name: <##= pkg.title ##>
+ * Plugin URI: <##= pkg.pluginUrl ##>
+ * Description: <##= pkg.description ##>
+ * Author: <##= pkg.author ##>
+ * Author URI: <##= pkg.authorUrl ##>
+ * Version: <##= pkg.version ##>
+ * Text Domain: allfacebook-instant-articles
  */
-/*
-Plugin Name: <##= pkg.title ##>
-Plugin URI: https://wordpress.org/plugins/allfacebook-instant-articles/
-Description: <##= pkg.description ##>
-Author: WP Munich
-Author URI: http://www.wp-munich.com/?utm_source=plugin&utm_medium=plugin-header&utm_campaign=afbia
-Version: <##= pkg.version ##>
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: facebook, allfacebook, instant articles, articles
-Domain Path: /lang
-Text Domain: allfacebook-instant-articles
-*/
 
-// Make sure we don't expose any info if called directly
-if ( !function_exists( 'add_action' ) ) {
-	echo 'Hi there!  I\'m just a plugin, not much I can do when called directly.';
-	exit;
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
 }
 
-define( 'LHAFB__PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'LHAFB__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-define( 'LHAFB__PLUGIN_FILE', ( __FILE__ ) );
-define( 'LHAFB__VERSION', '<##= pkg.version ##>');
-define( 'LHAFB__SLUG', '<##= pkg.slug ##>');
+if ( ! defined( 'AFBIA_PLUGIN_SLUG' ) ) {
+	define( 'AFBIA_PLUGIN_SLUG', '<%= pkg.slug %>' );
+}
 
-// Require needed files
-require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.core.php"; 				// The actual core of the plugin
-require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.metaboxes.php"; 			// The metaboxes, that are loaded in the admin views
-require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.settings.php"; 			// The settings options needed for the plugin
-require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.filters.php"; 			// The filters needed to morph the code for instant articles
-require_once LHAFB__PLUGIN_DIR . "inc/lhafb_ia.jetpack-support.php"; 	// The filters needed to support the jetpack plugin
-require_once LHAFB__PLUGIN_DIR . "inc/embeds.php"; 						// The embeds filter
+if ( ! defined( 'AFBIA_PLUGIN_VERSION' ) ) {
+	define( 'AFBIA_PLUGIN_VERSION', '<%= pkg.version %>' );
+}
 
+if ( ! defined( 'AFBIA_PLUGIN_URL' ) ) {
+	define( 'AFBIA_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+}
 
-$_afb_ia = new AFBInstantArticles();
+if ( ! defined( 'AFBIA_PLUGIN_PATH' ) ) {
+	define( 'AFBIA_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+}
 
+/**
+ * Custom autoloader function for plugin classes.
+ * Autoloader and architecture below heavily inspired by WP Rig.
+ * Thank you guys for your awesome work!
+ *
+ * Changes were made to fit the boilerplates needs (e.g. change namespaces and function names).
+ *
+ * @access private
+ * @see https://github.com/wprig/wprig
+ * @param string $class_name Class name to load.
+ * @return bool True if the class was loaded, false otherwise.
+ */
+function allfacebook-instant-articles_autoload( $class_name ) {
+	$namespace = 'allfacebook-instant-articles';
 
-// The plugin activation and deactivation classes
-register_activation_hook( __FILE__, array( $_afb_ia, 'on_activation' ) );
-register_deactivation_hook( __FILE__, array( $_afb_ia, 'on_deactivation' ) );
+	if ( strpos( $class_name, $namespace . '\\' ) !== 0 ) {
+		return false;
+	}
+
+	$parts = explode( '\\', substr( $class_name, strlen( $namespace . '\\' ) ) );
+	$path  = AFBIA_PLUGIN_PATH . 'inc';
+
+	foreach ( $parts as $part ) {
+		$path .= '/' . $part;
+	}
+
+	$path .= '.php';
+
+	if ( ! file_exists( $path ) ) {
+		return false;
+
+	}
+
+	require_once $path;
+
+	return true;
+}
+spl_autoload_register( 'allfacebook-instant-articles_autoload' );
+
+// Load the `wp_allfacebook-instant-articles()` entry point function.
+require AFBIA_PLUGIN_PATH . 'inc/functions.php';
+
+// Initialize the plugin.
+call_user_func( 'allfacebook-instant-articles\wp_allfacebook-instant-articles' );

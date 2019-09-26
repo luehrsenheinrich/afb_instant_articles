@@ -1,194 +1,204 @@
-module.exports = function(grunt) {
-  require('jit-grunt')(grunt);
-  grunt.template.addDelimiters('underscoresaving', '<##', '##>');
-  grunt.template.setDelimiters('underscoresaving');
+const webpackConfig = require( './webpack.config' );
 
-  grunt.initConfig({
+const postCssPresetEnvOptions = {
+	stage: 3,
+	features:	{
+		'custom-media-queries': {
+			preserve: false,
+		},
+		'custom-properties': {
+			preserve: true,
+		},
+		'nesting-rules': true,
+	},
+};
 
-  	// Define variables
-    pkg:     grunt.file.readJSON("package.json"),
+module.exports = function( grunt ) {
+	// measures the time each task takes
+	// require( 'time-grunt' )( grunt );
 
-	// LESS / CSS
+	// Get the needed modules just in time
+	require( 'jit-grunt' )( grunt, {
+		// Define private modules
+		postcss: '@lodder/grunt-postcss',
+	} );
 
-	// Compile Less
-	// Compile the less files
-    less: {
-      development: {
-        options: {
-          compress: true,
-          yuicompress: true,
-          optimization: 2
-        },
-        files: {
-          "build/admin/admin.css": "build/admin/less/admin.less" // destination file and source file
-        }
-      }
-    },
+	// Define the initial config for grunt
+	grunt.initConfig( {
 
-    // JAVASCRIPT
+		// Define variables
+		pkg: grunt.file.readJSON( 'package.json' ),
 
-    // JS HINT
-    // How's our code quality
-    jshint: {
-	    options: {
-			reporter: require('jshint-stylish'),
-			force: true,
-	    },
-    	all: ['build/js/**/*.js', '!build/js/**/*.min.js', '!build/js/bootstrap/**/*.js', '!build/js/vendor/**/*.js']
-  	},
-
-    // Concat
-    // Join together the needed files.
-	concat_in_order: {
-		main: {
-			files: {
-				'build/js/afb_ia.min.js': ['build/js/afb_ia.js'],
-				'build/admin/admin.min.js': ['build/admin/admin.js']
-
+		// OPTIMIZE CSS - Take the created CSS files and run some plugins on it
+		postcss: {
+			default: {
+				options: {
+					map: false,
+					processors: [
+						require( 'postcss-import' )(),
+						require( 'postcss-normalize' )(),
+						require( 'postcss-preset-env' )( postCssPresetEnvOptions ),
+					],
+				},
+				files: [
+					{
+						expand: true,
+						cwd: 'build/css',
+						src: '*.css',
+						dest: 'trunk/css/',
+					},
+					{
+						expand: true,
+						cwd: 'build/blocks',
+						src: 'blocks.css',
+						dest: 'trunk/css/',
+					},
+					{
+						expand: true,
+						cwd: 'build/blocks',
+						src: 'blocks-editor.css',
+						dest: 'trunk/css/',
+					},
+				],
 			},
-			options: {
-			    extractRequired: function(filepath, filecontent) {
-				    var path = require('path');
-
-			        var workingdir = path.normalize(filepath).split(path.sep);
-			        workingdir.pop();
-
-			        var deps = this.getMatches(/@depend\s"(.*\.js)"/g, filecontent);
-			        deps.forEach(function(dep, i) {
-			            var dependency = workingdir.concat([dep]);
-			            deps[i] = path.join.apply(null, dependency);
-			        });
-			        return deps;
-			    },
-			    extractDeclared: function(filepath) {
-			        return [filepath];
-			    },
-			    onlyConcatRequiredFiles: true
-			}
-		}
-	},
-
-	// Uglify
-	// We minify the files, we just concatenated
-	uglify: {
-	    development: {
-	      options: {
-	      },
-	      files: {
-    			'build/js/afb_ia.min.js': ['build/js/afb_ia.min.js'],
-    			'build/admin/admin.min.js': ['build/admin/admin.min.js']
-	      }
-	    }
-	},
-
-	// Lint
-	// The PHP Linter for code quality
-	phplint: {
-		dev: ['build/**/*.php'],
-	},
-
-	// WATCHER / SERVER
-
-    // Watch
-    watch: {
-	    js: {
-		    files: ['build/js/**/*.js', '!build/js/**/*.min.js','build/admin/**/*.js', '!build/admin/**/*.min.js'],
-		    tasks: ['dev-deploy'],
-			options: {
-				livereload: true
-			},
-	    },
-		less: {
-			files: ['build/**/*.less'], // which files to watch
-			tasks: ['dev-deploy'],
-			options: {
-				// livereload: true
+			minify: {
+				options: {
+					map: false,
+					processors: [
+						require( 'cssnano' )(),
+					],
+				},
+				files: [
+					{
+						expand: true,
+						cwd: 'trunk/css',
+						src: [ '*.css', '!*.min.css' ],
+						dest: 'trunk/css',
+						ext: '.min.css',
+					},
+				],
 			},
 		},
-		css: {
-			files: ['build/**/*.css', 'build/*.css', ],
-			tasks: [],
+
+		// LINT CSS - Lint the css we wrote
+		stylelint: {
+			all: [ 'build/**/*.css', '!build/puc/**/*.css' ],
+		},
+
+		// PROCESS JS - Use webpack to process the needed js files
+		webpack: {
+			prod: webpackConfig,
+		},
+
+		// // SHELL - Run needed shell commands
+		shell: {
+			lintPHP: 'composer run lint',
+		},
+
+		// // ESLINT - Make sure our JS follows coding standards
+		eslint: {
+			target: [ 'build/js/**/*.js' ],
+		},
+
+		// COPY FILES - Copy needed files from build to trunk
+		copy: {
 			options: {
-				livereload: true
-			}
+				process( content ) {
+					if ( typeof content !== 'string' ) {
+						return content;
+					}
+					return grunt.template.process( content );
+				},
+			},
+			build: { expand: true, cwd: 'build', src: [ 'style.css', '**/*.txt', '**/*.svg', '**/*.po', '**/*.pot', '**/*.tmpl.html', '**/*.php' ], dest: 'trunk/', filter: 'isFile' },
+			build_css: { expand: true, cwd: 'dist/css', src: [ '*.min.css' ], dest: 'trunk/css/', filter: 'isFile' },
+			build_stream: { expand: true, options: { encoding: null }, cwd: 'build', src: [ '**/*.mo', 'img/**/*', 'screenshot.png', 'fonts/**/*' ], dest: 'trunk/', filter: 'isFile' },
 		},
-		livereload: {
-			files: ['build/js/*.min.js', 'build/**/*.php', 'build/**/*.html', 'build/**/*.txt'], // Watch all files
-			tasks: ['dev-deploy'],
-			options: {
-				livereload: true
-			}
+
+		// CLEAN FOLDERS - Before we compile freshly, we want to delete old folder contents
+		clean: {
+			options: { force: true },
+			dist_css: {
+				expand: true,
+				force: true,
+				cwd: 'dist/css/',
+				src: [ '**/*' ],
+			},
+			trunk: {
+				expand: true,
+				force: true,
+				cwd: 'trunk/',
+				src: [ '**/*' ],
+			},
+			zip: {
+				expand: true,
+				force: true,
+				cwd: '<%= pkg.slug %>/',
+				src: [ '**/*' ],
+			},
 		},
-    },
 
-    // Deployment Strategies
-
-    // Copy the files to the target destination
-    copy: {
-	    options : {
-          process: function (content, srcpath) {
-	        if(typeof(content) === "object"){
-		     	return content;
-	        };
-			grunt.template.addDelimiters('custom-delimiters', '<##', '##>');
-            return grunt.template.process(content, {delimiters: 'custom-delimiters'});
-          },
-	    },
-	    build: {expand: true, cwd: 'build', src: ['**/*.php', '**/*.min.js', '**/*.css', '**/*.txt','**/*.svg','**/*.po','**/*.pot', '**/fonts/*', '!node_modules', '!node_modules/**/*'], dest: 'trunk/', filter: 'isFile'},
-	    build_stream: {expand: true, options: { encoding: null }, cwd: 'build', src: ['**/*.mo'], dest: 'trunk/', filter: 'isFile'},
-	    release: {expand: true, cwd: 'build', src: ['**/*.php', '**/*.min.js', '**/*.css', '**/*.txt','**/*.svg','**/*.po','**/*.pot', '**/fonts/*', '!node_modules', '!node_modules/**/*'], dest: 'tags/<%= pkg.version %>/', filter: 'isFile'},
-	    release_stream: {expand: true, options: { encoding: null }, cwd: 'build', src: ['**/*.mo'], dest: 'tags/<%= pkg.version %>/', filter: 'isFile'},
-	    zip: {expand: true, cwd: 'build', src: ['**/*.php', '**/*.min.js', '**/*.css', '**/*.txt','**/*.svg','**/*.po','**/*.pot', '**/fonts/*', '!node_modules', '!node_modules/**/*'], dest: '<%= pkg.slug %>/', filter: 'isFile'},
-	    zip_stream: {expand: true, options: { encoding: null }, cwd: 'build', src: ['**/*.mo'], dest: '<%= pkg.slug %>/', filter: 'isFile'}
-    },
-
-    // Clean out folders
-    clean: {
-		options: { force: true },
-		build: {
-			expand: true,
-			force: true,
-		  	cwd: "trunk/",
-			src: ['**/*'],
+		// COMPRESS - Create a zip file from a new trunk
+		compress: {
+			main: {
+				options: {
+					archive: 'update/<%= pkg.slug %>.zip',
+				},
+				files: [
+					{ src: [ '**' ], cwd: 'trunk', expand: true, dest: '<%= pkg.slug %>' },
+				],
+			},
 		},
-		release: {
-			expand: true,
-			force: true,
-		  	cwd: 'tags/<%= pkg.version %>/',
-			src: ['**/*'],
+
+		// WATCHER - Watch for changes in files and process those when a change is detected
+		watch: {
+			js: {
+				files: [ 'build/**/*.js', 'build/**/*.json', '!build/**/*.min.js', '!build/**/*.bundle.js' ],
+				tasks: [ 'handle_js' ],
+				options: {
+				},
+			},
+			css: {
+				files: [ 'build/**/*.css' ], // which files to watch
+				tasks: [ 'newer_handle_css' ],
+				options: {
+				},
+			},
+			php: {
+				files: [ 'build/**/*.php' ], // which files to watch
+				tasks: [ 'dev_deploy' ],
+				options: {
+				},
+			},
+			static: {
+				files: [ 'build/**/*.html', 'build/**/*.txt' ], // Watch all files
+				tasks: [ 'dev_deploy' ],
+				options: {
+				},
+			},
+			livereload: {
+				// Here we watch the files the sass task will compile to
+				// These files are sent to the live reload server after less compiles to them
+				options: { livereload: true },
+				files: [ 'trunk/**/*' ],
+			},
 		},
-		zip: {
-			expand: true,
-			force: true,
-		  	cwd: '<%= pkg.slug %>/',
-			src: ['**/*'],
-		}
-	},
+	} );
 
-	// Create a ZIP file of the current trunk
-	compress: {
-	  main: {
-	    options: {
-	      archive: 'archives/<%= pkg.slug %>.<%= pkg.version %>.zip'
-	    },
-	    files: [
-	      {src: ['**'], cwd: 'trunk', expand: true, dest: '<%= pkg.slug %>'}, // includes files in path
-	    ]
-	  }
-	}
-  });
+	// Handle certain file groups
+	grunt.registerTask( 'newer_handle_css', [ 'postcss:default', 'postcss:minify' ] );
+	grunt.registerTask( 'handle_css', [ 'clean:dist_css', 'postcss:default', 'postcss:minify' ] );
 
-  // These tasks are not needed at the moment, as we do not have any css or js files (yet).
-  grunt.registerTask( 'handle_css', ['less'] );
-  grunt.registerTask( 'handle_js', ['concat_in_order', 'uglify'] );
+	grunt.registerTask( 'newer_handle_js', [ 'webpack' ] );
+	grunt.registerTask( 'handle_js', [ 'webpack' ] );
 
-  // Deployment strategies. The dev-deploy runs with the watcher and performs quicker. The deploy performs a clean of the trunk folder and a clean copy of the needed files.
-  grunt.registerTask( 'deploy', ['handle_js', 'handle_css', 'phplint', 'clean:build', 'copy:build', 'copy:build_stream'] );
-  grunt.registerTask( 'dev-deploy', ['handle_js', 'handle_css', 'phplint', 'newer:copy:build', 'newer:copy:build_stream'] );
+	// // Deployment strategies
+	grunt.registerTask( 'dev_deploy', [ 'newer_handle_css', 'newer_handle_js', 'newer:copy:build', 'newer:copy:build_css', 'newer:copy:build_stream' ] );
+	grunt.registerTask( 'deploy', [ 'clean:trunk', 'handle_css', 'handle_js', 'copy:build', 'copy:build_css', 'copy:build_stream' ] );
 
-  // The release task adds a new tag in the release folder.
-  grunt.registerTask( 'zip', ['copy:zip', 'copy:zip_stream', 'compress', 'clean:zip'] );
-  grunt.registerTask( 'release', ['deploy', 'clean:release', 'copy:release', 'copy:release_stream', 'zip'] );
+	// // Linting
+	grunt.registerTask( 'lint', [ 'shell:lintPHP', 'eslint', 'stylelint' ] );
 
-
+	// // Releasing
+	grunt.registerTask( 'release', [ 'lint', 'deploy', 'compress' ] );
 };

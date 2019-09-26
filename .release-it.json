@@ -1,0 +1,12 @@
+{
+  "github": {
+    "release": true,
+    "assets": "update/*.zip"
+  },
+	"npm": {
+		"publish": false
+	},
+	"scripts": {
+		"beforeStage": "npx grunt release"
+	}
+}
