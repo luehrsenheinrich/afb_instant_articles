@@ -44,6 +44,12 @@ if ! $(${WP_CLI} core is-installed); then
 	# Import and activate needed plugins
 	${WP_CLI} plugin install gutenberg wordpress-importer query-monitor debug-bar --activate
 
+	echo $(status_message "Downloading WordPress theme unit test data...")
+	${WP_CLI} curl -O https://raw.githubusercontent.com/WPTRT/theme-unit-test/master/themeunittestdata.wordpress.xml >/dev/null 2>&1
+
+	echo $(status_message "Importing WordPress theme unit test data...\n")
+	${WP_CLI} import themeunittestdata.wordpress.xml --authors=create
+
 	# Activate debugging
 	${WP_CLI} config set WP_DEBUG true --raw
 

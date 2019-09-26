@@ -47,8 +47,8 @@ if ( ! defined( 'AFBIA_PLUGIN_PATH' ) ) {
  * @param string $class_name Class name to load.
  * @return bool True if the class was loaded, false otherwise.
  */
-function allfacebook-instant-articles_autoload( $class_name ) {
-	$namespace = 'allfacebook-instant-articles';
+function afbia_autoload( $class_name ) {
+	$namespace = 'afbia';
 
 	if ( strpos( $class_name, $namespace . '\\' ) !== 0 ) {
 		return false;
@@ -72,10 +72,10 @@ function allfacebook-instant-articles_autoload( $class_name ) {
 
 	return true;
 }
-spl_autoload_register( 'allfacebook-instant-articles_autoload' );
+spl_autoload_register( 'afbia_autoload' );
 
 // Load the `wp_allfacebook-instant-articles()` entry point function.
 require AFBIA_PLUGIN_PATH . 'inc/functions.php';
 
 // Initialize the plugin.
-call_user_func( 'allfacebook-instant-articles\wp_allfacebook-instant-articles' );
+call_user_func( 'afbia\wp_afbia' );

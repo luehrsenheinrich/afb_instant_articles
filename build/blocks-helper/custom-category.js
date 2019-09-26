@@ -17,7 +17,7 @@ setCategories( [
 	{
 		slug: 'allfacebook-instant-articles',
 		title: 'allfacebook-instant-articles',
-		icon: icons.allfacebook-instant-articles,
+		icon: icons.afbia,
 	},
 	...getCategories().filter( ( { slug } ) => slug !== 'allfacebook-instant-articles' ),
 ] );

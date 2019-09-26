@@ -5,7 +5,7 @@
  * @package allfacebook-instant-articles
  */
 
-namespace allfacebook-instant-articles;
+namespace afbia;
 use InvalidArgumentException;
 use BadMethodCallException;
 use RuntimeException;

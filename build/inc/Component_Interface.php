@@ -5,7 +5,7 @@
  * @package allfacebook-instant-articles
  */
 
-namespace allfacebook-instant-articles;
+namespace afbia;
 
 /**
  * Interface for a plugin component.

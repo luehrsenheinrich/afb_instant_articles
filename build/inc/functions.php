@@ -5,7 +5,7 @@
  * @package allfacebook-instant-articles
  */
 
-namespace allfacebook-instant-articles;
+namespace afbia;
 
 /**
  * Provides access to all available template tags of the plugin.
@@ -14,7 +14,7 @@ namespace allfacebook-instant-articles;
  *
  * @return Template_Tags Template tags instance exposing template tag methods.
  */
-function wp_allfacebook-instant-articles() {
+function wp_afbia() {
 	static $plugin = null;
 
 	if ( null === $plugin ) {

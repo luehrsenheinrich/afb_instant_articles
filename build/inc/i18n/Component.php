@@ -5,8 +5,8 @@
  * @package allfacebook-instant-articles
  */
 
-namespace allfacebook-instant-articles\i18n;
-use allfacebook-instant-articles\Component_Interface;
+namespace afbia\i18n;
+use afbia\Component_Interface;
 use function add_action;
 use function load_plugin_textdomain;
 

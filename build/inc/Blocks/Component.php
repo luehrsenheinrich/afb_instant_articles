@@ -5,8 +5,8 @@
  * @package allfacebook-instant-articles
  */
 
-namespace allfacebook-instant-articles\Blocks;
-use allfacebook-instant-articles\Component_Interface;
+namespace afbia\Blocks;
+use afbia\Component_Interface;
 use function add_action;
 use function register_block_type;
 use function wp_enqueue_script;
